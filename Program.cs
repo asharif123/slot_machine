@@ -31,7 +31,7 @@ namespace slot_machine
         //function for slot machine
         static void SlotMachine()
         {
-            Console.WriteLine("Welcome to Slot Machine!\n");
+            Console.WriteLine("\nWelcome to Slot Machine!\n");
             //1 second delay
             System.Threading.Thread.Sleep(1000);
 
@@ -61,6 +61,15 @@ namespace slot_machine
                     Console.WriteLine(spinningSlotMachine[i, j]);
                 }
             }
+
+            Console.WriteLine("\nPress y to continue playing or any key to quit!\n");
+            char userInput = Char.ToLower(Console.ReadKey().KeyChar);
+            //if user wishes to continue, call the slotmachine function
+            if (userInput == 'y')
+            {
+                SlotMachine();
+            }
+            return;
         }
         static void Main(string[] args)
         {
