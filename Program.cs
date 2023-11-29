@@ -28,24 +28,43 @@ namespace slot_machine
 {
     internal class Program
     {
+        //function for slot machine
         static void SlotMachine()
         {
-            Console.WriteLine("Welcome to Slot Machine\n!");
+            Console.WriteLine("Welcome to Slot Machine!\n");
             //1 second delay
             System.Threading.Thread.Sleep(1000);
 
-            //2 second delay
-            Console.WriteLine("Generating random numbers...");
-            System.Threading.Thread.Sleep(2000);
-            Random rng = new Random();
-            int randomValue = rng.Next(10);
+            const int STARTING_ROW = 0;
+            const int STARTING_COLUMN = 0;
+            const int ENDING_ROW = 2;
+            const int ENDING_COLUMN = 2;
+
+            //user's winnings, user starts at $10
+            int winnings = 10;
 
             //array to store random digits
             //2D array that is 3 by 3
-            int[,] slotMachineValues = new int[3, 3];
+            int[,] spinningSlotMachine = new int[3, 3];
+
+            //insert values in spinning slot machine array
+            //2 second delay
+            Console.WriteLine("Spinning the wheel...\n");
+            System.Threading.Thread.Sleep(2000);
+            Random rng = new Random();
+            for (int i = STARTING_ROW; i <= ENDING_ROW; i++)
+            {
+                for (int j = STARTING_COLUMN; j <= ENDING_COLUMN; j++)
+                {
+                    int randomValue = rng.Next(9);
+                    spinningSlotMachine[i, j] = randomValue;
+                    Console.WriteLine(spinningSlotMachine[i, j]);
+                }
+            }
         }
         static void Main(string[] args)
         {
+            //call the function
             SlotMachine();
         }
     }
