@@ -56,7 +56,7 @@ namespace slot_machine
             {
                 for (int j = STARTING_COLUMN; j <= ENDING_COLUMN; j++)
                 {
-                    int randomValue = rng.Next(9);
+                    int randomValue = rng.Next(10);
                     spinningSlotMachine[i, j] = randomValue;
                     Console.WriteLine(spinningSlotMachine[i, j]);
                 }
