@@ -69,6 +69,7 @@ namespace slot_machine
             {
                 SlotMachine();
             }
+            //quit the game
             return;
         }
         static void Main(string[] args)
