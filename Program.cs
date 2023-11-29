@@ -60,6 +60,7 @@ namespace slot_machine
                     spinningSlotMachine[i, j] = randomValue;
                     Console.WriteLine(spinningSlotMachine[i, j]);
                 }
+                Console.WriteLine();
             }
 
             Console.WriteLine("\nPress y to continue playing or any key to quit!\n");
