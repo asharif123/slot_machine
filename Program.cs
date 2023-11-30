@@ -62,7 +62,7 @@ namespace slot_machine
 
             Console.WriteLine("\nPress y to continue playing or any key to quit!\n");
             char userInput = Char.ToLower(Console.ReadKey().KeyChar);
-            //if user wishes to continue, call the slotmachine function
+            //if user wishes to continue, call the main function
             if (userInput == 'y')
             {
                 Main();
