@@ -28,8 +28,7 @@ namespace slot_machine
 {
     internal class Program
     {
-        //function for slot machine
-        static void SlotMachine()
+        static void Main()
         {
             Console.WriteLine("\nWelcome to Slot Machine!\n");
             //1 second delay
@@ -50,9 +49,9 @@ namespace slot_machine
             Console.WriteLine("Spinning the wheel...\n");
             System.Threading.Thread.Sleep(2000);
             Random rng = new Random();
-            for (int i = 0; i <= ROW_COUNT-1; i++)
+            for (int i = 0; i <= ROW_COUNT - 1; i++)
             {
-                for (int j = 0; j <= COLUMN_COUNT-1; j++)
+                for (int j = 0; j <= COLUMN_COUNT - 1; j++)
                 {
                     int randomValue = rng.Next(10);
                     spinningSlotMachine[i, j] = randomValue;
@@ -66,15 +65,10 @@ namespace slot_machine
             //if user wishes to continue, call the slotmachine function
             if (userInput == 'y')
             {
-                SlotMachine();
+                Main();
             }
             //quit the game
             return;
-        }
-        static void Main(string[] args)
-        {
-            //call the function
-            SlotMachine();
         }
     }
 }
