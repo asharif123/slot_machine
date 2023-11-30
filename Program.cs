@@ -35,10 +35,8 @@ namespace slot_machine
             //1 second delay
             System.Threading.Thread.Sleep(1000);
 
-            const int STARTING_ROW = 0;
-            const int STARTING_COLUMN = 0;
-            const int ENDING_ROW = 2;
-            const int ENDING_COLUMN = 2;
+            const int ROW_COUNT = 3;
+            const int COLUMN_COUNT = 3;
 
             //user's winnings, user starts at $10
             int winnings = 10;
@@ -52,9 +50,9 @@ namespace slot_machine
             Console.WriteLine("Spinning the wheel...\n");
             System.Threading.Thread.Sleep(2000);
             Random rng = new Random();
-            for (int i = STARTING_ROW; i <= ENDING_ROW; i++)
+            for (int i = 0; i <= ROW_COUNT-1; i++)
             {
-                for (int j = STARTING_COLUMN; j <= ENDING_COLUMN; j++)
+                for (int j = 0; j <= COLUMN_COUNT-1; j++)
                 {
                     int randomValue = rng.Next(10);
                     spinningSlotMachine[i, j] = randomValue;
