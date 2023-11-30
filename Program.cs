@@ -6,15 +6,31 @@ namespace slot_machine
     {
         static void Main()
         {
-            Console.WriteLine("\nWelcome to Slot Machine!\n");
-            //1 second delay
-            System.Threading.Thread.Sleep(1000);
-
             const int ROW_COUNT = 3;
             const int COLUMN_COUNT = 3;
 
-            //user's winnings, user starts at $50
+            //1 second delay
+            System.Threading.Thread.Sleep(1000);
+
             int winnings = 50;
+            Console.WriteLine($"\nYou have ${winnings} that you can wager!\n");
+            //user's winnings, user starts at $50
+
+            //ask how much user wants to wager
+            Console.WriteLine("\nEnter a value from 1 to 50 that you would like to wager!\n");
+            string wager = Console.ReadLine();
+            int wagerVal = Convert.ToInt32(wager);
+            if (wagerVal > winnings || wagerVal <= 0)
+            {
+                Console.WriteLine("\nPlease enter a positive wager value that is less than or equal your winnings!\n");
+                Main();
+            }
+            //if user runs out of money to wager
+            if (winnings <= 0)
+            {
+                Console.WriteLine("\nSorry, you have no more money left to bet! Exiting the game...\n");
+                return;
+            }
 
             //insert values in spinning slot machine array
             //2 second delay
@@ -35,6 +51,7 @@ namespace slot_machine
                 }
                 Console.WriteLine();
             }
+
             //user decides whether to match numbers horizontally/vertically/diagnolly
             Console.WriteLine("Enter 'h' to match numbers horizontally, 'v' to match vertically, 'd' to match diagonally\n");
             char userInput = Char.ToLower(Console.ReadKey().KeyChar);
