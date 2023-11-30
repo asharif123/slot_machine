@@ -25,6 +25,7 @@ namespace slot_machine
                 Console.WriteLine("\nPlease enter a positive wager value that is less than or equal your winnings!\n");
                 Main();
             }
+
             //if user runs out of money to wager
             if (winnings <= 0)
             {
