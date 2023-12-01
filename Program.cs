@@ -68,7 +68,6 @@ namespace slot_machine
                 string val = Console.ReadLine();
                 int intToVal = Convert.ToInt32(val);
             }
-
             else
             {
                 Console.WriteLine("\nPlease enter a valid input!\n");
