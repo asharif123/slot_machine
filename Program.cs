@@ -8,13 +8,14 @@ namespace slot_machine
         {
             const int ROW_COUNT = 3;
             const int COLUMN_COUNT = 3;
+            const int MINIMUM_BET = 1;
 
             int winnings = 50;
             Console.WriteLine($"\nYou have ${winnings} that you can wager!\n");
             //user's winnings, user starts at $50
 
             //ask how much user wants to wager
-            Console.WriteLine("\nEnter a value from 1 to 50 that you would like to wager!\n");
+            Console.WriteLine($"\nEnter a value from {MINIMUM_BET} to {winnings} that you would like to wager!\n");
             string wager = Console.ReadLine();
             int wagerVal = Convert.ToInt32(wager);
             if (wagerVal > winnings || wagerVal <= 0)
