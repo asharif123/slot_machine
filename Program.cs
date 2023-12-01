@@ -9,9 +9,6 @@ namespace slot_machine
             const int ROW_COUNT = 3;
             const int COLUMN_COUNT = 3;
 
-            //1 second delay
-            System.Threading.Thread.Sleep(1000);
-
             int winnings = 50;
             Console.WriteLine($"\nYou have ${winnings} that you can wager!\n");
             //user's winnings, user starts at $50
@@ -36,7 +33,6 @@ namespace slot_machine
             //insert values in spinning slot machine array
             //2 second delay
             Console.WriteLine("Spinning the wheel...\n");
-            System.Threading.Thread.Sleep(2000);
 
             //array to store random digits
             //2D array that is 3 by 3
