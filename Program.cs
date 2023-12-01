@@ -38,9 +38,9 @@ namespace slot_machine
             //2D array that is 3 by 3
             int[,] spinningSlotMachine = new int[3, 3];
             Random rng = new Random();
-            for (int i = 0; i <= ROW_COUNT - 1; i++)
+            for (int i = 0; i < ROW_COUNT; i++)
             {
-                for (int j = 0; j <= COLUMN_COUNT - 1; j++)
+                for (int j = 0; j < COLUMN_COUNT; j++)
                 {
                     int randomValue = rng.Next(10);
                     spinningSlotMachine[i, j] = randomValue;
