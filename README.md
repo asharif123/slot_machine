@@ -21,7 +21,7 @@ User then inputs how much they want to bet.
 
 If user selects 1 line horizontal/vertical/diagnol and numbers match, user wins total + how much money user bet.
 
-If user selects 2 lines horizontal/veritical/diagnol and numbers match, user wins total + 2 times how much user bet.
+If user selects 2 lines diagnol and numbers match, user wins total + 2 times how much user bet.
 
 If user selects 3 lines horizontally/vertically and numbers match, user wins total + 3 times how much user bet.
 
@@ -33,7 +33,7 @@ If user selects 3 lines horizontally/vertically and numbers match, user wins tot
 
 If user selects 1 line horizontal/vertical/diagnol and numbers don't match, user loses total - how much money user bet.
 
-If user selects 2 lines horizontal/veritical/diagnol and numbers don't match, user loses total - 2 times how much user bet.
+If user selects 2 lines diagnol and numbers don't match, user loses total - 2 times how much user bet.
 
 If user selects 3 lines horizontally/vertically and numbers don't match, user loses total - 3 times how much user bet.
 
