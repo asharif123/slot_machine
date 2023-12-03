@@ -21,6 +21,8 @@ namespace slot_machine
             string wager = Console.ReadLine();
             int wagerVal = Convert.ToInt32(wager);
             bool notValidInput = true;
+
+            //ensure user enters valid wager
             while (notValidInput)
             {
                 if (wagerVal > winnings || wagerVal <= 0)
@@ -41,9 +43,26 @@ namespace slot_machine
                 return;
             }
 
+            //user decides whether to match numbers horizontally/vertically/diagnolly
+            Console.WriteLine("Enter 'h' to match numbers horizontally, 'v' to match vertically, 'd' to match diagonally\n");
+            char userInput = Char.ToLower(Console.ReadKey().KeyChar);
+
+            //if user selects either horizontal or vertical, user can match either 1 or 3 lines
+            if (userInput == 'h' || userInput == 'v') {
+                Console.WriteLine("\nEnter 1 to try to match 1 line or 3 to try to match 3 lines!\n");
+            }
+
+            //if diagnol, ask user to match either 1 or 2 lines
+            else if (userInput == 'd')
+            {
+                Console.WriteLine("\nEnter 1 to try to match 1 line or 2 to try to match 2 lines!\n");
+            }
+
+            string val = Console.ReadLine();
+            int intToVal = Convert.ToInt32(val);
+
             //insert values in spinning slot machine array
-            //2 second delay
-            Console.WriteLine("Spinning the wheel...\n");
+            Console.WriteLine("\nSpinning the wheel...\n");
 
             //array to store random digits
             //2D array that is 3 by 3
@@ -60,66 +79,45 @@ namespace slot_machine
                 Console.WriteLine();
             }
 
-            //user decides whether to match numbers horizontally/vertically/diagnolly
-            Console.WriteLine("Enter 'h' to match numbers horizontally, 'v' to match vertically, 'd' to match diagonally\n");
-            char userInput = Char.ToLower(Console.ReadKey().KeyChar);
-
-            //testcase if user selects horizontal
-            if (userInput == 'h')
+            //horizontal scenarios
+            //if any single horizontal row matches
+            if (userInput == 'h' && intToVal == 1)
             {
-                Console.WriteLine("\nEnter 1 to try to match 1 line or 3 to try to match 3 lines!\n");
-                string val = Console.ReadLine();
-                int intToVal = Convert.ToInt32(val);
-
-            //if user selects 1 horizontal line to match
-                if (intToVal == 1)
+                if ((spinningSlotMachine[0,0] == spinningSlotMachine[0,1]) && (spinningSlotMachine[0,1] == spinningSlotMachine[0,2]) ||
+                    (spinningSlotMachine[1,0] == spinningSlotMachine[1,1]) && (spinningSlotMachine[1,1] == spinningSlotMachine[1,2]) ||
+                    (spinningSlotMachine[2,0] == spinningSlotMachine[2,1]) && (spinningSlotMachine[2,1] == spinningSlotMachine[2,2]))
                 {
-                    //check scenario
-                    if (spinningSlotMachine[0, 0] == spinningSlotMachine[0, 1] && spinningSlotMachine[0, 1] == spinningSlotMachine[0, 2] ||
-                        spinningSlotMachine[1, 0] == spinningSlotMachine[1, 1] && spinningSlotMachine[1, 1] == spinningSlotMachine[1, 2] ||
-                        spinningSlotMachine[2, 0] == spinningSlotMachine[2, 1] && spinningSlotMachine[2, 1] == spinningSlotMachine[2, 2])
-                    {
-                     //WINNING SCENARIOS
-                        Console.WriteLine("You matched 1 horizontal line!\n");
-                        winnings += wagerVal;
-                        Console.WriteLine($"Your total winnings are {winnings}.\n");
-                    }
-                    //LOSING SCENARIO
-                        Console.WriteLine("You did not match a single horizontal line!\n");
-                        winnings -= wagerVal;
-                        Console.WriteLine($"Your total winnings are {winnings}.\n");
+                    Console.WriteLine("You matched a single horizontal line!\n");
+                    winnings += wagerVal;
+                    Console.WriteLine($"Your total winnings are {winnings}\n");
                 }
-                //if user selects 1 horizontal line to match
-                if (intToVal == 3)
+                
+                else
                 {
-                    if ((spinningSlotMachine[0, 0] == spinningSlotMachine[0, 1] && spinningSlotMachine[0, 1] == spinningSlotMachine[0, 2]) &&
-                        (spinningSlotMachine[1, 0] == spinningSlotMachine[1, 1] && spinningSlotMachine[1, 1] == spinningSlotMachine[1, 2]) &&
-                        (spinningSlotMachine[2, 0] == spinningSlotMachine[2, 1] && spinningSlotMachine[2, 1] == spinningSlotMachine[2, 2]))
-                    {
-                    //WINNING SCENARIO
-                        Console.WriteLine("You matched 3 horizontal lines!\n");
-                        winnings += 3 * wagerVal;
-                        Console.WriteLine($"Your total winnings are {winnings}.\n");
-                    }
-                    //LOSING SCENARIO
-                    Console.WriteLine("You did not match three horizontal lines!\n");
-                    winnings -= 3*wagerVal;
-                    Console.WriteLine($"Your total winnings are {winnings}.\n");
+                    Console.WriteLine("You did not match a single horizontal line!\n");
+                    winnings -= wagerVal;
+                    Console.WriteLine($"Your total winnings are {winnings}\n");
+
                 }
             }
 
-            //if user selects vertical
-            if (userInput == 'v')
+            //if all 3 horizontal lines match
+            if (userInput == 'h' && intToVal == 3)
             {
-
-            }
-            //testcase if user selects diagnol
-            else if (userInput == 'd')
-            {
-                Console.WriteLine("\nEnter 1 to try to match 1 line or 2 to try to match 2 lines!\n");
-                string val = Console.ReadLine();
-                int intToVal = Convert.ToInt32(val);
-                //WINNING SCENARIOS
+                if ((spinningSlotMachine[0, 0] == spinningSlotMachine[0, 1]) && (spinningSlotMachine[0, 1] == spinningSlotMachine[0, 2]) &&
+                    (spinningSlotMachine[1, 0] == spinningSlotMachine[1, 1]) && (spinningSlotMachine[1, 1] == spinningSlotMachine[1, 2]) &&
+                    (spinningSlotMachine[2, 0] == spinningSlotMachine[2, 1]) && (spinningSlotMachine[2, 1] == spinningSlotMachine[2, 2]))
+                {
+                    Console.WriteLine("You matched all three horizontal line!\n");
+                    winnings += (ROW_COUNT)*wagerVal;
+                    Console.WriteLine($"Your total winnings are {winnings}\n");
+                }
+                else
+                {
+                    Console.WriteLine("You did not match all three horizontal lines!\n");
+                    winnings -= (ROW_COUNT) * wagerVal;
+                    Console.WriteLine($"Your total winnings are {winnings}\n");
+                }
             }
 
             Console.WriteLine("\nPress y to continue playing or any key to quit!\n");
