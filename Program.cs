@@ -10,9 +10,11 @@ namespace slot_machine
             const int COLUMN_COUNT = 3;
             const int MINIMUM_BET = 1;
 
-            int winnings = 50;
-            Console.WriteLine($"\nYou have ${winnings} that you can wager!\n");
+            const int STARTING_BANK_AMOUNT = 50;
+
+            Console.WriteLine($"\nYou have ${STARTING_BANK_AMOUNT} that you can wager!\n");
             //user's winnings, user starts at $50
+            int winnings = STARTING_BANK_AMOUNT;
 
             //ask how much user wants to wager
             Console.WriteLine($"\nEnter a value from {MINIMUM_BET} to {winnings} that you would like to wager!\n");
