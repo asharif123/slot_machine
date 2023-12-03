@@ -90,8 +90,7 @@ namespace slot_machine
                     Console.WriteLine("You matched a single horizontal line!\n");
                     winnings += wagerVal;
                     Console.WriteLine($"Your total winnings are {winnings}\n");
-                }
-                
+                }                
                 else
                 {
                     Console.WriteLine("You did not match a single horizontal line!\n");
@@ -115,7 +114,7 @@ namespace slot_machine
                 else
                 {
                     Console.WriteLine("You did not match all three horizontal lines!\n");
-                    winnings -= (ROW_COUNT) * wagerVal;
+                    winnings -= (ROW_COUNT)*wagerVal;
                     Console.WriteLine($"Your total winnings are {winnings}\n");
                 }
             }
