@@ -18,12 +18,24 @@ namespace slot_machine
             Console.WriteLine($"\nEnter a value from {MINIMUM_BET} to {winnings} that you would like to wager!\n");
             string wager = Console.ReadLine();
             int wagerVal = Convert.ToInt32(wager);
-            if (wagerVal > winnings || wagerVal <= 0)
+            bool notValidInput = true;
+            while (notValidInput)
             {
-                Console.WriteLine("\nPlease enter a positive wager value that is less than or equal your winnings!\n");
-                Main();
+                if (wagerVal > winnings || wagerVal <= 0)
+                {
+                    Console.WriteLine("\nPlease enter a positive wager value that is less than or equal your winnings!\n");
+                    wager = Console.ReadLine();
+                    wagerVal = Convert.ToInt32(wager);
+
+                }
+                else
+                {
+                    notValidInput = false;
+                }
             }
 
+            //how much money user loses based off wager amount
+            winnings -= wagerVal;
             //if user runs out of money to wager
             if (winnings <= 0)
             {
@@ -60,6 +72,18 @@ namespace slot_machine
                 Console.WriteLine("\nEnter 1 to try to match 1 line or 3 to try to match 3 lines!\n");
                 string val = Console.ReadLine();
                 int intToVal = Convert.ToInt32(val);
+
+                //WINNING SCENARIOS
+                if (intToVal == 1)
+                {
+                    //check scenario
+                    if (spinningSlotMachine[0, 0] == spinningSlotMachine[0, 1] && spinningSlotMachine[0, 1] == spinningSlotMachine[0, 2] ||
+                        spinningSlotMachine[0, 0] == spinningSlotMachine[1, 0] && spinningSlotMachine[1, 1] == spinningSlotMachine[0, 2])
+                    {
+
+                    }
+                }
+
             }
             //testcase if user selects diagnol
             else if (userInput == 'd')
@@ -67,11 +91,7 @@ namespace slot_machine
                 Console.WriteLine("\nEnter 1 to try to match 1 line or 2 to try to match 2 lines!\n");
                 string val = Console.ReadLine();
                 int intToVal = Convert.ToInt32(val);
-            }
-            else
-            {
-                Console.WriteLine("\nPlease enter a valid input!\n");
-                Main();
+                //WINNING SCENARIOS
             }
 
             Console.WriteLine("\nPress y to continue playing or any key to quit!\n");
