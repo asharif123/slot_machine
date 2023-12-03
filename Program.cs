@@ -96,7 +96,6 @@ namespace slot_machine
                     Console.WriteLine("You did not match a single horizontal line!\n");
                     winnings -= wagerVal;
                     Console.WriteLine($"Your total winnings are {winnings}\n");
-
                 }
             }
 
@@ -115,6 +114,45 @@ namespace slot_machine
                 {
                     Console.WriteLine("You did not match all three horizontal lines!\n");
                     winnings -= (ROW_COUNT)*wagerVal;
+                    Console.WriteLine($"Your total winnings are {winnings}\n");
+                }
+            }
+
+            //vertical scenarios
+            //if any single vertical row matches
+            if (userInput == 'v' && intToVal == 1)
+            {
+                if ((spinningSlotMachine[0, 0] == spinningSlotMachine[1, 0]) && (spinningSlotMachine[1, 0] == spinningSlotMachine[2, 0]) ||
+                    (spinningSlotMachine[0, 1] == spinningSlotMachine[1, 1]) && (spinningSlotMachine[1, 1] == spinningSlotMachine[2, 1]) ||
+                    (spinningSlotMachine[0, 2] == spinningSlotMachine[1, 2]) && (spinningSlotMachine[2, 1] == spinningSlotMachine[2, 2]))
+                {
+                    Console.WriteLine("You matched a single vertical line!\n");
+                    winnings += wagerVal;
+                    Console.WriteLine($"Your total winnings are {winnings}\n");
+                }
+                else
+                {
+                    Console.WriteLine("You did not match a single horizontal line!\n");
+                    winnings -= wagerVal;
+                    Console.WriteLine($"Your total winnings are {winnings}\n");
+                }
+            }
+
+            //if all 3 vertical lines match
+            if (userInput == 'v' && intToVal == 3)
+            {
+                if ((spinningSlotMachine[0, 0] == spinningSlotMachine[1, 0]) && (spinningSlotMachine[1, 0] == spinningSlotMachine[2, 0]) &&
+                    (spinningSlotMachine[0, 1] == spinningSlotMachine[1, 1]) && (spinningSlotMachine[1, 1] == spinningSlotMachine[2, 1]) &&
+                    (spinningSlotMachine[0, 2] == spinningSlotMachine[1, 2]) && (spinningSlotMachine[2, 1] == spinningSlotMachine[2, 2]))
+                {
+                    Console.WriteLine("You matched all three vertical lines!\n");
+                    winnings += (ROW_COUNT) * wagerVal;
+                    Console.WriteLine($"Your total winnings are {winnings}\n");
+                }
+                else
+                {
+                    Console.WriteLine("You did not match all three vertical lines!\n");
+                    winnings -= (COLUMN_COUNT)*wagerVal;
                     Console.WriteLine($"Your total winnings are {winnings}\n");
                 }
             }
