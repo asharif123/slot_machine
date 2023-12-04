@@ -26,6 +26,7 @@ namespace slot_machine
 
             //ask how much user wants to wager
             Console.WriteLine($"\nEnter a value from {MINIMUM_BET} to {winnings} that you would like to wager!\n");
+            //convert string to integer value
             string wager = Console.ReadLine();
             int wagerVal = Convert.ToInt32(wager);
             bool notValidInput = true;
@@ -39,7 +40,11 @@ namespace slot_machine
                     wager = Console.ReadLine();
                     wagerVal = Convert.ToInt32(wager);
                 }
-                notValidInput = false;
+            //if user enters valid wager value, exit out of while loop
+                else
+                {
+                    notValidInput = false;
+                }
             }
 
             //how much money user loses based off wager amount
@@ -56,7 +61,8 @@ namespace slot_machine
             char userInput = Char.ToLower(Console.ReadKey().KeyChar);
 
             //if user selects either horizontal or vertical, user can match either 1 or 3 lines
-            if (userInput == HORIZONTAL_OPTION || userInput == VERTICAL_OPTION) {
+            if (userInput == HORIZONTAL_OPTION || userInput == VERTICAL_OPTION)
+            {
                 Console.WriteLine($"\nEnter {MATCH_SINGLE_LINE} to try to match {MATCH_SINGLE_LINE} line or {MATCH_THREE_LINES} to try to match {MATCH_THREE_LINES} lines!\n");
             }
 
