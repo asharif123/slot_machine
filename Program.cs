@@ -40,7 +40,7 @@ namespace slot_machine
                     wager = Console.ReadLine();
                     wagerVal = Convert.ToInt32(wager);
                 }
-            //if user enters valid wager value, exit out of while loop
+                //if user enters valid wager value, exit out of while loop
                 else
                 {
                     notValidInput = false;
@@ -82,13 +82,13 @@ namespace slot_machine
             //2D array that is 3 by 3
             int[,] spinningSlotMachine = new int[ROW_COUNT, COLUMN_COUNT];
             Random rng = new Random();
-            for (int i = 0; i < ROW_COUNT; i++)
+            for (int rowIndex = 0; rowIndex < ROW_COUNT; rowIndex++)
             {
-                for (int j = 0; j < COLUMN_COUNT; j++)
+                for (int columnIndex = 0; columnIndex < COLUMN_COUNT; columnIndex++)
                 {
                     int randomValue = rng.Next(10);
-                    spinningSlotMachine[i, j] = randomValue;
-                    Console.WriteLine(spinningSlotMachine[i, j]);
+                    spinningSlotMachine[rowIndex, columnIndex] = randomValue;
+                    Console.WriteLine(spinningSlotMachine[rowIndex, columnIndex]);
                 }
                 Console.WriteLine();
             }
@@ -97,6 +97,10 @@ namespace slot_machine
             //if any single horizontal row matches
             if (userInput == HORIZONTAL_OPTION && intToLineOption == SINGLE_LINE_OPTION)
             {
+                for (int rowIndex = 0; rowIndex < ROW_COUNT; rowIndex++)
+                {
+
+                }
             }
 
             Console.WriteLine($"\nPress {CONTINUE_PLAYING} to continue playing or any key to quit!\n");
