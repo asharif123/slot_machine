@@ -57,7 +57,7 @@ namespace slot_machine
             }
 
             //user decides whether to match numbers horizontally/vertically/diagnolly
-            Console.WriteLine($"Enter {HORIZONTAL_OPTION} to match numbers horizontally, {VERTICAL_OPTION} to match vertically, 'd' to match diagonally\n");
+            Console.WriteLine($"Enter {HORIZONTAL_OPTION} to match numbers horizontally, {VERTICAL_OPTION} to match vertically, {DIAGONAL_OPTION} to match diagonally\n");
             char userInput = Char.ToLower(Console.ReadKey().KeyChar);
 
             //if user selects either horizontal or vertical, user can match either 1 or 3 lines
@@ -97,10 +97,36 @@ namespace slot_machine
             //if any single horizontal row matches
             if (userInput == HORIZONTAL_OPTION && intToLineOption == SINGLE_LINE_OPTION)
             {
+                //keep track of number of correct row matches
+                int correctMatches = 0;
                 for (int rowIndex = 0; rowIndex < ROW_COUNT; rowIndex++)
                 {
-
+                    for (int columnIndex = 0; columnIndex < COLUMN_COUNT-1; columnIndex++)
+                    {
+                        if (spinningSlotMachine[rowIndex, columnIndex] == spinningSlotMachine[rowIndex, columnIndex+1])
+                        {
+                            correctMatches += 1;
+                        }
+                    }
                 }
+                //after iterating through each line, determine if we see at least 2 correct matches
+                if (correctMatches == 2)
+                {
+                    Console.WriteLine("You have a matching horizontal line!\n");
+                    winnings += wagerVal;
+                    Console.WriteLine($"Your total winnings are {winnings}\n!");
+                }
+                else
+                {
+                    Console.WriteLine("You don't have a matching horizontal line!\n");
+                    Console.WriteLine($"Your total winnings are {winnings}!\n");
+                }
+            }
+            
+            //vertical options
+            if (userInput == VERTICAL_OPTION && intToLineOption== SINGLE_LINE_OPTION)
+            {
+
             }
 
             Console.WriteLine($"\nPress {CONTINUE_PLAYING} to continue playing or any key to quit!\n");
