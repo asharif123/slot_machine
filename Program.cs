@@ -57,7 +57,7 @@ namespace slot_machine
             }
 
             //user decides whether to match numbers horizontally/vertically/diagnolly
-            Console.WriteLine($"Enter {HORIZONTAL_OPTION} to match numbers horizontally, {VERTICAL_OPTION} to match vertically, {DIAGONAL_OPTION} to match diagonally\n");
+            Console.WriteLine($"\nEnter {HORIZONTAL_OPTION} to match numbers horizontally, {VERTICAL_OPTION} to match vertically, {DIAGONAL_OPTION} to match diagonally\n");
             char userInput = Char.ToLower(Console.ReadKey().KeyChar);
 
             //if user selects either horizontal or vertical, user can match either 1 or 3 lines
