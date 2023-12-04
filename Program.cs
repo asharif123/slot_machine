@@ -69,7 +69,7 @@ namespace slot_machine
             //if diagnol, ask user to match either 1 or 2 lines
             else if (userInput == DIAGONAL_OPTION)
             {
-                Console.WriteLine($"\nEnter {MATCH_SINGLE_LINE} to try to match {MATCH_SINGLE_LINE} line or {MATCH_TWO_LINES} to try to match 2 lines!\n");
+                Console.WriteLine($"\nEnter {MATCH_SINGLE_LINE} to try to match {MATCH_SINGLE_LINE} line or {MATCH_TWO_LINES} to try to match {MATCH_TWO_LINES} lines!\n");
             }
 
             string lineOption = Console.ReadLine();
