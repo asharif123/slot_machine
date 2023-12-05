@@ -103,7 +103,7 @@ namespace slot_machine
                 {
                     for (int columnIndex = 0; columnIndex < COLUMN_COUNT-1; columnIndex++)
                     {
-                        if (spinningSlotMachine[rowIndex, columnIndex] == spinningSlotMachine[rowIndex, columnIndex+1])
+                        if (spinningSlotMachine[rowIndex,columnIndex] == spinningSlotMachine[rowIndex, columnIndex+1])
                         {
                             correctMatches += 1;
                         }
@@ -114,18 +114,41 @@ namespace slot_machine
                 {
                     Console.WriteLine("You have a matching horizontal line!\n");
                     winnings += wagerVal;
-                    Console.WriteLine($"Your total winnings are {winnings}\n!");
+                    Console.WriteLine($"Your total winnings are ${winnings}\n!");
                 }
                 else
                 {
                     Console.WriteLine("You don't have a matching horizontal line!\n");
-                    Console.WriteLine($"Your total winnings are {winnings}!\n");
+                    Console.WriteLine($"Your total winnings are ${winnings}!\n");
                 }
             }
             
-            //vertical options
+            //vertical option and single line input
             if (userInput == VERTICAL_OPTION && intToLineOption== SINGLE_LINE_OPTION)
             {
+                int correctMatches = 0;
+                for (int columnIndex = 0; columnIndex < COLUMN_COUNT; columnIndex++)
+                {
+                    for (int rowIndex = 0; rowIndex < ROW_COUNT-1; rowIndex++)
+                    {
+                        if (spinningSlotMachine[rowIndex, columnIndex] == spinningSlotMachine[rowIndex+1, columnIndex])
+                        {
+                            correctMatches += 1;
+                        }
+                    }
+                }
+                //after iterating through each line, determine if we see at least 2 correct matches
+                if (correctMatches == 2)
+                {
+                    Console.WriteLine("You have a matching column line!\n");
+                    winnings += wagerVal;
+                    Console.WriteLine($"Your total winnings are ${winnings}\n!");
+                }
+                else
+                {
+                    Console.WriteLine("You don't have a matching column line!\n");
+                    Console.WriteLine($"Your total winnings are ${winnings}!\n");
+                }
 
             }
 
