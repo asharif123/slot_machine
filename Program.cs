@@ -88,7 +88,7 @@ namespace slot_machine
             {
                 for (int columnIndex = 0; columnIndex < COLUMN_COUNT; columnIndex++)
                 {
-                    int randomValue = rng.Next(3);
+                    int randomValue = rng.Next(2);
                     spinningSlotMachine[rowIndex, columnIndex] = randomValue;
                     Console.WriteLine(spinningSlotMachine[rowIndex, columnIndex]);
                 }
@@ -110,7 +110,7 @@ namespace slot_machine
                             correctMatches += 1;
                         }
                     }
-                    //after iterating through each line, determine if we see at least 2 correct matches
+                    //after iterating through each row, determine if we see at least 2 correct matches
                     //ex: if row contains values [1,1,1], it's a match since first value equals middle and middle equals last
                     //so correctMatches would increment to 2 if there is a matching horizontal line
                     if (correctMatches == MATCH_SINGLE_HORIZONTAL_LINE)
@@ -120,17 +120,15 @@ namespace slot_machine
                         break;
                     }
                     //if no matches are found, reset correctMatches to 0 and iterate through next row
-                    else
-                    {
-                        correctMatches = 0;
-                    }
+                    correctMatches = 0;
                 }
+
+                //if no matches are found after iterating through every row
                 if (correctMatches == 0)
                 {
                     Console.WriteLine("You don't have a matching horizontal line!\n");
                 }
                 Console.WriteLine($"Your total winnings are ${winnings}!\n");
-
             }
 
             //if three horizontal row matches
@@ -215,6 +213,10 @@ namespace slot_machine
                 }
                 Console.WriteLine($"Your total winnings are {winnings}.\n");
             }
+
+            Console.WriteLine($"\nPress {CONTINUE_PLAYING} to continue playing or any key to quit!\n");
+            char optionToContinue = Char.ToLower(Console.ReadKey().KeyChar);
+            //if user wishes to continue, call the main function
         }
     }
 }
