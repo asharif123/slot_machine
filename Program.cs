@@ -85,7 +85,7 @@ namespace slot_machine
             {
                 for (int columnIndex = 0; columnIndex < COLUMN_COUNT; columnIndex++)
                 {
-                    int randomValue = rng.Next(10);
+                    int randomValue = rng.Next(8);
                     spinningSlotMachine[rowIndex, columnIndex] = randomValue;
                     Console.WriteLine(spinningSlotMachine[rowIndex, columnIndex]);
                 }
@@ -113,13 +113,28 @@ namespace slot_machine
                 {
                     Console.WriteLine("You have a matching horizontal line!\n");
                     winnings += wagerVal;
-                    Console.WriteLine($"Your total winnings are ${winnings}\n!");
                 }
                 else
                 {
                     Console.WriteLine("You don't have a matching horizontal line!\n");
-                    Console.WriteLine($"Your total winnings are ${winnings}!\n");
                 }
+                Console.WriteLine($"Your total winnings are ${winnings}!\n");
+
+            }
+
+            //if three horizontal row matches
+            if (userInput == HORIZONTAL_OPTION && intToLineOption == MATCH_THREE_LINES)
+            {
+                //keep track of number of correct row matches
+                int correctMatches = 0;
+                for (int rowIndex = 0; rowIndex < ROW_COUNT; rowIndex++)
+                {
+                    for (int columnIndex = 0; columnIndex < COLUMN_COUNT - 1; columnIndex++)
+                    {
+
+                    }
+                }
+
             }
 
             //vertical scenarios
@@ -142,13 +157,37 @@ namespace slot_machine
                 {
                     Console.WriteLine("You have a matching vertical line!\n");
                     winnings += wagerVal;
-                    Console.WriteLine($"Your total winnings are ${winnings}\n!");
                 }
                 else
                 {
                     Console.WriteLine("You don't have a matching vertical line!\n");
-                    Console.WriteLine($"Your total winnings are ${winnings}!\n");
                 }
+                Console.WriteLine($"Your total winnings are ${winnings}!\n");
+
+            }
+
+            //diagonal scenarios
+            //diagonal selection and single input
+            if (userInput == DIAGONAL_OPTION && intToLineOption == MATCH_SINGLE_LINE)
+            {
+                int correctMatches = 0;
+                for (int rowIndex = 0; rowIndex < ROW_COUNT - 1; rowIndex++)
+                {
+                    if (spinningSlotMachine[rowIndex, rowIndex] == spinningSlotMachine[rowIndex + 1, rowIndex + 1])
+                    {
+                        correctMatches += 1;
+                    }
+                }
+                if (correctMatches == 2)
+                {
+                    Console.WriteLine("\nYou have a matching diagonal line!\n");
+                    winnings += wagerVal;
+                }
+                else
+                {
+                    Console.WriteLine("\nYou don't have a matching diagonal line!\n");
+                }
+                Console.WriteLine($"Your total winnings are {winnings}.\n");
             }
 
             Console.WriteLine($"\nPress {CONTINUE_PLAYING} to continue playing or any key to quit!\n");
