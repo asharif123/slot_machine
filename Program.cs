@@ -14,6 +14,9 @@ namespace slot_machine
             const int MATCH_SINGLE_LINE = 1;
             const int MATCH_TWO_LINES = 2;
             const int MATCH_THREE_LINES = 3;
+            const int MATCH_SINGLE_HORIZONTAL_LINE = 2;
+            const int MATCH_SINGLE_VERTICAL_LINE = 2;
+            const int MATCH_SINGLE_DIAGONAL_LINE = 2;
             const char HORIZONTAL_OPTION = 'h';
             const char VERTICAL_OPTION = 'v';
             const char DIAGONAL_OPTION = 'd';
@@ -85,7 +88,7 @@ namespace slot_machine
             {
                 for (int columnIndex = 0; columnIndex < COLUMN_COUNT; columnIndex++)
                 {
-                    int randomValue = rng.Next(8);
+                    int randomValue = rng.Next(3);
                     spinningSlotMachine[rowIndex, columnIndex] = randomValue;
                     Console.WriteLine(spinningSlotMachine[rowIndex, columnIndex]);
                 }
@@ -109,7 +112,9 @@ namespace slot_machine
                     }
                 }
                 //after iterating through each line, determine if we see at least 2 correct matches
-                if (correctMatches == 2)
+                //ex: if row contains values [1,1,1], it's a match since first value equals middle and middle equals last
+                //so correctMatches would increment to 2 if there is a matching horizontal line
+                if (correctMatches == MATCH_SINGLE_HORIZONTAL_LINE)
                 {
                     Console.WriteLine("You have a matching horizontal line!\n");
                     winnings += wagerVal;
@@ -153,7 +158,7 @@ namespace slot_machine
                     }
                 }
                 //after iterating through each line, determine if we see at least 2 correct matches
-                if (correctMatches == 2)
+                if (correctMatches == MATCH_SINGLE_VERTICAL_LINE)
                 {
                     Console.WriteLine("You have a matching vertical line!\n");
                     winnings += wagerVal;
@@ -178,7 +183,7 @@ namespace slot_machine
                         correctMatches += 1;
                     }
                 }
-                if (correctMatches == 2)
+                if (correctMatches == MATCH_SINGLE_DIAGONAL_LINE)
                 {
                     Console.WriteLine("\nYou have a matching diagonal line!\n");
                     winnings += wagerVal;
