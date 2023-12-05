@@ -158,6 +158,8 @@ namespace slot_machine
                     }
                 }
                 //after iterating through each line, determine if we see at least 2 correct matches
+                //ex if column contains [1,1,1], it would compare if first value equals middle and middle equals last
+                //if yes, correctMatches will increment to 2 and we would have a matching vertical line
                 if (correctMatches == MATCH_SINGLE_VERTICAL_LINE)
                 {
                     Console.WriteLine("You have a matching vertical line!\n");
