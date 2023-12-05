@@ -123,7 +123,7 @@ namespace slot_machine
                     correctMatches = 0;
                 }
 
-                //if no matches are found after iterating through every row
+                //if no matches are found after iterating through every row, print losing message
                 if (correctMatches == 0)
                 {
                     Console.WriteLine("You don't have a matching horizontal line!\n");
@@ -216,7 +216,6 @@ namespace slot_machine
 
             Console.WriteLine($"\nPress {CONTINUE_PLAYING} to continue playing or any key to quit!\n");
             char optionToContinue = Char.ToLower(Console.ReadKey().KeyChar);
-            //if user wishes to continue, call the main function
         }
     }
 }
