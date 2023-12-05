@@ -14,7 +14,6 @@ namespace slot_machine
             const int MATCH_SINGLE_LINE = 1;
             const int MATCH_TWO_LINES = 2;
             const int MATCH_THREE_LINES = 3;
-            const int SINGLE_LINE_OPTION = 1;
             const char HORIZONTAL_OPTION = 'h';
             const char VERTICAL_OPTION = 'v';
             const char DIAGONAL_OPTION = 'd';
@@ -95,15 +94,15 @@ namespace slot_machine
 
             //horizontal scenarios
             //if any single horizontal row matches
-            if (userInput == HORIZONTAL_OPTION && intToLineOption == SINGLE_LINE_OPTION)
+            if (userInput == HORIZONTAL_OPTION && intToLineOption == MATCH_SINGLE_LINE)
             {
                 //keep track of number of correct row matches
                 int correctMatches = 0;
                 for (int rowIndex = 0; rowIndex < ROW_COUNT; rowIndex++)
                 {
-                    for (int columnIndex = 0; columnIndex < COLUMN_COUNT-1; columnIndex++)
+                    for (int columnIndex = 0; columnIndex < COLUMN_COUNT - 1; columnIndex++)
                     {
-                        if (spinningSlotMachine[rowIndex,columnIndex] == spinningSlotMachine[rowIndex, columnIndex+1])
+                        if (spinningSlotMachine[rowIndex, columnIndex] == spinningSlotMachine[rowIndex, columnIndex + 1])
                         {
                             correctMatches += 1;
                         }
@@ -122,16 +121,17 @@ namespace slot_machine
                     Console.WriteLine($"Your total winnings are ${winnings}!\n");
                 }
             }
-            
+
+            //vertical scenarios
             //vertical option and single line input
-            if (userInput == VERTICAL_OPTION && intToLineOption== SINGLE_LINE_OPTION)
+            if (userInput == VERTICAL_OPTION && intToLineOption == MATCH_SINGLE_LINE)
             {
                 int correctMatches = 0;
                 for (int columnIndex = 0; columnIndex < COLUMN_COUNT; columnIndex++)
                 {
-                    for (int rowIndex = 0; rowIndex < ROW_COUNT-1; rowIndex++)
+                    for (int rowIndex = 0; rowIndex < ROW_COUNT - 1; rowIndex++)
                     {
-                        if (spinningSlotMachine[rowIndex, columnIndex] == spinningSlotMachine[rowIndex+1, columnIndex])
+                        if (spinningSlotMachine[rowIndex, columnIndex] == spinningSlotMachine[rowIndex + 1, columnIndex])
                         {
                             correctMatches += 1;
                         }
@@ -140,16 +140,15 @@ namespace slot_machine
                 //after iterating through each line, determine if we see at least 2 correct matches
                 if (correctMatches == 2)
                 {
-                    Console.WriteLine("You have a matching column line!\n");
+                    Console.WriteLine("You have a matching vertical line!\n");
                     winnings += wagerVal;
                     Console.WriteLine($"Your total winnings are ${winnings}\n!");
                 }
                 else
                 {
-                    Console.WriteLine("You don't have a matching column line!\n");
+                    Console.WriteLine("You don't have a matching vertical line!\n");
                     Console.WriteLine($"Your total winnings are ${winnings}!\n");
                 }
-
             }
 
             Console.WriteLine($"\nPress {CONTINUE_PLAYING} to continue playing or any key to quit!\n");
