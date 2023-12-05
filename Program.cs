@@ -110,16 +110,22 @@ namespace slot_machine
                             correctMatches += 1;
                         }
                     }
+                    //after iterating through each line, determine if we see at least 2 correct matches
+                    //ex: if row contains values [1,1,1], it's a match since first value equals middle and middle equals last
+                    //so correctMatches would increment to 2 if there is a matching horizontal line
+                    if (correctMatches == MATCH_SINGLE_HORIZONTAL_LINE)
+                    {
+                        Console.WriteLine("You have a matching horizontal line!\n");
+                        winnings += wagerVal;
+                        break;
+                    }
+                    //if no matches are found, reset correctMatches to 0 and iterate through next row
+                    else
+                    {
+                        correctMatches = 0;
+                    }
                 }
-                //after iterating through each line, determine if we see at least 2 correct matches
-                //ex: if row contains values [1,1,1], it's a match since first value equals middle and middle equals last
-                //so correctMatches would increment to 2 if there is a matching horizontal line
-                if (correctMatches == MATCH_SINGLE_HORIZONTAL_LINE)
-                {
-                    Console.WriteLine("You have a matching horizontal line!\n");
-                    winnings += wagerVal;
-                }
-                else
+                if (correctMatches == 0)
                 {
                     Console.WriteLine("You don't have a matching horizontal line!\n");
                 }
@@ -156,11 +162,24 @@ namespace slot_machine
                             correctMatches += 1;
                         }
                     }
+                    //after iterating through each line, determine if we see at least 2 correct matches
+                    //ex: if row contains values [1,1,1], it's a match since first value equals middle and middle equals last
+                    //so correctMatches would increment to 2 if there is a matching horizontal line
+                    if (correctMatches == MATCH_SINGLE_VERTICAL_LINE)
+                    {
+                        Console.WriteLine("You have a matching horizontal line!\n");
+                        winnings += wagerVal;
+                        break;
+                    }
+                    else
+                    {
+                        correctMatches = 0;
+                    }
                 }
                 //after iterating through each line, determine if we see at least 2 correct matches
                 //ex if column contains [1,1,1], it would compare if first value equals middle and middle equals last
                 //if yes, correctMatches will increment to 2 and we would have a matching vertical line
-                if (correctMatches == MATCH_SINGLE_VERTICAL_LINE)
+                if (correctMatches >= MATCH_SINGLE_VERTICAL_LINE)
                 {
                     Console.WriteLine("You have a matching vertical line!\n");
                     winnings += wagerVal;
@@ -185,7 +204,7 @@ namespace slot_machine
                         correctMatches += 1;
                     }
                 }
-                if (correctMatches == MATCH_SINGLE_DIAGONAL_LINE)
+                if (correctMatches >= MATCH_SINGLE_DIAGONAL_LINE)
                 {
                     Console.WriteLine("\nYou have a matching diagonal line!\n");
                     winnings += wagerVal;
@@ -196,16 +215,6 @@ namespace slot_machine
                 }
                 Console.WriteLine($"Your total winnings are {winnings}.\n");
             }
-
-            Console.WriteLine($"\nPress {CONTINUE_PLAYING} to continue playing or any key to quit!\n");
-            char optionToContinue = Char.ToLower(Console.ReadKey().KeyChar);
-            //if user wishes to continue, call the main function
-            if (optionToContinue == CONTINUE_PLAYING)
-            {
-                Main();
-            }
-            //quit the game
-            return;
         }
     }
 }
