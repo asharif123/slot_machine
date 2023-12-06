@@ -128,7 +128,6 @@ namespace slot_machine
             }
 
             //vertical scenarios
-            //vertical option and single line input
             if (userInput == VERTICAL_OPTION)
             {
                 //keep track of number of correct column matches
