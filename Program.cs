@@ -28,6 +28,13 @@ namespace slot_machine
             //add while loop here so user can have access to most recent winnings and not have winnings reset to 50 
             while (replay)
             {
+                //if user runs out of money to wager
+                //immediately check to determine if user has enough money to wager
+                if (winnings <= NO_WINNINGS_LEFT)
+                {
+                    Console.WriteLine("\nSorry, you have no more money left to bet! Exiting the game...\n");
+                    return;
+                }
                 //ask how much user wants to wager
                 Console.WriteLine($"\nEnter a value from {MINIMUM_BET} to {winnings} that you would like to wager!\n");
                 //convert string to integer value
@@ -53,12 +60,6 @@ namespace slot_machine
 
                 //how much money user loses based off wager amount
                 winnings -= wagerVal;
-                //if user runs out of money to wager
-                if (winnings <= NO_WINNINGS_LEFT)
-                {
-                    Console.WriteLine("\nSorry, you have no more money left to bet! Exiting the game...\n");
-                    return;
-                }
 
                 //user decides whether to match numbers horizontally/vertically/diagnolly
                 Console.WriteLine($"\nEnter {HORIZONTAL_OPTION} to match numbers horizontally, {VERTICAL_OPTION} to match vertically, {DIAGONAL_OPTION} to match diagonally\n");
