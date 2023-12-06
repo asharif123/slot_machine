@@ -11,12 +11,12 @@ namespace slot_machine
             const int MINIMUM_BET = 1;
             const int STARTING_BANK_AMOUNT = 50;
             const int NO_WINNINGS_LEFT = 0;
-            const int MATCH_SINGLE_LINE = 1;
-            const int MATCH_TWO_LINES = 2;
-            const int MATCH_THREE_LINES = 3;
-            const int MATCH_SINGLE_HORIZONTAL_LINE = 2;
+            const int NO_MATCHING_LINES = 0;
+            const int MATCH_SINGLE_HORIZONTAL_LINE = 1;
+            const int MATCH_TWO_ADJACENT_VALUES = 2;
             const int MATCH_SINGLE_VERTICAL_LINE = 2;
             const int MATCH_SINGLE_DIAGONAL_LINE = 2;
+            const int MATCH_THREE_HORIZONTAL_LINES = 3;
             const char HORIZONTAL_OPTION = 'h';
             const char VERTICAL_OPTION = 'v';
             const char DIAGONAL_OPTION = 'd';
@@ -62,21 +62,6 @@ namespace slot_machine
             Console.WriteLine($"\nEnter {HORIZONTAL_OPTION} to match numbers horizontally, {VERTICAL_OPTION} to match vertically, {DIAGONAL_OPTION} to match diagonally\n");
             char userInput = Char.ToLower(Console.ReadKey().KeyChar);
 
-            //if user selects either horizontal or vertical, user can match either 1 or 3 lines
-            if (userInput == HORIZONTAL_OPTION || userInput == VERTICAL_OPTION)
-            {
-                Console.WriteLine($"\nEnter {MATCH_SINGLE_LINE} to try to match {MATCH_SINGLE_LINE} line or {MATCH_THREE_LINES} to try to match {MATCH_THREE_LINES} lines!\n");
-            }
-
-            //if diagnol, ask user to match either 1 or 2 lines
-            else if (userInput == DIAGONAL_OPTION)
-            {
-                Console.WriteLine($"\nEnter {MATCH_SINGLE_LINE} to try to match {MATCH_SINGLE_LINE} line or {MATCH_TWO_LINES} to try to match {MATCH_TWO_LINES} lines!\n");
-            }
-
-            string lineOption = Console.ReadLine();
-            int intToLineOption = Convert.ToInt32(lineOption);
-
             //insert values in spinning slot machine array
             Console.WriteLine("\nSpinning the wheel...\n");
 
@@ -89,6 +74,7 @@ namespace slot_machine
                 for (int columnIndex = 0; columnIndex < COLUMN_COUNT; columnIndex++)
                 {
                     int randomValue = rng.Next(2);
+                    //assign each value to each index in row,column
                     spinningSlotMachine[rowIndex, columnIndex] = randomValue;
                     Console.WriteLine(spinningSlotMachine[rowIndex, columnIndex]);
                 }
@@ -96,11 +82,12 @@ namespace slot_machine
             }
 
             //horizontal scenarios
-            //if any single horizontal row matches
-            if (userInput == HORIZONTAL_OPTION && intToLineOption == MATCH_SINGLE_LINE)
+            if (userInput == HORIZONTAL_OPTION)
             {
                 //keep track of number of correct row matches
+                int matchingRows = 0;
                 int correctMatches = 0;
+
                 for (int rowIndex = 0; rowIndex < ROW_COUNT; rowIndex++)
                 {
                     for (int columnIndex = 0; columnIndex < COLUMN_COUNT - 1; columnIndex++)
@@ -110,46 +97,41 @@ namespace slot_machine
                             correctMatches += 1;
                         }
                     }
-                    //after iterating through each row, determine if we see at least 2 correct matches
-                    //ex: if row contains values [1,1,1], it's a match since first value equals middle and middle equals last
-                    //so correctMatches would increment to 2 if there is a matching horizontal line
-                    if (correctMatches == MATCH_SINGLE_HORIZONTAL_LINE)
+                    //if we have 2 matching values adjacent to one another in each row, increment matchingRows
+                    if (correctMatches == MATCH_TWO_ADJACENT_VALUES)
                     {
-                        Console.WriteLine("You have a matching horizontal line!\n");
-                        winnings += wagerVal;
-                        break;
+                        matchingRows += 1;
                     }
-                    //if no matches are found, reset correctMatches to 0 and iterate through next row
-                    correctMatches = 0;
+                    //reset correctMatches to iterate next row of values
+                    correctMatches = NO_MATCHING_LINES;
                 }
 
-                //if no matches are found after iterating through every row, print losing message
-                if (correctMatches == 0)
+                //testcase if we have one matching horizontal line
+                if (matchingRows == MATCH_SINGLE_HORIZONTAL_LINE)
                 {
-                    Console.WriteLine("You don't have a matching horizontal line!\n");
+                    Console.WriteLine("\nYou have a matching horizontal line!\n");
+                    winnings += wagerVal * MATCH_SINGLE_HORIZONTAL_LINE;
+                }
+                //testcase if we have three matching horizontal lines
+                else if (matchingRows == MATCH_THREE_HORIZONTAL_LINES)
+                {
+                    Console.WriteLine("\nYou have triple horizontal lines!\n");
+                    winnings += wagerVal * (MATCH_THREE_HORIZONTAL_LINES / MATCH_SINGLE_HORIZONTAL_LINE);
+                }
+                //if no matching lines
+                else
+                {
+                    Console.WriteLine("\nYou have no matching horizontal lines!\n");
                 }
                 Console.WriteLine($"Your total winnings are ${winnings}!\n");
             }
 
-            //if three horizontal row matches
-            if (userInput == HORIZONTAL_OPTION && intToLineOption == MATCH_THREE_LINES)
-            {
-                //keep track of number of correct row matches
-                int correctMatches = 0;
-                for (int rowIndex = 0; rowIndex < ROW_COUNT; rowIndex++)
-                {
-                    for (int columnIndex = 0; columnIndex < COLUMN_COUNT - 1; columnIndex++)
-                    {
-
-                    }
-                }
-
-            }
-
             //vertical scenarios
             //vertical option and single line input
-            if (userInput == VERTICAL_OPTION && intToLineOption == MATCH_SINGLE_LINE)
+            if (userInput == VERTICAL_OPTION)
             {
+                //keep track of number of correct row matches
+                int matchingColumns = 0;
                 int correctMatches = 0;
                 for (int columnIndex = 0; columnIndex < COLUMN_COUNT; columnIndex++)
                 {
@@ -174,25 +156,11 @@ namespace slot_machine
                         correctMatches = 0;
                     }
                 }
-                //after iterating through each line, determine if we see at least 2 correct matches
-                //ex if column contains [1,1,1], it would compare if first value equals middle and middle equals last
-                //if yes, correctMatches will increment to 2 and we would have a matching vertical line
-                if (correctMatches >= MATCH_SINGLE_VERTICAL_LINE)
-                {
-                    Console.WriteLine("You have a matching vertical line!\n");
-                    winnings += wagerVal;
-                }
-                else
-                {
-                    Console.WriteLine("You don't have a matching vertical line!\n");
-                }
-                Console.WriteLine($"Your total winnings are ${winnings}!\n");
-
             }
 
             //diagonal scenarios
             //diagonal selection and single input
-            if (userInput == DIAGONAL_OPTION && intToLineOption == MATCH_SINGLE_LINE)
+            if (userInput == DIAGONAL_OPTION)
             {
                 int correctMatches = 0;
                 for (int rowIndex = 0; rowIndex < ROW_COUNT - 1; rowIndex++)
