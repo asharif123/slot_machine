@@ -25,6 +25,7 @@ namespace slot_machine
 
             //give user option to replay
             bool replay = true;
+            //add while loop here so user can have access to most recent winnings and not have winnings reset to 50 
             while (replay)
             {
                 //ask how much user wants to wager
