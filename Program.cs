@@ -13,7 +13,7 @@ namespace slot_machine
             const int NO_WINNINGS_LEFT = 0;
             const int NO_MATCHING_LINES = 0;
             const int RANDOM_VALUES = 2;
-            const int MATCH_TWO_ADJACENT_VALUES = 2;;
+            const int MATCH_TWO_ADJACENT_VALUES = 2; ;
             const char HORIZONTAL_OPTION = 'h';
             const char VERTICAL_OPTION = 'v';
             const char DIAGONAL_OPTION = 'd';
@@ -70,7 +70,7 @@ namespace slot_machine
             {
                 for (int columnIndex = 0; columnIndex < COLUMN_COUNT; columnIndex++)
                 {
-            //generate random value from 0 to 1, where RANDOM_VALUES = 2 to generate either 0 or 1
+                    //generate random value from 0 to 1, where RANDOM_VALUES = 2 to generate either 0 or 1
                     int randomValue = rng.Next(RANDOM_VALUES);
                     //assign each value to each index in row,column
                     spinningSlotMachine[rowIndex, columnIndex] = randomValue;
@@ -155,7 +155,7 @@ namespace slot_machine
                 else
                 {
                     Console.WriteLine($"\nYou have {matchingColumns} matching columns!\n");
-                    winnings += wagerVal*matchingColumns;
+                    winnings += wagerVal * matchingColumns;
                 }
                 Console.WriteLine($"Your total winnings are ${winnings}!\n");
             }
@@ -164,11 +164,15 @@ namespace slot_machine
             if (userInput == DIAGONAL_OPTION)
             {
                 int correctMatches = 0;
+                int matchingDiagonals = 0;
                 for (int rowIndex = 0; rowIndex < ROW_COUNT - 1; rowIndex++)
                 {
-                    if (spinningSlotMachine[rowIndex, rowIndex] == spinningSlotMachine[rowIndex + 1, rowIndex + 1])
+                    for (int columnIndex = 0; columnIndex < COLUMN_COUNT - 1; columnIndex++)
                     {
-                        correctMatches += 1;
+                        if (spinningSlotMachine[rowIndex, columnIndex] == spinningSlotMachine[rowIndex + 1, columnIndex + 1])
+                        {
+                            correctMatches += 1;
+                        }
                     }
                 }
                 Console.WriteLine($"Your total winnings are {winnings}.\n");
@@ -176,6 +180,12 @@ namespace slot_machine
 
             Console.WriteLine($"\nPress {CONTINUE_PLAYING} to continue playing or any key to quit!\n");
             char optionToContinue = Char.ToLower(Console.ReadKey().KeyChar);
+
+            if (optionToContinue == 'n')
+            {
+                Console.WriteLine("\nExiting the game!\n");
+                return;
+            }
         }
     }
 }
