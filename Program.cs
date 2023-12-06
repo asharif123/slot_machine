@@ -13,12 +13,7 @@ namespace slot_machine
             const int NO_WINNINGS_LEFT = 0;
             const int NO_MATCHING_LINES = 0;
             const int RANDOM_VALUES = 2;
-            const int MATCH_SINGLE_HORIZONTAL_LINE = 1;
-            const int MATCH_THREE_HORIZONTAL_LINES = 3;
-            const int MATCH_TWO_ADJACENT_VALUES = 2;
-            const int MATCH_SINGLE_VERTICAL_LINE = 1;
-            const int MATCH_THREE_VERTICAL_LINES = 3;
-            const int MATCH_SINGLE_DIAGONAL_LINE = 2;
+            const int MATCH_TWO_ADJACENT_VALUES = 2;;
             const char HORIZONTAL_OPTION = 'h';
             const char VERTICAL_OPTION = 'v';
             const char DIAGONAL_OPTION = 'd';
@@ -100,33 +95,29 @@ namespace slot_machine
                             correctMatches += 1;
                         }
                     }
+
                     //if we have 2 matching values adjacent to one another in each row, increment matchingRows
                     if (correctMatches == MATCH_TWO_ADJACENT_VALUES)
                     {
                         matchingRows += 1;
                     }
-                    //reset correctMatches to iterate next row of values
-                    correctMatches = NO_MATCHING_LINES;
+
+                    //reset correctMatches to iterate next row
+                    correctMatches = 0;
                 }
 
-                //testcase if we have one matching horizontal line
-                if (matchingRows == MATCH_SINGLE_HORIZONTAL_LINE)
+                //if no matches exist
+                if (matchingRows == NO_MATCHING_LINES)
                 {
-                    Console.WriteLine("\nYou have a matching horizontal line!\n");
-                    winnings += wagerVal * MATCH_SINGLE_HORIZONTAL_LINE;
+                    Console.WriteLine($"\nYou have {NO_MATCHING_LINES} matching horizontal lines!");
                 }
-                //testcase if we have three matching horizontal lines
-                else if (matchingRows == MATCH_THREE_HORIZONTAL_LINES)
-                {
-                    Console.WriteLine("\nYou have triple horizontal lines!\n");
-                    winnings += wagerVal * (MATCH_THREE_HORIZONTAL_LINES / MATCH_SINGLE_HORIZONTAL_LINE);
-                }
-                //if no matching lines
+                //if we have either 1, 2 or 3 matching lines
                 else
                 {
-                    Console.WriteLine("\nYou have no matching horizontal lines!\n");
+                    Console.WriteLine($"\nYou have {matchingRows} matching horizontal lines!\n");
+                    winnings += wagerVal * matchingRows;
                 }
-                Console.WriteLine($"Your total winnings are ${winnings}!\n");
+                Console.WriteLine($"You total winnings are ${winnings}\n");
             }
 
             //vertical scenarios
@@ -155,22 +146,16 @@ namespace slot_machine
                     correctMatches = 0;
                 }
 
-                //testcase if we have one matching vertical line
-                if (matchingColumns == MATCH_SINGLE_VERTICAL_LINE)
+                //if no matching columns were found
+                if (matchingColumns == NO_MATCHING_LINES)
                 {
-                    Console.WriteLine("\nYou have a matching vertical line!\n");
-                    winnings += wagerVal * MATCH_SINGLE_VERTICAL_LINE;
+                    Console.WriteLine($"\nYou have {NO_MATCHING_LINES} matching columns!\n");
                 }
-                //testcase if we have three matching vertical lines
-                else if (matchingColumns == MATCH_THREE_VERTICAL_LINES)
-                {
-                    Console.WriteLine("\nYou have triple vertical lines!\n");
-                    winnings += wagerVal * (MATCH_THREE_VERTICAL_LINES / MATCH_SINGLE_VERTICAL_LINE);
-                }
-                //if no matching lines
+                //if 1, 2 or 3 matching columns are found
                 else
                 {
-                    Console.WriteLine("\nYou have no matching vertical lines!\n");
+                    Console.WriteLine($"\nYou have {matchingColumns} matching columns!\n");
+                    winnings += wagerVal*matchingColumns;
                 }
                 Console.WriteLine($"Your total winnings are ${winnings}!\n");
             }
@@ -185,15 +170,6 @@ namespace slot_machine
                     {
                         correctMatches += 1;
                     }
-                }
-                if (correctMatches == MATCH_SINGLE_DIAGONAL_LINE)
-                {
-                    Console.WriteLine("\nYou have a matching diagonal line!\n");
-                    winnings += wagerVal;
-                }
-                else
-                {
-                    Console.WriteLine("\nYou don't have a matching diagonal line!\n");
                 }
                 Console.WriteLine($"Your total winnings are {winnings}.\n");
             }
