@@ -74,7 +74,7 @@ namespace slot_machine
             {
                 for (int columnIndex = 0; columnIndex < COLUMN_COUNT; columnIndex++)
                 {
-                    int randomValue = rng.Next(1);
+                    int randomValue = rng.Next(2);
                     //assign each value to each index in row,column
                     spinningSlotMachine[rowIndex, columnIndex] = randomValue;
                     Console.WriteLine(spinningSlotMachine[rowIndex, columnIndex]);
@@ -175,7 +175,6 @@ namespace slot_machine
             }
 
             //diagonal scenarios
-            //diagonal selection and single input
             if (userInput == DIAGONAL_OPTION)
             {
                 int correctMatches = 0;
@@ -186,7 +185,7 @@ namespace slot_machine
                         correctMatches += 1;
                     }
                 }
-                if (correctMatches >= MATCH_SINGLE_DIAGONAL_LINE)
+                if (correctMatches == MATCH_SINGLE_DIAGONAL_LINE)
                 {
                     Console.WriteLine("\nYou have a matching diagonal line!\n");
                     winnings += wagerVal;
