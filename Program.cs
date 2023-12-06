@@ -165,11 +165,12 @@ namespace slot_machine
             {
                 int correctMatches = 0;
                 int matchingDiagonals = 0;
+
                 for (int rowIndex = 0; rowIndex < ROW_COUNT - 1; rowIndex++)
                 {
                     for (int columnIndex = 0; columnIndex < COLUMN_COUNT - 1; columnIndex++)
                     {
-                        if (spinningSlotMachine[rowIndex, columnIndex] == spinningSlotMachine[rowIndex + 1, columnIndex + 1])
+                        if (spinningSlotMachine[rowIndex, rowIndex] == spinningSlotMachine[rowIndex + 1, rowIndex + 1])
                         {
                             correctMatches += 1;
                         }
