@@ -170,11 +170,26 @@ namespace slot_machine
                 {
                     for (int columnIndex = 0; columnIndex < COLUMN_COUNT - 1; columnIndex++)
                     {
-                        if (spinningSlotMachine[rowIndex, rowIndex] == spinningSlotMachine[rowIndex + 1, rowIndex + 1])
+             //verify that three numbers from top left to bottom right diagonal match
+                        if (rowIndex == columnIndex && spinningSlotMachine[rowIndex, columnIndex] == spinningSlotMachine[rowIndex + 1, columnIndex + 1])
                         {
                             correctMatches += 1;
                         }
                     }
+                    if (correctMatches == MATCH_TWO_ADJACENT_VALUES)
+                    {
+                        matchingDiagonals += 1;
+                    }
+                }
+
+                if (matchingDiagonals == NO_MATCHING_LINES)
+                {
+                    Console.WriteLine($"\nYou have {NO_MATCHING_LINES} matching diagonal lines!\n");
+                }
+                else
+                {
+                    Console.WriteLine($"\nYou have {matchingDiagonals} matching diagonal lines!\n");
+                    winnings += wagerVal * matchingDiagonals;
                 }
                 Console.WriteLine($"Your total winnings are {winnings}.\n");
             }
