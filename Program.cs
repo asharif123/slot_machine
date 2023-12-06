@@ -23,185 +23,191 @@ namespace slot_machine
             //user's winnings, user starts at $50
             int winnings = STARTING_BET_AMOUNT;
 
-            //ask how much user wants to wager
-            Console.WriteLine($"\nEnter a value from {MINIMUM_BET} to {winnings} that you would like to wager!\n");
-            //convert string to integer value
-            string wager = Console.ReadLine();
-            int wagerVal = Convert.ToInt32(wager);
-            bool notValidInput = true;
-
-            //ensure user enters valid wager
-            while (notValidInput)
+            //give user option to replay
+            bool replay = true;
+            while (replay)
             {
-                if (wagerVal > winnings || wagerVal <= NO_WINNINGS_LEFT)
+                //ask how much user wants to wager
+                Console.WriteLine($"\nEnter a value from {MINIMUM_BET} to {winnings} that you would like to wager!\n");
+                //convert string to integer value
+                string wager = Console.ReadLine();
+                int wagerVal = Convert.ToInt32(wager);
+                bool notValidInput = true;
+
+                //ensure user enters valid wager
+                while (notValidInput)
                 {
-                    Console.WriteLine("\nPlease enter a positive wager value that is less than or equal your winnings!\n");
-                    wager = Console.ReadLine();
-                    wagerVal = Convert.ToInt32(wager);
+                    if (wagerVal > winnings || wagerVal <= NO_WINNINGS_LEFT)
+                    {
+                        Console.WriteLine("\nPlease enter a positive wager value that is less than or equal your winnings!\n");
+                        wager = Console.ReadLine();
+                        wagerVal = Convert.ToInt32(wager);
+                    }
+                    //if user enters valid wager value, exit out of while loop
+                    else
+                    {
+                        notValidInput = false;
+                    }
                 }
-                //if user enters valid wager value, exit out of while loop
-                else
+
+                //how much money user loses based off wager amount
+                winnings -= wagerVal;
+                //if user runs out of money to wager
+                if (winnings <= NO_WINNINGS_LEFT)
                 {
-                    notValidInput = false;
+                    Console.WriteLine("\nSorry, you have no more money left to bet! Exiting the game...\n");
+                    return;
                 }
-            }
 
-            //how much money user loses based off wager amount
-            winnings -= wagerVal;
-            //if user runs out of money to wager
-            if (winnings <= NO_WINNINGS_LEFT)
-            {
-                Console.WriteLine("\nSorry, you have no more money left to bet! Exiting the game...\n");
-                return;
-            }
+                //user decides whether to match numbers horizontally/vertically/diagnolly
+                Console.WriteLine($"\nEnter {HORIZONTAL_OPTION} to match numbers horizontally, {VERTICAL_OPTION} to match vertically, {DIAGONAL_OPTION} to match diagonally\n");
+                char userInput = Char.ToLower(Console.ReadKey().KeyChar);
 
-            //user decides whether to match numbers horizontally/vertically/diagnolly
-            Console.WriteLine($"\nEnter {HORIZONTAL_OPTION} to match numbers horizontally, {VERTICAL_OPTION} to match vertically, {DIAGONAL_OPTION} to match diagonally\n");
-            char userInput = Char.ToLower(Console.ReadKey().KeyChar);
+                //insert values in spinning slot machine array
+                Console.WriteLine("\nSpinning the wheel...\n");
 
-            //insert values in spinning slot machine array
-            Console.WriteLine("\nSpinning the wheel...\n");
-
-            //array to store random digits
-            //2D array that is 3 by 3
-            int[,] spinningSlotMachine = new int[ROW_COUNT, COLUMN_COUNT];
-            Random rng = new Random();
-            for (int rowIndex = 0; rowIndex < ROW_COUNT; rowIndex++)
-            {
-                for (int columnIndex = 0; columnIndex < COLUMN_COUNT; columnIndex++)
-                {
-                    //generate random value from 0 to 1, where RANDOM_VALUES = 2 to generate either 0 or 1
-                    int randomValue = rng.Next(RANDOM_VALUES);
-                    //assign each value to each index in row,column
-                    spinningSlotMachine[rowIndex, columnIndex] = randomValue;
-                    Console.WriteLine(spinningSlotMachine[rowIndex, columnIndex]);
-                }
-                Console.WriteLine();
-            }
-
-            //horizontal scenarios
-            if (userInput == HORIZONTAL_OPTION)
-            {
-                //keep track of number of correct row matches
-                int matchingRows = 0;
-                int correctMatches = 0;
-
+                //array to store random digits
+                //2D array that is 3 by 3
+                int[,] spinningSlotMachine = new int[ROW_COUNT, COLUMN_COUNT];
+                Random rng = new Random();
                 for (int rowIndex = 0; rowIndex < ROW_COUNT; rowIndex++)
                 {
-                    for (int columnIndex = 0; columnIndex < COLUMN_COUNT - 1; columnIndex++)
+                    for (int columnIndex = 0; columnIndex < COLUMN_COUNT; columnIndex++)
                     {
-                        if (spinningSlotMachine[rowIndex, columnIndex] == spinningSlotMachine[rowIndex, columnIndex + 1])
+                        //generate random value from 0 to 1, where RANDOM_VALUES = 2 to generate either 0 or 1
+                        int randomValue = rng.Next(RANDOM_VALUES);
+                        //assign each value to each index in row,column
+                        spinningSlotMachine[rowIndex, columnIndex] = randomValue;
+                        Console.WriteLine(spinningSlotMachine[rowIndex, columnIndex]);
+                    }
+                    Console.WriteLine();
+                }
+
+                //horizontal scenarios
+                if (userInput == HORIZONTAL_OPTION)
+                {
+                    //keep track of number of correct row matches
+                    int matchingRows = 0;
+                    int correctMatches = 0;
+
+                    for (int rowIndex = 0; rowIndex < ROW_COUNT; rowIndex++)
+                    {
+                        for (int columnIndex = 0; columnIndex < COLUMN_COUNT - 1; columnIndex++)
                         {
-                            correctMatches += 1;
+                            if (spinningSlotMachine[rowIndex, columnIndex] == spinningSlotMachine[rowIndex, columnIndex + 1])
+                            {
+                                correctMatches += 1;
+                            }
                         }
+
+                        //if we have 2 matching values adjacent to one another in each row, increment matchingRows
+                        if (correctMatches == MATCH_TWO_ADJACENT_VALUES)
+                        {
+                            matchingRows += 1;
+                        }
+
+                        //reset correctMatches to iterate next row
+                        correctMatches = 0;
                     }
 
-                    //if we have 2 matching values adjacent to one another in each row, increment matchingRows
-                    if (correctMatches == MATCH_TWO_ADJACENT_VALUES)
+                    //if no matches exist
+                    if (matchingRows == NO_MATCHING_LINES)
                     {
-                        matchingRows += 1;
+                        Console.WriteLine($"\nYou have {NO_MATCHING_LINES} matching horizontal lines!");
+                    }
+                    //if we have either 1, 2 or 3 matching lines
+                    else
+                    {
+                        Console.WriteLine($"\nYou have {matchingRows} matching horizontal lines!\n");
+                        winnings += wagerVal * matchingRows;
+                    }
+                    Console.WriteLine($"You total winnings are ${winnings}\n");
+                }
+
+                //vertical scenarios
+                if (userInput == VERTICAL_OPTION)
+                {
+                    //keep track of number of correct column matches
+                    int matchingColumns = 0;
+                    int correctMatches = 0;
+
+                    for (int columnIndex = 0; columnIndex < COLUMN_COUNT; columnIndex++)
+                    {
+                        for (int rowIndex = 0; rowIndex < ROW_COUNT - 1; rowIndex++)
+                        {
+                            if (spinningSlotMachine[rowIndex, columnIndex] == spinningSlotMachine[rowIndex + 1, columnIndex])
+                            {
+                                correctMatches += 1;
+                            }
+                        }
+
+                        //if we have two matching adjacent values in each column, increment column matches by 1
+                        if (correctMatches == MATCH_TWO_ADJACENT_VALUES)
+                        {
+                            matchingColumns += 1;
+                        }
+                        //reset correct matches to iterate next column
+                        correctMatches = 0;
                     }
 
-                    //reset correctMatches to iterate next row
-                    correctMatches = 0;
+                    //if no matching columns were found
+                    if (matchingColumns == NO_MATCHING_LINES)
+                    {
+                        Console.WriteLine($"\nYou have {NO_MATCHING_LINES} matching columns!\n");
+                    }
+                    //if 1, 2 or 3 matching columns are found
+                    else
+                    {
+                        Console.WriteLine($"\nYou have {matchingColumns} matching columns!\n");
+                        winnings += wagerVal * matchingColumns;
+                    }
+                    Console.WriteLine($"Your total winnings are ${winnings}!\n");
                 }
 
-                //if no matches exist
-                if (matchingRows == NO_MATCHING_LINES)
+                //diagonal scenarios
+                if (userInput == DIAGONAL_OPTION)
                 {
-                    Console.WriteLine($"\nYou have {NO_MATCHING_LINES} matching horizontal lines!");
-                }
-                //if we have either 1, 2 or 3 matching lines
-                else
-                {
-                    Console.WriteLine($"\nYou have {matchingRows} matching horizontal lines!\n");
-                    winnings += wagerVal * matchingRows;
-                }
-                Console.WriteLine($"You total winnings are ${winnings}\n");
-            }
+                    int correctMatches = 0;
+                    int matchingDiagonals = 0;
 
-            //vertical scenarios
-            if (userInput == VERTICAL_OPTION)
-            {
-                //keep track of number of correct column matches
-                int matchingColumns = 0;
-                int correctMatches = 0;
-
-                for (int columnIndex = 0; columnIndex < COLUMN_COUNT; columnIndex++)
-                {
                     for (int rowIndex = 0; rowIndex < ROW_COUNT - 1; rowIndex++)
                     {
-                        if (spinningSlotMachine[rowIndex, columnIndex] == spinningSlotMachine[rowIndex + 1, columnIndex])
+                        for (int columnIndex = 0; columnIndex < COLUMN_COUNT - 1; columnIndex++)
                         {
-                            correctMatches += 1;
+                            //verify that three numbers from top left to bottom right diagonal match
+                            if (rowIndex == columnIndex && spinningSlotMachine[rowIndex, columnIndex] == spinningSlotMachine[rowIndex + 1, columnIndex + 1])
+                            {
+                                correctMatches += 1;
+                            }
+                        }
+                        if (correctMatches == MATCH_TWO_ADJACENT_VALUES)
+                        {
+                            matchingDiagonals += 1;
                         }
                     }
 
-                    //if we have two matching adjacent values in each column, increment column matches by 1
-                    if (correctMatches == MATCH_TWO_ADJACENT_VALUES)
+                    if (matchingDiagonals == NO_MATCHING_LINES)
                     {
-                        matchingColumns += 1;
+                        Console.WriteLine($"\nYou have {NO_MATCHING_LINES} matching diagonal lines!\n");
                     }
-                    //reset correct matches to iterate next column
-                    correctMatches = 0;
+                    else
+                    {
+                        Console.WriteLine($"\nYou have {matchingDiagonals} matching diagonal lines!\n");
+                        winnings += wagerVal * matchingDiagonals;
+                    }
+                    Console.WriteLine($"Your total winnings are {winnings}.\n");
                 }
 
-                //if no matching columns were found
-                if (matchingColumns == NO_MATCHING_LINES)
+                Console.WriteLine($"\nPress {CONTINUE_PLAYING} to continue playing or any key to quit!\n");
+                char optionToContinue = Char.ToLower(Console.ReadKey().KeyChar);
+                //exit the game if user enters any key besides 'y'
+                if (optionToContinue != 'y')
                 {
-                    Console.WriteLine($"\nYou have {NO_MATCHING_LINES} matching columns!\n");
+                    Console.WriteLine("\nExiting the game!\n");
+                    replay = false;
                 }
-                //if 1, 2 or 3 matching columns are found
-                else
-                {
-                    Console.WriteLine($"\nYou have {matchingColumns} matching columns!\n");
-                    winnings += wagerVal * matchingColumns;
-                }
-                Console.WriteLine($"Your total winnings are ${winnings}!\n");
             }
 
-            //diagonal scenarios
-            if (userInput == DIAGONAL_OPTION)
-            {
-                int correctMatches = 0;
-                int matchingDiagonals = 0;
-
-                for (int rowIndex = 0; rowIndex < ROW_COUNT - 1; rowIndex++)
-                {
-                    for (int columnIndex = 0; columnIndex < COLUMN_COUNT - 1; columnIndex++)
-                    {
-             //verify that three numbers from top left to bottom right diagonal match
-                        if (rowIndex == columnIndex && spinningSlotMachine[rowIndex, columnIndex] == spinningSlotMachine[rowIndex + 1, columnIndex + 1])
-                        {
-                            correctMatches += 1;
-                        }
-                    }
-                    if (correctMatches == MATCH_TWO_ADJACENT_VALUES)
-                    {
-                        matchingDiagonals += 1;
-                    }
-                }
-
-                if (matchingDiagonals == NO_MATCHING_LINES)
-                {
-                    Console.WriteLine($"\nYou have {NO_MATCHING_LINES} matching diagonal lines!\n");
-                }
-                else
-                {
-                    Console.WriteLine($"\nYou have {matchingDiagonals} matching diagonal lines!\n");
-                    winnings += wagerVal * matchingDiagonals;
-                }
-                Console.WriteLine($"Your total winnings are {winnings}.\n");
-            }
-
-            Console.WriteLine($"\nPress {CONTINUE_PLAYING} to continue playing or any key to quit!\n");
-            char optionToContinue = Char.ToLower(Console.ReadKey().KeyChar);
-
-            if (optionToContinue == 'n')
-            {
-                Console.WriteLine("\nExiting the game!\n");
-                return;
-            }
         }
     }
 }
