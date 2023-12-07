@@ -4,6 +4,7 @@ namespace slot_machine
 {
     internal class Program
     {
+        public static readonly Random rng = new Random();
         static void Main()
         {
             const int ROW_COUNT = 3;
@@ -18,6 +19,26 @@ namespace slot_machine
             const char VERTICAL_OPTION = 'v';
             const char DIAGONAL_OPTION = 'd';
             const char CONTINUE_PLAYING = 'y';
+
+            //insert values in spinning slot machine array
+            Console.WriteLine("\nSpinning the wheel...\n");
+
+            //array to store random digits
+            //2D array that is 3 by 3
+            int[,] spinningSlotMachine = new int[ROW_COUNT, COLUMN_COUNT];
+            for (int rowIndex = 0; rowIndex < ROW_COUNT; rowIndex++)
+            {
+                for (int columnIndex = 0; columnIndex < COLUMN_COUNT; columnIndex++)
+                {
+                    //generate random value from 0 to 1, where RANDOM_VALUES = 2 to generate either 0 or 1
+                    int randomValue = rng.Next(RANDOM_VALUES);
+                    //assign each value to each index in row,column
+                    spinningSlotMachine[rowIndex, columnIndex] = randomValue;
+                    //print out the slot machine
+                    Console.WriteLine(spinningSlotMachine[rowIndex, columnIndex]);
+                }
+                Console.WriteLine();
+            }
 
             Console.WriteLine($"\nYou have ${STARTING_BET_AMOUNT} that you can wager!\n");
             //user's winnings, user starts at $50
@@ -64,27 +85,6 @@ namespace slot_machine
                 //user decides whether to match numbers horizontally/vertically/diagnolly
                 Console.WriteLine($"\nEnter {HORIZONTAL_OPTION} to match numbers horizontally, {VERTICAL_OPTION} to match vertically, {DIAGONAL_OPTION} to match diagonally\n");
                 char userInput = Char.ToLower(Console.ReadKey().KeyChar);
-
-                //insert values in spinning slot machine array
-                Console.WriteLine("\nSpinning the wheel...\n");
-
-                //array to store random digits
-                //2D array that is 3 by 3
-                int[,] spinningSlotMachine = new int[ROW_COUNT, COLUMN_COUNT];
-                Random rng = new Random();
-                for (int rowIndex = 0; rowIndex < ROW_COUNT; rowIndex++)
-                {
-                    for (int columnIndex = 0; columnIndex < COLUMN_COUNT; columnIndex++)
-                    {
-                        //generate random value from 0 to 1, where RANDOM_VALUES = 2 to generate either 0 or 1
-                        int randomValue = rng.Next(RANDOM_VALUES);
-                        //assign each value to each index in row,column
-                        spinningSlotMachine[rowIndex, columnIndex] = randomValue;
-                        //print out the slot machine
-                        Console.WriteLine(spinningSlotMachine[rowIndex, columnIndex]);
-                    }
-                    Console.WriteLine();
-                }
 
                 //horizontal scenarios
                 if (userInput == HORIZONTAL_OPTION)
