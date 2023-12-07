@@ -227,7 +227,7 @@ namespace slot_machine
                 Console.WriteLine($"\nPress {CONTINUE_PLAYING} to continue playing or any key to quit!\n");
                 char optionToContinue = Char.ToLower(Console.ReadKey().KeyChar);
                 //exit the game if user enters any key besides 'y'
-                if (optionToContinue != 'y')
+                if (optionToContinue != CONTINUE_PLAYING)
                 {
                     Console.WriteLine("\nExiting the game!\n");
                     replay = false;
