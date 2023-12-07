@@ -233,7 +233,6 @@ namespace slot_machine
                     replay = false;
                 }
             }
-
         }
     }
 }
