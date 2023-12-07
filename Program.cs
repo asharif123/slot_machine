@@ -172,13 +172,43 @@ namespace slot_machine
                     int correctMatches = 0;
                     int matchingDiagonals = 0;
 
+                    //verify that three numbers from top left to bottom right diagonal match
                     for (int rowIndex = 0; rowIndex < ROW_COUNT - 1; rowIndex++)
-                //verify that three numbers from top left to bottom right diagonal match
+                    {
                         if (spinningSlotMachine[rowIndex, rowIndex] == spinningSlotMachine[rowIndex + 1, rowIndex + 1])
                         {
                             correctMatches += 1;
                         }
-                //row starts at 0 and column starts at 2, decrease by 1 each time until column is 2 and row is 0
+                    }
+                    
+                    //if we have matching diagonals from top left to bottom right
+                    if (correctMatches == MATCH_TWO_ADJACENT_VALUES)
+                    {
+                        matchingDiagonals += 1;
+                    }
+                    //reset correctMatches to iterate next diagonal
+                    correctMatches = 0;
+
+                    //row starts at 0 and column starts at 2, decrease by 1 each time until column is 2 and row is 0
+                    //start at rowIndex = 0 and columnIndex = 2
+                    //length of 2D array is 3
+                    int lengthOfArray = spinningSlotMachine.GetLength(0);
+
+                    for (int rowIndex = 0;  rowIndex < ROW_COUNT - 1; rowIndex++)
+                    {
+                        if (spinningSlotMachine[rowIndex,lengthOfArray-1] == spinningSlotMachine[rowIndex+1,lengthOfArray-2])
+                        {
+                            correctMatches += 1;
+                            //decrement lengthOfArray by 1 once match is found
+                            lengthOfArray -= 1;
+                        }
+                    }
+
+                    //if we have matching diagonals from top right to bottom left
+                    if (correctMatches == MATCH_TWO_ADJACENT_VALUES)
+                    {
+                        matchingDiagonals += 1;
+                    }
 
                     if (matchingDiagonals == NO_MATCHING_LINES)
                     {
