@@ -180,7 +180,7 @@ namespace slot_machine
                             correctMatches += 1;
                         }
                     }
-                    
+
                     //if we have matching diagonals from top left to bottom right
                     if (correctMatches == MATCH_TWO_ADJACENT_VALUES)
                     {
@@ -194,9 +194,9 @@ namespace slot_machine
                     //length of 2D array is 3
                     int lengthOfArray = spinningSlotMachine.GetLength(0);
 
-                    for (int rowIndex = 0;  rowIndex < ROW_COUNT - 1; rowIndex++)
+                    for (int rowIndex = 0; rowIndex < ROW_COUNT - 1; rowIndex++)
                     {
-                        if (spinningSlotMachine[rowIndex,lengthOfArray-1] == spinningSlotMachine[rowIndex+1,lengthOfArray-2])
+                        if (spinningSlotMachine[rowIndex, lengthOfArray - 1] == spinningSlotMachine[rowIndex + 1, lengthOfArray - 2])
                         {
                             correctMatches += 1;
                             //decrement lengthOfArray by 1 once match is found
