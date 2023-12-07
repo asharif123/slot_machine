@@ -80,6 +80,7 @@ namespace slot_machine
                         int randomValue = rng.Next(RANDOM_VALUES);
                         //assign each value to each index in row,column
                         spinningSlotMachine[rowIndex, columnIndex] = randomValue;
+                        //print out the slot machine
                         Console.WriteLine(spinningSlotMachine[rowIndex, columnIndex]);
                     }
                     Console.WriteLine();
