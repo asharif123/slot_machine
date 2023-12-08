@@ -49,6 +49,7 @@ namespace slot_machine
                     if (wagerVal > winnings || wagerVal <= NO_WINNINGS_LEFT)
                     {
                         Console.WriteLine("\nPlease enter a positive wager value that is less than or equal your winnings!\n");
+                //ask user again for wager amount        
                         wager = Console.ReadLine();
                         wagerVal = Convert.ToInt32(wager);
                     }
