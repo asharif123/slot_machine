@@ -49,7 +49,7 @@ namespace slot_machine
                     if (wagerVal > winnings || wagerVal <= NO_WINNINGS_LEFT)
                     {
                         Console.WriteLine("\nPlease enter a positive wager value that is less than or equal your winnings!\n");
-                //ask user again for wager amount        
+                        //ask user again for wager amount        
                         wager = Console.ReadLine();
                         wagerVal = Convert.ToInt32(wager);
                     }
@@ -202,7 +202,7 @@ namespace slot_machine
                         if (spinningSlotMachine[rowIndex, colIndex] == spinningSlotMachine[rowIndex + 1, colIndex - 1])
                         {
                             correctMatches += 1;
-                            //decrement lengthOfArray by 1 once match is found
+                            //decrement colIndex by 1 once match is found
                             colIndex -= 1;
                         }
                     }
