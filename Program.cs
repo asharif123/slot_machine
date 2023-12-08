@@ -194,15 +194,15 @@ namespace slot_machine
                     //row starts at 0 and column starts at 2, decrease by 1 each time until column is 2 and row is 0
                     //start at rowIndex = 0 and columnIndex = 2
                     //length of 2D array is 3
-                    int lengthOfArray = spinningSlotMachine.GetLength(0);
+                    int colIndex = spinningSlotMachine.GetLength(0) - 1;
 
                     for (int rowIndex = 0; rowIndex < ROW_COUNT - 1; rowIndex++)
                     {
-                        if (spinningSlotMachine[rowIndex, lengthOfArray - 1] == spinningSlotMachine[rowIndex + 1, lengthOfArray - 2])
+                        if (spinningSlotMachine[rowIndex, colIndex] == spinningSlotMachine[rowIndex + 1, colIndex - 1])
                         {
                             correctMatches += 1;
                             //decrement lengthOfArray by 1 once match is found
-                            lengthOfArray -= 1;
+                            colIndex -= 1;
                         }
                     }
 
@@ -221,7 +221,7 @@ namespace slot_machine
                         Console.WriteLine($"\nYou have {matchingDiagonals} matching diagonal lines!\n");
                         winnings += wagerVal * matchingDiagonals;
                     }
-                    Console.WriteLine($"Your total winnings are {winnings}.\n");
+                    Console.WriteLine($"Your total winnings are ${winnings}.\n");
                 }
 
                 Console.WriteLine($"\nPress {CONTINUE_PLAYING} to continue playing or any key to quit!\n");
