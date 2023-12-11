@@ -10,8 +10,6 @@ namespace slot_machine
             const int ROW_COUNT = 3;
             const int COLUMN_COUNT = 3;
             const int MINIMUM_BET = 1;
-            const int STARTING_BET_AMOUNT = 50;
-            const int NO_WINNINGS_LEFT = 0;
             const int NO_MATCHING_LINES = 0;
             const int RANDOM_VALUES = 2;
             const int MATCH_TWO_ADJACENT_VALUES = 2; ;
@@ -20,9 +18,8 @@ namespace slot_machine
             const char DIAGONAL_OPTION = 'd';
             const char CONTINUE_PLAYING = 'y';
 
-            UIMethods.welcomeMessage();
             //user's winnings, user starts at $50
-            int winnings = STARTING_BET_AMOUNT;
+            UIMethods.welcomeMessage();
 
             //give user option to replay
             bool replay = true;
@@ -31,36 +28,10 @@ namespace slot_machine
             {
                 //if user runs out of money to wager
                 //immediately check to determine if user has enough money to wager
-                if (winnings <= NO_WINNINGS_LEFT)
-                {
-                    UIMethods.noMoneyLeft();
-                }
-                //ask how much user wants to wager
-                Console.WriteLine($"\nEnter a value from {MINIMUM_BET} to {winnings} that you would like to wager!\n");
-                //convert string to integer value
-                string wager = Console.ReadLine();
-                int wagerVal = Convert.ToInt32(wager);
-                bool notValidInput = true;
-
-                //ensure user enters valid wager
-                while (notValidInput)
-                {
-                    if (wagerVal > winnings || wagerVal <= NO_WINNINGS_LEFT)
-                    {
-                        Console.WriteLine("\nPlease enter a positive wager value that is less than or equal your winnings!\n");
-                        //ask user again for wager amount        
-                        wager = Console.ReadLine();
-                        wagerVal = Convert.ToInt32(wager);
-                    }
-                    //if user enters valid wager value, exit out of while loop
-                    else
-                    {
-                        notValidInput = false;
-                    }
-                }
-
-                //how much money user loses based off wager amount
-                winnings -= wagerVal;
+                UIMethods.noMoneyLeft();
+               
+                //ask how much user wants to wager, user starts with $50
+                UIMethods.wagerAmount();
 
                 //user decides whether to match numbers horizontally/vertically/diagnolly
                 Console.WriteLine($"\nEnter {HORIZONTAL_OPTION} to match numbers horizontally, {VERTICAL_OPTION} to match vertically, {DIAGONAL_OPTION} to match diagonally\n");
