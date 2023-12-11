@@ -20,7 +20,7 @@ namespace slot_machine
             const char DIAGONAL_OPTION = 'd';
             const char CONTINUE_PLAYING = 'y';
 
-            Console.WriteLine($"\nYou have ${STARTING_BET_AMOUNT} that you can wager!\n");
+            UIMethods.welcomeMessage();
             //user's winnings, user starts at $50
             int winnings = STARTING_BET_AMOUNT;
 
@@ -33,8 +33,7 @@ namespace slot_machine
                 //immediately check to determine if user has enough money to wager
                 if (winnings <= NO_WINNINGS_LEFT)
                 {
-                    Console.WriteLine("\nSorry, you have no more money left to bet! Exiting the game...\n");
-                    return;
+                    UIMethods.noMoneyLeft();
                 }
                 //ask how much user wants to wager
                 Console.WriteLine($"\nEnter a value from {MINIMUM_BET} to {winnings} that you would like to wager!\n");
