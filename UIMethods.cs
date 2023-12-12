@@ -24,12 +24,16 @@
         }
 
         //method that defines if user still has any money left to wager
-        public static void noMoneyLeft()
+        public static bool noMoneyLeft()
         {
             if (winnings <= NO_WINNINGS_LEFT)
             {
                 Console.WriteLine("\nSorry, you have no more money left to bet! Exiting the game...\n");
-                return;
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
 

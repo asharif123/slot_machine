@@ -18,7 +18,10 @@ namespace slot_machine
             {
                 //if user runs out of money to wager
                 //immediately check to determine if user has enough money to wager
-                UIMethods.noMoneyLeft();
+                if (UIMethods.noMoneyLeft() == true)
+                {
+                    Environment.Exit(0);
+                }
 
                 //user decides whether to match numbers horizontally/vertically/diagnolly
                 UIMethods.spinningSlotMachine();
@@ -27,6 +30,7 @@ namespace slot_machine
                 if (UIMethods.playAgain() == false)
                 {
                     replay = false;
+                    Environment.Exit(0);
                 }
             }
         }
