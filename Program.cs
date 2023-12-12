@@ -12,6 +12,7 @@ namespace slot_machine
 
             //give user option to replay
             bool replay = true;
+
             //add while loop here so user can have access to most recent winnings and not have winnings reset to 50 
             while (replay)
             {
@@ -23,7 +24,10 @@ namespace slot_machine
                 UIMethods.spinningSlotMachine();
 
                 //user decides to replay the game
-                UIMethods.playAgain();
+                if (UIMethods.playAgain() == false)
+                {
+                    replay = false;
+                }
             }
         }
     }

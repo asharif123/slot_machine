@@ -23,11 +23,13 @@ namespace slot_machine
 
         public static readonly Random rng = new Random();
 
+        //method that displays amount of money user starts off with
         public static void welcomeMessage()
         {
             Console.WriteLine($"\nYou have ${STARTING_BET_AMOUNT} that you can wager!\n");
         }
 
+        //method that defines if user still has any money left to wager
         public static void noMoneyLeft()
         {
             if (winnings <= NO_WINNINGS_LEFT)
@@ -40,6 +42,8 @@ namespace slot_machine
         static int winnings = STARTING_BET_AMOUNT;
         static bool notValidInput = true;
 
+        //method that defines the slotMachine, determines if user wants to match horizontally/vertically/diagonally
+        //and displays how much user has won
         public static void spinningSlotMachine()
         {
             Console.WriteLine($"\nEnter a value from {MINIMUM_BET} to {winnings} that you would like to wager!\n");
@@ -116,6 +120,19 @@ namespace slot_machine
                     //reset correctMatches to iterate next row
                     correctMatches = 0;
                 }
+
+                //if no matching columns were found
+                if (matchingRows == NO_MATCHING_LINES)
+                {
+                    Console.WriteLine($"\nYou have {NO_MATCHING_LINES} matching columns!\n");
+                }
+                //if 1, 2 or 3 matching columns are found
+                else
+                {
+                    Console.WriteLine($"\nYou have {matchingRows} matching columns!\n");
+                    winnings += wagerVal * matchingRows;
+                }
+                Console.WriteLine($"Your total winnings are ${winnings}!\n");
             }
 
             //vertical scenarios
@@ -216,6 +233,7 @@ namespace slot_machine
             }
         }
 
+        //give user the option to replay the game or quit
         public static bool playAgain()
         {
             Console.WriteLine($"\nPress {CONTINUE_PLAYING} to continue playing or any key to quit!\n");
