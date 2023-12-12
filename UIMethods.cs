@@ -1,5 +1,7 @@
 ﻿namespace slot_machine
 {
+    //Methods to define user interaction (user input/output)
+    //ask user to bet money, replay game or quit, input valid wager amount, user has enough money to bet
     public static class UIMethods
     {
         const int STARTING_BET_AMOUNT = 50;
