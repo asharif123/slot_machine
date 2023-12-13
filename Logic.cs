@@ -79,8 +79,6 @@
                 Console.WriteLine($"Your total winnings are ${winnings}!\n");
             }
         }
-
-
         public static void checkVerticalOption()
         {
             //vertical scenarios
