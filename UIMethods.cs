@@ -66,10 +66,12 @@
         }
 
         //UIMethod containing options to match horizontally, vertically, or diagonally
-        public static void matchingOption()
+        public static char matchingOption()
         {
             Console.WriteLine($"\nEnter {HORIZONTAL_OPTION} to match numbers horizontally, {VERTICAL_OPTION} to match vertically, {DIAGONAL_OPTION} to match diagonally\n");
             char userInput = Char.ToLower(Console.ReadKey().KeyChar);
+        //make userInput accessible
+            return userInput;
         }
 
         //give user the option to replay the game or quit

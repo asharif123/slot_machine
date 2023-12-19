@@ -11,7 +11,7 @@
         const char HORIZONTAL_OPTION = 'h';
         const char VERTICAL_OPTION = 'v';
         const char DIAGONAL_OPTION = 'd';
-        public static void spinningSlotMachine()
+        public static bool spinningSlotMachine()
         {
             //insert values in spinning slot machine array
             Console.WriteLine("\nSpinning the wheel...\n");
@@ -33,13 +33,14 @@
                 }
                 Console.WriteLine();
             }
+            return true;
         }
 
         //check how much user has won or lost based off horizontal/vertical/diagonal options
 
         public static void checkHorizontalOption()
         {
-            if (userInput == HORIZONTAL_OPTION)
+            if (UIMethods.matchingOption() == HORIZONTAL_OPTION)
             {
                 //keep track of number of correct row matches
                 int matchingRows = 0;
