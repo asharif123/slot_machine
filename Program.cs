@@ -30,7 +30,7 @@ namespace slot_machine
                 if (UIMethods.playAgain() == false)
                 {
                     replay = false;
-                    Environment.Exit(0);
+                    return;
                 }
             }
         }
