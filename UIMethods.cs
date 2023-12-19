@@ -37,7 +37,7 @@
         static bool notValidInput = true;
 
         //UI method to see how much user wagers
-        public static void wagerAmount()
+        public static int wagerAmount()
         {
             Console.WriteLine($"\nEnter a value from {MINIMUM_BET} to {winnings} that you would like to wager!\n");
             //convert string to integer value
@@ -63,6 +63,7 @@
 
             //how much money user loses based off wager amount
             winnings -= wagerVal;
+            return winnings;
         }
 
         //UIMethod containing options to match horizontally, vertically, or diagonally
