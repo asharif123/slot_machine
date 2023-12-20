@@ -8,6 +8,7 @@
         const int MINIMUM_BET = 1;
         const int NO_WINNINGS_LEFT = 0;
         const char HORIZONTAL_OPTION = 'h';
+        const char VERTICAL_OPTION = 'v';
         const char DIAGONAL_OPTION = 'd';
         const char CONTINUE_PLAYING = 'y';
 
