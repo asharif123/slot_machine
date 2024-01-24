@@ -25,7 +25,7 @@ namespace slot_machine
                 UIMethods.showMessageNoMoneyLeft();
 
                 //user decides whether to match numbers horizontally/vertically/diagnolly
-                UIMethods.spinningSlotMachine();
+                Logic.spinningSlotMachine();
 
                 //user decides to replay the game
                 if (UIMethods.playAgain() == false)
