@@ -12,16 +12,17 @@ namespace slot_machine
 
             //give user option to replay
             bool replay = true;
-
+            int moneyLeft = 0;
             //add while loop here so user can have access to most recent winnings and not have winnings reset to 50 
             while (replay)
             {
                 //if user runs out of money to wager
                 //immediately check to determine if user has enough money to wager
-                if (UIMethods.noMoneyLeft() == true)
+                if (moneyLeft < 0)
                 {
                     Environment.Exit(0);
                 }
+                UIMethods.showMessageNoMoneyLeft();
 
                 //user decides whether to match numbers horizontally/vertically/diagnolly
                 UIMethods.spinningSlotMachine();

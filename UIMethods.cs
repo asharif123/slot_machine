@@ -1,6 +1,7 @@
 ﻿namespace slot_machine
 {
     //Methods to define user interaction (user input/output)
+    //used to verify user input or output message
     //ask user to bet money, replay game or quit, input valid wager amount, user has enough money to bet
     public static class UIMethods
     {
@@ -20,25 +21,14 @@
             Console.WriteLine($"\nYou have ${STARTING_BET_AMOUNT} that you can wager!\n");
         }
 
-        //UI method that defines if user still has any money left to wager
-        public static bool noMoneyLeft()
+        //UI method showing message to display if user has money left!
+        public static void showMessageNoMoneyLeft()
         {
-            if (winnings <= NO_WINNINGS_LEFT)
-            {
-                Console.WriteLine("\nSorry, you have no more money left to bet! Exiting the game...\n");
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            Console.WriteLine("\nSorry, you have no money left!");
         }
 
-        static int winnings = STARTING_BET_AMOUNT;
-        static bool notValidInput = true;
-
         //UI method to see how much user wagers
-        public static int wagerAmount()
+        public static int wagerAmount(int winnings, bool notValidInput)
         {
             Console.WriteLine($"\nEnter a value from {MINIMUM_BET} to {winnings} that you would like to wager!\n");
             //convert string to integer value
