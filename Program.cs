@@ -31,9 +31,6 @@ namespace slot_machine
                     Environment.Exit(0);
                 }
 
-                //get bet from user
-
-
                 //fill the array with values 0 and 1
                 Logic.fillSlotArrayValues();
 
