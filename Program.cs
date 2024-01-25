@@ -7,6 +7,10 @@ namespace slot_machine
         public static readonly Random rng = new Random();
         static void Main()
         {
+            const char HORIZONTAL_OPTION = 'h';
+            const char VERTICAL_OPTION = 'v';
+            const char DIAGONAL_OPTION = 'd';
+
             //user's winnings, user starts at $50
             UIMethods.welcomeMessage();
 
@@ -28,8 +32,34 @@ namespace slot_machine
                     Environment.Exit(0);
                 }
 
-                //user decides whether to match numbers horizontally/vertically/diagnolly
+                //get bet from user
+
+
+                //fill the array with values 0 and 1
                 Logic.fillSlotArrayValues();
+
+                //wager amount
+                UIMethods.wagerAmount();
+
+                //record whether use has selected horizontal, vertical or diagonal
+                char userOption = UIMethods.matchingOption();
+
+                if (userOption == HORIZONTAL_OPTION)
+                {
+                    Logic.checkHorizontalOption();
+                }
+
+
+                else if (userOption == VERTICAL_OPTION)
+                {
+                    Logic.checkVerticalOption();
+                }
+
+
+                else if (userOption == DIAGONAL_OPTION)
+                {
+                    Logic.checkDiagonalOption();
+                }
 
                 //user decides to replay the game
                 if (UIMethods.playAgain() == false)
