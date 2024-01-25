@@ -4,7 +4,6 @@ namespace slot_machine
 {
     internal class Program
     {
-        public static readonly Random rng = new Random();
         static void Main()
         {
             const char HORIZONTAL_OPTION = 'h';
