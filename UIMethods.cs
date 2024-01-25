@@ -38,7 +38,7 @@
             {
                 for (int columnIndex = 0; columnIndex < COLUMN_COUNT; columnIndex++)
                 {
-                    slotArray[rowIndex, columnIndex];
+                    Console.WriteLine(slotArray[rowIndex, columnIndex]);
                 }
             }
         }
