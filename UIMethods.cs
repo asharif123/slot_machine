@@ -19,12 +19,20 @@
         public static void welcomeMessage()
         {
             Console.WriteLine($"\nYou have ${STARTING_BET_AMOUNT} that you can wager!\n");
+            Console.WriteLine("\nSpinning the wheel...\n");
         }
 
         //UI method showing message to display if user has money left!
         public static void showMessageNoMoneyLeft()
         {
             Console.WriteLine("\nSorry, you have no money left!");
+        }
+
+        //output the slot machine having filled values
+        //separate it from logic method that is filling values
+        public void OutputSlotArray()
+        {
+
         }
 
         //UI method to see how much user wagers
@@ -62,7 +70,7 @@
         {
             Console.WriteLine($"\nEnter {HORIZONTAL_OPTION} to match numbers horizontally, {VERTICAL_OPTION} to match vertically, {DIAGONAL_OPTION} to match diagonally\n");
             char userInput = Char.ToLower(Console.ReadKey().KeyChar);
-        //make userInput accessible
+            //make userInput accessible
             return userInput;
         }
 

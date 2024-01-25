@@ -11,11 +11,12 @@
         const char HORIZONTAL_OPTION = 'h';
         const char VERTICAL_OPTION = 'v';
         const char DIAGONAL_OPTION = 'd';
-        public static bool spinningSlotMachine()
+        //function should return int array containing random value
+        //only fills array with values without any output
+        //return 2D array
+        public static int[,] fillSlotArrayValues()
         {
             //insert values in spinning slot machine array
-            Console.WriteLine("\nSpinning the wheel...\n");
-
             //array to store random digits
             //2D array that is 3 by 3
             int[,] spinningSlotMachine = new int[ROW_COUNT, COLUMN_COUNT];
@@ -28,12 +29,10 @@
                     int randomValue = rng.Next(RANDOM_VALUES);
                     //assign each value to each index in row,column
                     spinningSlotMachine[rowIndex, columnIndex] = randomValue;
-                    //print out the slot machine
-                    Console.WriteLine(spinningSlotMachine[rowIndex, columnIndex]);
                 }
                 Console.WriteLine();
             }
-            return true;
+            return spinningSlotMachine;
         }
 
         //check how much user has won or lost based off horizontal/vertical/diagonal options
