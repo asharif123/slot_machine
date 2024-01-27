@@ -11,6 +11,7 @@
         //function should return int array containing random value
         //only fills array with values without any output
         //return 2D array
+        //use int[,] to ensure we return 2d array with int values
         public static int[,] fillSlotArrayValues()
         {
             //insert values in spinning slot machine array
@@ -27,7 +28,7 @@
                     //assign each value to each index in row,column
                     spinningSlotMachine[rowIndex, columnIndex] = randomValue;
                 }
-                Console.WriteLine();
+                UIMethods.emptySpace();
             }
             return spinningSlotMachine;
         }

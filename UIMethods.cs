@@ -30,6 +30,11 @@
             Console.WriteLine("\nSorry, you have no money left!");
         }
 
+        public static void emptySpace()
+        {
+            Console.WriteLine();
+        }
+
         //output the slot machine having filled values
         //separate it from logic method that is filling values
         public void OutputSlotArray(int[,] slotArray)
@@ -43,61 +48,61 @@
             }
         }
 
-            //UI method to see how much user wagers
-            public static int wagerAmount(int winnings)
-            {
-                Console.WriteLine($"\nEnter a value from {MINIMUM_BET} to {winnings} that you would like to wager!\n");
-                //convert string to integer value
-                string wager = Console.ReadLine();
-                int wagerVal = Convert.ToInt32(wager);
-                bool notValidInput = true;
+        //UI method to see how much user wagers
+        public static int wagerAmount(int winnings)
+        {
+            Console.WriteLine($"\nEnter a value from {MINIMUM_BET} to {winnings} that you would like to wager!\n");
+            //convert string to integer value
+            string wager = Console.ReadLine();
+            int wagerVal = Convert.ToInt32(wager);
+            bool notValidInput = true;
 
-                //ensure user enters valid wager
-                while (notValidInput)
+            //ensure user enters valid wager
+            while (notValidInput)
+            {
+                if (wagerVal > winnings || wagerVal <= NO_WINNINGS_LEFT)
                 {
-                    if (wagerVal > winnings || wagerVal <= NO_WINNINGS_LEFT)
-                    {
-                        Console.WriteLine("\nPlease enter a positive wager value that is less than or equal your winnings!\n");
-                        //ask user again for wager amount        
-                        wager = Console.ReadLine();
-                        wagerVal = Convert.ToInt32(wager);
-                    }
-                    //if user enters valid wager value, exit out of while loop
-                    else
-                    {
-                        notValidInput = false;
-                    }
+                    Console.WriteLine("\nPlease enter a positive wager value that is less than or equal your winnings!\n");
+                    //ask user again for wager amount        
+                    wager = Console.ReadLine();
+                    wagerVal = Convert.ToInt32(wager);
                 }
-
-                //how much money user loses based off wager amount
-                winnings -= wagerVal;
-                return winnings;
-            }
-
-            //UIMethod containing options to match horizontally, vertically, or diagonally
-            public static char matchingOption()
-            {
-                Console.WriteLine($"\nEnter {HORIZONTAL_OPTION} to match numbers horizontally, {VERTICAL_OPTION} to match vertically, {DIAGONAL_OPTION} to match diagonally\n");
-                char userInput = Char.ToLower(Console.ReadKey().KeyChar);
-                //make userInput accessible
-                return userInput;
-            }
-
-            //give user the option to replay the game or quit
-            public static bool playAgain()
-            {
-                Console.WriteLine($"\nPress {CONTINUE_PLAYING} to continue playing or any key to quit!\n");
-                char optionToContinue = Char.ToLower(Console.ReadKey().KeyChar);
-                //exit the game if user enters any key besides 'y'
-                if (optionToContinue != CONTINUE_PLAYING)
-                {
-                    Console.WriteLine("\nExiting the game!\n");
-                    return false;
-                }
+                //if user enters valid wager value, exit out of while loop
                 else
                 {
-                    return true;
+                    notValidInput = false;
                 }
+            }
+
+            //how much money user loses based off wager amount
+            winnings -= wagerVal;
+            return winnings;
+        }
+
+        //UIMethod containing options to match horizontally, vertically, or diagonally
+        public static char matchingOption()
+        {
+            Console.WriteLine($"\nEnter {HORIZONTAL_OPTION} to match numbers horizontally, {VERTICAL_OPTION} to match vertically, {DIAGONAL_OPTION} to match diagonally\n");
+            char userInput = Char.ToLower(Console.ReadKey().KeyChar);
+            //make userInput accessible
+            return userInput;
+        }
+
+        //give user the option to replay the game or quit
+        public static bool playAgain()
+        {
+            Console.WriteLine($"\nPress {CONTINUE_PLAYING} to continue playing or any key to quit!\n");
+            char optionToContinue = Char.ToLower(Console.ReadKey().KeyChar);
+            //exit the game if user enters any key besides 'y'
+            if (optionToContinue != CONTINUE_PLAYING)
+            {
+                Console.WriteLine("\nExiting the game!\n");
+                return false;
+            }
+            else
+            {
+                return true;
             }
         }
     }
+}
