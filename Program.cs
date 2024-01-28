@@ -9,33 +9,38 @@ namespace slot_machine
             const char HORIZONTAL_OPTION = 'h';
             const char VERTICAL_OPTION = 'v';
             const char DIAGONAL_OPTION = 'd';
+            const int STARTING_BET_AMOUNT = 50;
+
 
             //user's winnings, user starts at $50
             UIMethods.welcomeMessage();
 
             //give user option to replay
             bool replay = true;
-            int moneyLeft = 0;
+            int userCredits = STARTING_BET_AMOUNT;
 
             //show welcome message
             UIMethods.welcomeMessage();
+
 
             //add while loop here so user can have access to most recent winnings and not have winnings reset to 50 
             while (replay)
             {
                 //if user runs out of money to wager
                 //immediately check to determine if user has enough money to wager
-                if (moneyLeft < 0)
+                if (userCredits < 0)
                 {
                     UIMethods.showMessageNoMoneyLeft();
-                    Environment.Exit(0);
+                    break;
                 }
 
                 //fill the array with values 0 and 1
                 Logic.fillSlotArrayValues();
 
                 //wager amount
-                UIMethods.wagerAmount();
+                int wager = UIMethods.wagerAmount();
+                //subtract wager from user credits
+                userCredits -= wager;
 
                 //record whether use has selected horizontal, vertical or diagonal
                 char userOption = UIMethods.matchingOption();
@@ -45,12 +50,10 @@ namespace slot_machine
                     Logic.checkHorizontalOption();
                 }
 
-
                 else if (userOption == VERTICAL_OPTION)
                 {
                     Logic.checkVerticalOption();
                 }
-
 
                 else if (userOption == DIAGONAL_OPTION)
                 {

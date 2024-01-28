@@ -49,9 +49,9 @@
         }
 
         //UI method to see how much user wagers
-        public static int wagerAmount(int winnings)
+        public static int wagerAmount()
         {
-            Console.WriteLine($"\nEnter a value from {MINIMUM_BET} to {winnings} that you would like to wager!\n");
+            Console.WriteLine($"\nEnter a value from {MINIMUM_BET} to {STARTING_BET_AMOUNT} that you would like to wager!\n");
             //convert string to integer value
             string wager = Console.ReadLine();
             int wagerVal = Convert.ToInt32(wager);
@@ -60,7 +60,7 @@
             //ensure user enters valid wager
             while (notValidInput)
             {
-                if (wagerVal > winnings || wagerVal <= NO_WINNINGS_LEFT)
+                if (wagerVal > STARTING_BET_AMOUNT || wagerVal <= NO_WINNINGS_LEFT)
                 {
                     Console.WriteLine("\nPlease enter a positive wager value that is less than or equal your winnings!\n");
                     //ask user again for wager amount        
@@ -73,10 +73,8 @@
                     notValidInput = false;
                 }
             }
-
-            //how much money user loses based off wager amount
-            winnings -= wagerVal;
-            return winnings;
+            //immediately return what user has wagered
+            return wagerVal;
         }
 
         //UIMethod containing options to match horizontally, vertically, or diagonally

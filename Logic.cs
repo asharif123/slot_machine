@@ -3,11 +3,13 @@
     //contains methods for spinning slot machine, check if user has won horizontally/vertically/diagonally
     public static class Logic
     {
+
         const int ROW_COUNT = 3;
         const int COLUMN_COUNT = 3;
         const int RANDOM_VALUES = 2;
         const int MATCH_TWO_ADJACENT_VALUES = 2;
         const int NO_MATCHING_LINES = 0;
+
         //function should return int array containing random value
         //only fills array with values without any output
         //return 2D array
@@ -18,12 +20,12 @@
             //array to store random digits
             //2D array that is 3 by 3
             int[,] spinningSlotMachine = new int[ROW_COUNT, COLUMN_COUNT];
-            Random rng = new Random();
             for (int rowIndex = 0; rowIndex < ROW_COUNT; rowIndex++)
             {
                 for (int columnIndex = 0; columnIndex < COLUMN_COUNT; columnIndex++)
                 {
                     //generate random value from 0 to 1, where RANDOM_VALUES = 2 to generate either 0 or 1
+                    Random rng = new Random();
                     int randomValue = rng.Next(RANDOM_VALUES);
                     //assign each value to each index in row,column
                     spinningSlotMachine[rowIndex, columnIndex] = randomValue;
