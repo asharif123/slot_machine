@@ -28,7 +28,7 @@ namespace slot_machine
             {
                 //if user runs out of money to wager
                 //immediately check to determine if user has enough money to wager
-                if (userCredits < 0)
+                if (userCredits <= 0)
                 {
                     UIMethods.showMessageNoMoneyLeft();
                     break;
