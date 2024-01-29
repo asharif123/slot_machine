@@ -31,6 +31,8 @@
                     spinningSlotMachine[rowIndex, columnIndex] = randomValue;
                 }
                 UIMethods.emptySpace();
+                //print out each row
+                UIMethods.OutputSlotArray(spinningSlotMachine[rowIndex, columnIndex]);
             }
             return spinningSlotMachine;
         }
@@ -73,7 +75,7 @@
             else
             {
                 Console.WriteLine($"\nYou have {matchingRows} matching columns!\n");
-                winnings += wagerVal * matchingRows;
+                winnings += UIMethods.wagerAmount() * matchingRows;
             }
             Console.WriteLine($"Your total winnings are ${winnings}!\n");
 
@@ -113,7 +115,7 @@
             else
             {
                 Console.WriteLine($"\nYou have {matchingColumns} matching columns!\n");
-                winnings += wagerVal * matchingColumns;
+                winnings += UIMethods.wagerAmount() * matchingColumns;
             }
             Console.WriteLine($"Your total winnings are ${winnings}!\n");
 
@@ -170,7 +172,7 @@
             else
             {
                 Console.WriteLine($"\nYou have {matchingDiagonals} matching diagonal lines!\n");
-                winnings += wagerVal * matchingDiagonals;
+                winnings += UIMethods.wagerAmount()*matchingDiagonals;
             }
             Console.WriteLine($"Your total winnings are ${winnings}.\n");
             return;

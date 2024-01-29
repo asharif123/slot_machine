@@ -37,7 +37,7 @@
 
         //output the slot machine having filled values
         //separate it from logic method that is filling values
-        public void OutputSlotArray(int[,] slotArray)
+        public static void OutputSlotArray(int[,] slotArray)
         {
             for (int rowIndex = 0; rowIndex < ROW_COUNT; rowIndex++)
             {

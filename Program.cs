@@ -11,7 +11,6 @@ namespace slot_machine
             const char DIAGONAL_OPTION = 'd';
             const int STARTING_BET_AMOUNT = 50;
 
-
             //user's winnings, user starts at $50
             UIMethods.welcomeMessage();
 
