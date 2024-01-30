@@ -14,7 +14,7 @@
         //only fills array with values without any output
         //return 2D array
         //use int[,] to ensure we return 2d array with int values
-        public static int[,] fillSlotArrayValues()
+        public static int[,] fillSlotArrayValues(randomValue)
         {
             //insert values in spinning slot machine array
             //array to store random digits
@@ -25,8 +25,8 @@
                 for (int columnIndex = 0; columnIndex < COLUMN_COUNT; columnIndex++)
                 {
                     //generate random value from 0 to 1, where RANDOM_VALUES = 2 to generate either 0 or 1
-                    Random rng = new Random();
-                    int randomValue = rng.Next(RANDOM_VALUES);
+/*                    Random rng = new Random();
+                    int randomValue = rng.Next(RANDOM_VALUES);*/
                     //assign each value to each index in row,column
                     spinningSlotMachine[rowIndex, columnIndex] = randomValue;
                 }
