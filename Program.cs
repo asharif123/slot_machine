@@ -12,14 +12,14 @@ namespace slot_machine
             const int STARTING_BET_AMOUNT = 50;
 
             //user's winnings, user starts at $50
-            UIMethods.welcomeMessage();
+            UIMethods.printWelcomeMessage();
 
             //give user option to replay
             bool replay = true;
             int userCredits = STARTING_BET_AMOUNT;
 
             //show welcome message
-            UIMethods.welcomeMessage();
+            UIMethods.printWelcomeMessage();
 
 
             //add while loop here so user can have access to most recent winnings and not have winnings reset to 50 

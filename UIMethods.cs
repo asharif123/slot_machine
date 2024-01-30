@@ -18,7 +18,7 @@
         public static readonly Random rng = new Random();
 
         //UI method that displays amount of money user starts off with
-        public static void welcomeMessage()
+        public static void printWelcomeMessage()
         {
             Console.WriteLine($"\nYou have ${STARTING_BET_AMOUNT} that you can wager!\n");
             Console.WriteLine("\nSpinning the wheel...\n");
