@@ -28,10 +28,9 @@ namespace slot_machine
                 {
                     //assign each value to each index in row,column
                     spinningSlotMachine[rowIndex, columnIndex] = randomValue;
+                    UIMethods.OutputSlotArray(spinningSlotMachine);
                 }
                 UIMethods.emptySpace();
-                //print out each row
-                UIMethods.OutputSlotArray(spinningSlotMachine[rowIndex, columnIndex]);
             }
             return spinningSlotMachine;
         }
@@ -108,7 +107,7 @@ namespace slot_machine
             //if no matching columns were found
             if (matchingColumns == NO_MATCHING_LINES)
             {
-                Console.WriteLine($"\nYou have {NO_MATCHING_LINES} matching columns!\n");
+                UIMethods.noMatchingLines(NO_MATCHING_LINES);
             }
             //if 1, 2 or 3 matching columns are found
             else

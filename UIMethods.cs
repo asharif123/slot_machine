@@ -35,6 +35,11 @@
             Console.WriteLine();
         }
 
+        public static void noMatchingLines(int matchingLines)
+        {
+            Console.WriteLine($"You have no {matchingLines} lines!");
+        }
+
         //output the slot machine having filled values
         //separate it from logic method that is filling values
         public static void OutputSlotArray(int[,] slotArray)
