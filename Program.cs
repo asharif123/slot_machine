@@ -40,7 +40,8 @@ namespace slot_machine
                 }
 
                 //fill the array with values 0 and 1
-                Logic.fillSlotArrayValues();
+                //declare random in main to make it acccesible to every function that needs it
+                Logic.fillSlotArrayValues(RANDOM_VALUES);
 
                 //wager amount
                 int wager = UIMethods.wagerAmount();
