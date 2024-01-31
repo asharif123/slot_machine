@@ -35,7 +35,22 @@
             Console.WriteLine();
         }
 
-        public static void noMatchingLines(int matchingLines)
+        public static void printNoMatchingLines(int matchingLines)
+        {
+            Console.WriteLine($"You have no {matchingLines} lines!");
+        }
+
+        public static void printMatchingRowLines(int matchingLines)
+        {
+            Console.WriteLine($"You have no {matchingLines} lines!");
+        }
+
+        public static void printMatchingColumnLines(int matchingLines)
+        {
+            Console.WriteLine($"You have no {matchingLines} lines!");
+        }
+
+        public static void printMatchingDiagonalLines(int matchingLines)
         {
             Console.WriteLine($"You have no {matchingLines} lines!");
         }

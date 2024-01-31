@@ -10,7 +10,7 @@ namespace slot_machine
         const int COLUMN_COUNT = 3;
         const int MATCH_TWO_ADJACENT_VALUES = 2;
         const int NO_MATCHING_LINES = 0;
-
+        const int[,] spinningSlotMachine = new int[ROW_COUNT,COLUMN_COUNT];
 
         //function should return int array containing random value
         //only fills array with values without any output
@@ -21,7 +21,6 @@ namespace slot_machine
             //insert values in spinning slot machine array
             //array to store random digits
             //2D array that is 3 by 3
-            int[,] spinningSlotMachine = new int[ROW_COUNT, COLUMN_COUNT];
             for (int rowIndex = 0; rowIndex < ROW_COUNT; rowIndex++)
             {
                 for (int columnIndex = 0; columnIndex < COLUMN_COUNT; columnIndex++)
@@ -35,11 +34,9 @@ namespace slot_machine
             return spinningSlotMachine;
         }
 
-        //check how much user has won or lost based off horizontal/vertical/diagonal options
-
+        //check how much user has won or lost based off horizontal/vertical/diagonal option
         public static void checkHorizontalOption()
         {
-
             //keep track of number of correct row matches
             int matchingRows = 0;
             int correctMatches = 0;
@@ -67,16 +64,14 @@ namespace slot_machine
             //if no matching columns were found
             if (matchingRows == NO_MATCHING_LINES)
             {
-                Console.WriteLine($"\nYou have {NO_MATCHING_LINES} matching columns!\n");
+                UIMethods.printNoMatchingLines(NO_MATCHING_LINES);
             }
             //if 1, 2 or 3 matching columns are found
             else
             {
-                Console.WriteLine($"\nYou have {matchingRows} matching columns!\n");
-                winnings += UIMethods.wagerAmount() * matchingRows;
+                UIMethods.printMatchingRowLines(matchingRows);
+/*                winnings += UIMethods.wagerAmount() * matchingRows;*/
             }
-            Console.WriteLine($"Your total winnings are ${winnings}!\n");
-
         }
         public static void checkVerticalOption()
         {
@@ -107,16 +102,14 @@ namespace slot_machine
             //if no matching columns were found
             if (matchingColumns == NO_MATCHING_LINES)
             {
-                UIMethods.noMatchingLines(NO_MATCHING_LINES);
+                UIMethods.printNoMatchingLines(NO_MATCHING_LINES);
             }
             //if 1, 2 or 3 matching columns are found
             else
             {
-                Console.WriteLine($"\nYou have {matchingColumns} matching columns!\n");
-                winnings += UIMethods.wagerAmount() * matchingColumns;
-            }
-            Console.WriteLine($"Your total winnings are ${winnings}!\n");
-
+                UIMethods.printMatchingColumnLines(matchingColumns);
+/*                winnings += UIMethods.wagerAmount() * matchingColumns;
+*/            }
         }
 
         public static void checkDiagonalOption()
@@ -165,15 +158,14 @@ namespace slot_machine
 
             if (matchingDiagonals == NO_MATCHING_LINES)
             {
-                Console.WriteLine($"\nYou have {NO_MATCHING_LINES} matching diagonal lines!\n");
+                UIMethods.printNoMatchingLines(NO_MATCHING_LINES);
             }
             else
             {
-                Console.WriteLine($"\nYou have {matchingDiagonals} matching diagonal lines!\n");
-                winnings += UIMethods.wagerAmount()*matchingDiagonals;
-            }
-            Console.WriteLine($"Your total winnings are ${winnings}.\n");
-            return;
+                UIMethods.printMatchingDiagonalLines(matchingDiagonals);
+/*                winnings += UIMethods.wagerAmount()*matchingDiagonals;
+*/            }
+           return;
 
         }
 
