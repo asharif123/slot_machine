@@ -34,22 +34,18 @@
         {
             Console.WriteLine();
         }
-
         public static void printNoMatchingLines(int matchingLines)
         {
             Console.WriteLine($"You have no {matchingLines} lines!");
         }
-
         public static void printMatchingRowLines(int matchingLines)
         {
             Console.WriteLine($"You have {matchingLines} horizontal lines!");
         }
-
         public static void printMatchingColumnLines(int matchingLines)
         {
             Console.WriteLine($"You have {matchingLines} vertical lines!");
         }
-
         public static void printMatchingDiagonalLines(int matchingLines)
         {
             Console.WriteLine($"You have {matchingLines} diagonal lines!");
