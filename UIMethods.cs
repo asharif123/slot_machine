@@ -42,17 +42,17 @@
 
         public static void printMatchingRowLines(int matchingLines)
         {
-            Console.WriteLine($"You have no {matchingLines} lines!");
+            Console.WriteLine($"You have {matchingLines} horizontal lines!");
         }
 
         public static void printMatchingColumnLines(int matchingLines)
         {
-            Console.WriteLine($"You have no {matchingLines} lines!");
+            Console.WriteLine($"You have {matchingLines} vertical lines!");
         }
 
         public static void printMatchingDiagonalLines(int matchingLines)
         {
-            Console.WriteLine($"You have no {matchingLines} lines!");
+            Console.WriteLine($"You have {matchingLines} diagonal lines!");
         }
 
         //output the slot machine having filled values
