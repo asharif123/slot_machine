@@ -10,7 +10,7 @@ namespace slot_machine
         const int COLUMN_COUNT = 3;
         const int MATCH_TWO_ADJACENT_VALUES = 2;
         const int NO_MATCHING_LINES = 0;
-        const int[,] spinningSlotMachine = new int[ROW_COUNT,COLUMN_COUNT];
+        const int[,] spinningSlotMachine = new int[ROW_COUNT, COLUMN_COUNT];
 
         //function should return int array containing random value
         //only fills array with values without any output
@@ -70,7 +70,7 @@ namespace slot_machine
             else
             {
                 UIMethods.printMatchingRowLines(matchingRows);
-/*                winnings += UIMethods.wagerAmount() * matchingRows;*/
+                /*                winnings += UIMethods.wagerAmount() * matchingRows;*/
             }
         }
         public static void checkVerticalOption()
@@ -108,8 +108,9 @@ namespace slot_machine
             else
             {
                 UIMethods.printMatchingColumnLines(matchingColumns);
-/*                winnings += UIMethods.wagerAmount() * matchingColumns;
-*/            }
+                /*                winnings += UIMethods.wagerAmount() * matchingColumns;
+                */
+            }
         }
 
         public static void checkDiagonalOption()
@@ -163,9 +164,10 @@ namespace slot_machine
             else
             {
                 UIMethods.printMatchingDiagonalLines(matchingDiagonals);
-/*                winnings += UIMethods.wagerAmount()*matchingDiagonals;
-*/            }
-           return;
+                /*                winnings += UIMethods.wagerAmount()*matchingDiagonals;
+                */
+            }
+            return;
 
         }
 
