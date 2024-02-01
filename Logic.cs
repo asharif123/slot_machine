@@ -2,7 +2,6 @@
 namespace slot_machine
 {
     //contains methods for spinning slot machine, check if user has won horizontally/vertically/diagonally
-    Random rnd = new Random();
     public static class Logic
     {
 
@@ -36,7 +35,7 @@ namespace slot_machine
         }
 
         //check how much user has won or lost based off horizontal/vertical/diagonal option
-        public static void checkHorizontalOption()
+        public static int checkHorizontalOption()
         {
             //keep track of number of correct row matches
             int matchingRows = 0;
@@ -73,8 +72,9 @@ namespace slot_machine
                 UIMethods.printMatchingRowLines(matchingRows);
                 /*                winnings += UIMethods.wagerAmount() * matchingRows;*/
             }
+            return matchingRows;
         }
-        public static void checkVerticalOption()
+        public static int checkVerticalOption()
         {
             //vertical scenarios
             //keep track of number of correct column matches
@@ -112,9 +112,10 @@ namespace slot_machine
                 /*                winnings += UIMethods.wagerAmount() * matchingColumns;
                 */
             }
+            return matchingColumns;
         }
 
-        public static void checkDiagonalOption()
+        public static int checkDiagonalOption()
         {
             //diagonal scenarios
             int correctMatches = 0;
@@ -168,7 +169,7 @@ namespace slot_machine
                 /*                winnings += UIMethods.wagerAmount()*matchingDiagonals;
                 */
             }
-            return;
+            return matchingDiagonals;
 
         }
 
