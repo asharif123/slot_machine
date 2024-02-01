@@ -27,7 +27,6 @@ namespace slot_machine
             //show welcome message
             UIMethods.printWelcomeMessage();
 
-
             //add while loop here so user can have access to most recent winnings and not have winnings reset to 50 
             while (replay)
             {
