@@ -53,24 +53,31 @@ namespace slot_machine
 
                 if (userOption == HORIZONTAL_OPTION)
                 {
-                    Logic.checkHorizontalOption();
+                    //update userCredits depending if user matched any horizontal lines
+                    userCredits += UIMethods.inputWagerAmount() * Logic.checkHorizontalOption();
                 }
 
                 else if (userOption == VERTICAL_OPTION)
                 {
                     Logic.checkVerticalOption();
+                    //update userCredits depending if user matched any horizontal lines
+                    userCredits += UIMethods.inputWagerAmount() * Logic.checkVerticalOption();
+
                 }
 
                 else if (userOption == DIAGONAL_OPTION)
                 {
                     Logic.checkDiagonalOption();
+                    //update userCredits depending if user matched any horizontal lines
+                    userCredits += UIMethods.inputWagerAmount() * Logic.checkDiagonalOption();
+
                 }
 
                 //user decides to replay the game
                 if (UIMethods.askUserToPlayAgain() == false)
                 {
                     replay = false;
-                    return;
+                    break;
                 }
             }
         }

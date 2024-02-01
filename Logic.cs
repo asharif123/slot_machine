@@ -70,10 +70,10 @@ namespace slot_machine
             else
             {
                 UIMethods.printMatchingRowLines(matchingRows);
-                /*                winnings += UIMethods.wagerAmount() * matchingRows;*/
             }
             return matchingRows;
         }
+
         public static int checkVerticalOption()
         {
             //vertical scenarios
