@@ -1,8 +1,8 @@
-﻿using System;
-
+﻿
 namespace slot_machine
 {
     //contains methods for spinning slot machine, check if user has won horizontally/vertically/diagonally
+    Random rnd = new Random();
     public static class Logic
     {
 
@@ -11,6 +11,7 @@ namespace slot_machine
         const int MATCH_TWO_ADJACENT_VALUES = 2;
         const int NO_MATCHING_LINES = 0;
         const int[,] spinningSlotMachine = new int[ROW_COUNT, COLUMN_COUNT];
+
 
         //function should return int array containing random value
         //only fills array with values without any output
