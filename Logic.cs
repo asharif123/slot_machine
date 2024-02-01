@@ -170,7 +170,6 @@ namespace slot_machine
                 */
             }
             return matchingDiagonals;
-
         }
 
     }
