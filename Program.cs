@@ -62,7 +62,6 @@ namespace slot_machine
                     Logic.checkVerticalOption();
                     //update userCredits depending if user matched any horizontal lines
                     userCredits += UIMethods.inputWagerAmount() * Logic.checkVerticalOption();
-
                 }
 
                 else if (userOption == DIAGONAL_OPTION)
@@ -70,7 +69,6 @@ namespace slot_machine
                     Logic.checkDiagonalOption();
                     //update userCredits depending if user matched any horizontal lines
                     userCredits += UIMethods.inputWagerAmount() * Logic.checkDiagonalOption();
-
                 }
 
                 //user decides to replay the game
