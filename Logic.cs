@@ -109,8 +109,6 @@ namespace slot_machine
             else
             {
                 UIMethods.printMatchingColumnLines(matchingColumns);
-                /*                winnings += UIMethods.wagerAmount() * matchingColumns;
-                */
             }
             return matchingColumns;
         }
@@ -166,8 +164,6 @@ namespace slot_machine
             else
             {
                 UIMethods.printMatchingDiagonalLines(matchingDiagonals);
-                /*                winnings += UIMethods.wagerAmount()*matchingDiagonals;
-                */
             }
             return matchingDiagonals;
         }
