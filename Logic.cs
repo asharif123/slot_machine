@@ -27,9 +27,9 @@ namespace slot_machine
                 {
                     //assign each value to each index in row,column
                     spinningSlotMachine[rowIndex, columnIndex] = randomValue;
-                    UIMethods.OutputSlotArray(spinningSlotMachine);
+                    UIMethods.printSlotArray(spinningSlotMachine);
                 }
-                UIMethods.emptySpace();
+                UIMethods.printEmptySpace();
             }
             return spinningSlotMachine;
         }

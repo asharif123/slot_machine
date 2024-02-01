@@ -25,12 +25,12 @@
         }
 
         //UI method showing message to display if user has money left!
-        public static void showMessageNoMoneyLeft()
+        public static void printMessageNoMoneyLeft()
         {
             Console.WriteLine("\nSorry, you have no money left!");
         }
 
-        public static void emptySpace()
+        public static void printEmptySpace()
         {
             Console.WriteLine();
         }
@@ -53,7 +53,7 @@
 
         //output the slot machine having filled values
         //separate it from logic method that is filling values
-        public static void OutputSlotArray(int[,] slotArray)
+        public static void printSlotArray(int[,] slotArray)
         {
             for (int rowIndex = 0; rowIndex < ROW_COUNT; rowIndex++)
             {
@@ -65,7 +65,7 @@
         }
 
         //UI method to see how much user wagers
-        public static int wagerAmount()
+        public static int inputWagerAmount()
         {
             Console.WriteLine($"\nEnter a value from {MINIMUM_BET} to {STARTING_BET_AMOUNT} that you would like to wager!\n");
             //convert string to integer value
@@ -94,7 +94,7 @@
         }
 
         //UIMethod containing options to match horizontally, vertically, or diagonally
-        public static char matchingOption()
+        public static char printMatchingOption()
         {
             Console.WriteLine($"\nEnter {HORIZONTAL_OPTION} to match numbers horizontally, {VERTICAL_OPTION} to match vertically, {DIAGONAL_OPTION} to match diagonally\n");
             char userInput = Char.ToLower(Console.ReadKey().KeyChar);
@@ -103,7 +103,7 @@
         }
 
         //give user the option to replay the game or quit
-        public static bool playAgain()
+        public static bool askUserToPlayAgain()
         {
             Console.WriteLine($"\nPress {CONTINUE_PLAYING} to continue playing or any key to quit!\n");
             char optionToContinue = Char.ToLower(Console.ReadKey().KeyChar);

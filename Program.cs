@@ -35,7 +35,7 @@ namespace slot_machine
                 //immediately check to determine if user has enough money to wager
                 if (userCredits <= 0)
                 {
-                    UIMethods.showMessageNoMoneyLeft();
+                    UIMethods.printMessageNoMoneyLeft();
                     break;
                 }
 
@@ -44,12 +44,12 @@ namespace slot_machine
                 Logic.fillSlotArrayValues(RANDOM_VALUES);
 
                 //wager amount
-                int wager = UIMethods.wagerAmount();
+                int wager = UIMethods.inputWagerAmount();
                 //subtract wager from user credits
                 userCredits -= wager;
 
                 //record whether use has selected horizontal, vertical or diagonal
-                char userOption = UIMethods.matchingOption();
+                char userOption = UIMethods.printMatchingOption();
 
                 if (userOption == HORIZONTAL_OPTION)
                 {
@@ -67,7 +67,7 @@ namespace slot_machine
                 }
 
                 //user decides to replay the game
-                if (UIMethods.playAgain() == false)
+                if (UIMethods.askUserToPlayAgain() == false)
                 {
                     replay = false;
                     return;
