@@ -8,7 +8,6 @@ namespace slot_machine
         const int ROW_COUNT = 3;
         const int COLUMN_COUNT = 3;
         const int MATCH_TWO_ADJACENT_VALUES = 2;
-        const int NO_MATCHING_LINES = 0;
         const int[,] spinningSlotMachine = new int[ROW_COUNT, COLUMN_COUNT];
 
 
@@ -40,6 +39,7 @@ namespace slot_machine
             //keep track of number of correct row matches
             int matchingRows = 0;
             int correctMatches = 0;
+            int NO_MATCHING_LINES = 0;
 
             for (int rowIndex = 0; rowIndex < ROW_COUNT; rowIndex++)
             {
@@ -80,6 +80,7 @@ namespace slot_machine
             //keep track of number of correct column matches
             int matchingColumns = 0;
             int correctMatches = 0;
+            int NO_MATCHING_LINES = 0;
 
             for (int columnIndex = 0; columnIndex < COLUMN_COUNT; columnIndex++)
             {
@@ -118,6 +119,7 @@ namespace slot_machine
             //diagonal scenarios
             int correctMatches = 0;
             int matchingDiagonals = 0;
+            int NO_MATCHING_LINES = 0;
 
             //verify that three numbers from top left to bottom right diagonal match
             for (int rowIndex = 0; rowIndex < ROW_COUNT - 1; rowIndex++)
@@ -138,7 +140,7 @@ namespace slot_machine
 
             //row starts at 0 and column starts at 2, decrease by 1 each time until column is 2 and row is 0
             //start at rowIndex = 0 and columnIndex = 2
-            //length of 2D array is 3
+            //length of 2D array is 3, get length of first row having 3 values
             int colIndex = spinningSlotMachine.GetLength(0) - 1;
 
             for (int rowIndex = 0; rowIndex < ROW_COUNT - 1; rowIndex++)
