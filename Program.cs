@@ -18,14 +18,15 @@ namespace slot_machine
             int randomValue = rd.Next(RANDOM_VALUES);
 
             //user's winnings, user starts at $50
-            UIMethods.printWelcomeMessage();
+            UIMethods.PrintWelcomeMessage();
 
             //give user option to replay
             bool replay = true;
             int userCredits = STARTING_BET_AMOUNT;
 
             //show welcome message
-            UIMethods.printWelcomeMessage();
+            UIMethods.PrintWelcomeMessage();
+
 
             //add while loop here so user can have access to most recent winnings and not have winnings reset to 50 
             while (replay)
@@ -34,47 +35,42 @@ namespace slot_machine
                 //immediately check to determine if user has enough money to wager
                 if (userCredits <= 0)
                 {
-                    UIMethods.printMessageNoMoneyLeft();
+                    UIMethods.ShowMessageNoMoneyLeft();
                     break;
                 }
 
                 //fill the array with values 0 and 1
                 //declare random in main to make it acccesible to every function that needs it
-                Logic.fillSlotArrayValues(randomValue);
+                Logic.FillSlotArrayValues(rd);
 
                 //wager amount
-                int wager = UIMethods.inputWagerAmount();
+                int wager = UIMethods.InputWagerAmount();
                 //subtract wager from user credits
                 userCredits -= wager;
 
                 //record whether use has selected horizontal, vertical or diagonal
-                char userOption = UIMethods.printMatchingOption();
+                char userOption = UIMethods.PrintMatchingOption();
 
                 if (userOption == HORIZONTAL_OPTION)
                 {
-                    //update userCredits depending if user matched any horizontal lines
-                    userCredits += wager * Logic.checkHorizontalOption();
+                    Logic.CheckHorizontalOption();
                 }
 
                 else if (userOption == VERTICAL_OPTION)
                 {
-                    Logic.checkVerticalOption();
-                    //update userCredits depending if user matched any horizontal lines
-                    userCredits += wager * Logic.checkVerticalOption();
+                    Logic.CheckVerticalOption();
                 }
 
                 else if (userOption == DIAGONAL_OPTION)
                 {
-                    Logic.checkDiagonalOption();
-                    //update userCredits depending if user matched any horizontal lines
-                    userCredits += wager * Logic.checkDiagonalOption();
+                    Logic.CheckDiagonalOption();
                 }
 
                 //user decides to replay the game
-                if (UIMethods.askUserToPlayAgain() == false)
+                if (UIMethods.AskUserToPlayAgain() == false)
                 {
                     replay = false;
-                    break;
+                    return;
                 }
             }
         }

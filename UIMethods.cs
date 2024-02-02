@@ -18,42 +18,42 @@
         public static readonly Random rng = new Random();
 
         //UI method that displays amount of money user starts off with
-        public static void printWelcomeMessage()
+        public static void PrintWelcomeMessage()
         {
             Console.WriteLine($"\nYou have ${STARTING_BET_AMOUNT} that you can wager!\n");
             Console.WriteLine("\nSpinning the wheel...\n");
         }
 
         //UI method showing message to display if user has money left!
-        public static void printMessageNoMoneyLeft()
+        public static void ShowMessageNoMoneyLeft()
         {
             Console.WriteLine("\nSorry, you have no money left!");
         }
 
-        public static void printEmptySpace()
+        public static void PrintEmptySpace()
         {
             Console.WriteLine();
         }
-        public static void printNoMatchingLines(int matchingLines)
+        public static void PrintNoMatchingLines(int matchingLines)
         {
             Console.WriteLine($"You have no {matchingLines} lines!");
         }
-        public static void printMatchingRowLines(int matchingLines)
+        public static void PrintMatchingRowLines(int matchingLines)
         {
             Console.WriteLine($"You have {matchingLines} horizontal lines!");
         }
-        public static void printMatchingColumnLines(int matchingLines)
+        public static void PrintMatchingColumnLines(int matchingLines)
         {
             Console.WriteLine($"You have {matchingLines} vertical lines!");
         }
-        public static void printMatchingDiagonalLines(int matchingLines)
+        public static void PrintMatchingDiagonalLines(int matchingLines)
         {
             Console.WriteLine($"You have {matchingLines} diagonal lines!");
         }
 
         //output the slot machine having filled values
         //separate it from logic method that is filling values
-        public static void printSlotArray(int[,] slotArray)
+        public static void PrintSlotArray(int[,] slotArray)
         {
             for (int rowIndex = 0; rowIndex < ROW_COUNT; rowIndex++)
             {
@@ -65,7 +65,7 @@
         }
 
         //UI method to see how much user wagers
-        public static int inputWagerAmount()
+        public static int InputWagerAmount()
         {
             Console.WriteLine($"\nEnter a value from {MINIMUM_BET} to {STARTING_BET_AMOUNT} that you would like to wager!\n");
             //convert string to integer value
@@ -94,7 +94,7 @@
         }
 
         //UIMethod containing options to match horizontally, vertically, or diagonally
-        public static char printMatchingOption()
+        public static char PrintMatchingOption()
         {
             Console.WriteLine($"\nEnter {HORIZONTAL_OPTION} to match numbers horizontally, {VERTICAL_OPTION} to match vertically, {DIAGONAL_OPTION} to match diagonally\n");
             char userInput = Char.ToLower(Console.ReadKey().KeyChar);
@@ -103,7 +103,7 @@
         }
 
         //give user the option to replay the game or quit
-        public static bool askUserToPlayAgain()
+        public static bool AskUserToPlayAgain()
         {
             Console.WriteLine($"\nPress {CONTINUE_PLAYING} to continue playing or any key to quit!\n");
             char optionToContinue = Char.ToLower(Console.ReadKey().KeyChar);

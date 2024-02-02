@@ -15,7 +15,7 @@ namespace slot_machine
         //only fills array with values without any output
         //return 2D array
         //use int[,] to ensure we return 2d array with int values
-        public static int[,] fillSlotArrayValues(int randomValue)
+        public static int[,] FillSlotArrayValues(int randomValue)
         {
             //insert values in spinning slot machine array
             //array to store random digits
@@ -26,15 +26,15 @@ namespace slot_machine
                 {
                     //assign each value to each index in row,column
                     spinningSlotMachine[rowIndex, columnIndex] = randomValue;
-                    UIMethods.printSlotArray(spinningSlotMachine);
+                    UIMethods.PrintSlotArray(spinningSlotMachine);
                 }
-                UIMethods.printEmptySpace();
+                UIMethods.PrintEmptySpace();
             }
             return spinningSlotMachine;
         }
 
         //check how much user has won or lost based off horizontal/vertical/diagonal option
-        public static int checkHorizontalOption()
+        public static int CheckHorizontalOption()
         {
             //keep track of number of correct row matches
             int matchingRows = 0;
@@ -64,17 +64,17 @@ namespace slot_machine
             //if no matching columns were found
             if (matchingRows == NO_MATCHING_LINES)
             {
-                UIMethods.printNoMatchingLines(NO_MATCHING_LINES);
+                UIMethods.PrintNoMatchingLines(NO_MATCHING_LINES);
             }
             //if 1, 2 or 3 matching columns are found
             else
             {
-                UIMethods.printMatchingRowLines(matchingRows);
+                UIMethods.PrintMatchingRowLines(matchingRows);
             }
             return matchingRows;
         }
 
-        public static int checkVerticalOption()
+        public static int CheckVerticalOption()
         {
             //vertical scenarios
             //keep track of number of correct column matches
@@ -104,17 +104,17 @@ namespace slot_machine
             //if no matching columns were found
             if (matchingColumns == NO_MATCHING_LINES)
             {
-                UIMethods.printNoMatchingLines(NO_MATCHING_LINES);
+                UIMethods.PrintNoMatchingLines(NO_MATCHING_LINES);
             }
             //if 1, 2 or 3 matching columns are found
             else
             {
-                UIMethods.printMatchingColumnLines(matchingColumns);
+                UIMethods.PrintMatchingColumnLines(matchingColumns);
             }
             return matchingColumns;
         }
 
-        public static int checkDiagonalOption()
+        public static int CheckDiagonalOption()
         {
             //diagonal scenarios
             int correctMatches = 0;
@@ -161,11 +161,11 @@ namespace slot_machine
 
             if (matchingDiagonals == NO_MATCHING_LINES)
             {
-                UIMethods.printNoMatchingLines(NO_MATCHING_LINES);
+                UIMethods.PrintNoMatchingLines(NO_MATCHING_LINES);
             }
             else
             {
-                UIMethods.printMatchingDiagonalLines(matchingDiagonals);
+                UIMethods.PrintMatchingDiagonalLines(matchingDiagonals);
             }
             return matchingDiagonals;
         }
