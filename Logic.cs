@@ -2,20 +2,23 @@
 namespace slot_machine
 {
     //contains methods for spinning slot machine, check if user has won horizontally/vertically/diagonally
+
     public static class Logic
     {
 
         const int ROW_COUNT = 3;
         const int COLUMN_COUNT = 3;
         const int MATCH_TWO_ADJACENT_VALUES = 2;
-        const int[,] spinningSlotMachine = new int[ROW_COUNT, COLUMN_COUNT];
+
+        public int[,] spinningSlotMachine = new int[ROW_COUNT, COLUMN_COUNT];
+        
 
 
         //function should return int array containing random value
         //only fills array with values without any output
         //return 2D array
         //use int[,] to ensure we return 2d array with int values
-        public static int[,] FillSlotArrayValues(int randomValue)
+        public static int[,] FillSlotArrayValues(Random randomValue)
         {
             //insert values in spinning slot machine array
             //array to store random digits
@@ -25,7 +28,7 @@ namespace slot_machine
                 for (int columnIndex = 0; columnIndex < COLUMN_COUNT; columnIndex++)
                 {
                     //assign each value to each index in row,column
-                    spinningSlotMachine[rowIndex, columnIndex] = randomValue;
+                    spinningSlotMachine[rowIndex, columnIndex] = randomValue.Next();
                     UIMethods.PrintSlotArray(spinningSlotMachine);
                 }
                 UIMethods.PrintEmptySpace();

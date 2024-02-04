@@ -10,12 +10,10 @@ namespace slot_machine
             const char VERTICAL_OPTION = 'v';
             const char DIAGONAL_OPTION = 'd';
             const int STARTING_BET_AMOUNT = 50;
-            const int RANDOM_VALUES = 2;
 
             //declare random value in main function instead of function
             //make it accesible to all functions
             Random rd = new Random();
-            int randomValue = rd.Next(RANDOM_VALUES);
 
             //user's winnings, user starts at $50
             UIMethods.PrintWelcomeMessage();
