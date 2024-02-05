@@ -47,23 +47,24 @@
                 UIMethods.PrintEmptySpace();
                 //fill the array with values 0 and 1
                 //declare random in main to make it acccesible to every function that needs it
-                Logic.FillSlotArrayValues(rd, spinningSlotMachine);
+                //pass results of spinningSlotMachine to horizontal/vertical/diagonal options
+                int[,] spinningSlotMachineResults = Logic.FillSlotArrayValues(rd, spinningSlotMachine);
 
                 if (userOption == HORIZONTAL_OPTION)
                 {
-                    int totalHorizontalLines = Logic.CheckHorizontalOption(spinningSlotMachine);
+                    int totalHorizontalLines = Logic.CheckHorizontalOption(spinningSlotMachineResults);
                     userCredits += (userCredits * totalHorizontalLines);
                 }
 
                 else if (userOption == VERTICAL_OPTION)
                 {
-                    int totalVerticalLines = Logic.CheckVerticalOption(spinningSlotMachine);
+                    int totalVerticalLines = Logic.CheckVerticalOption(spinningSlotMachineResults);
                     userCredits += (userCredits * totalVerticalLines);
                 }
 
                 else if (userOption == DIAGONAL_OPTION)
                 {
-                    int totalDiagonalLines = Logic.CheckDiagonalOption(spinningSlotMachine);
+                    int totalDiagonalLines = Logic.CheckDiagonalOption(spinningSlotMachineResults);
                     userCredits += (userCredits * totalDiagonalLines);
                 }
 
