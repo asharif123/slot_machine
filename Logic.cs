@@ -40,7 +40,6 @@ namespace slot_machine
             //keep track of number of correct row matches
             int matchingRows = 0;
             int correctMatches = 0;
-            int NO_MATCHING_LINES = 0;
 
             for (int rowIndex = 0; rowIndex < ROW_COUNT; rowIndex++)
             {
@@ -63,7 +62,7 @@ namespace slot_machine
             }
 
             //if no matching columns were found
-            if (matchingRows == NO_MATCHING_LINES)
+            if (matchingRows == 0)
             {
                 UIMethods.PrintNoMatchingLines();
             }
