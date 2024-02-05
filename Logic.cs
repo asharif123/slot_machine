@@ -9,13 +9,14 @@ namespace slot_machine
         const int ROW_COUNT = 3;
         const int COLUMN_COUNT = 3;
         const int MATCH_TWO_ADJACENT_VALUES = 2;
-        public int[,] spinningSlotMachine = new int[ROW_COUNT, COLUMN_COUNT];
+        const int MIN_VALUE = 0;
+        const int MAX_VALUE = 2;
 
         //function should return int array containing random value
         //only fills array with values without any output
         //return 2D array
         //use int[,] to ensure we return 2d array with int values
-        public static int[,] FillSlotArrayValues(Random randomValue)
+        public static int[,] FillSlotArrayValues(Random randomValue, int[,] slotMachine)
         {
             //insert values in spinning slot machine array
             //array to store random digits
@@ -25,16 +26,16 @@ namespace slot_machine
                 for (int columnIndex = 0; columnIndex < COLUMN_COUNT; columnIndex++)
                 {
                     //assign each value to each index in row,column
-                    spinningSlotMachine[rowIndex, columnIndex] = randomValue.Next();
-                    UIMethods.PrintSlotArray(spinningSlotMachine);
+                    slotMachine[rowIndex, columnIndex] = randomValue.Next(MIN_VALUE,MAX_VALUE);
+                    UIMethods.PrintSlotArray(slotMachine);
                 }
                 UIMethods.PrintEmptySpace();
             }
-            return spinningSlotMachine;
+            return slotMachine;
         }
 
         //check how much user has won or lost based off horizontal/vertical/diagonal option
-        public static int CheckHorizontalOption()
+        public static int CheckHorizontalOption(int[,] slotMachine)
         {
             //keep track of number of correct row matches
             int matchingRows = 0;
@@ -45,7 +46,7 @@ namespace slot_machine
             {
                 for (int columnIndex = 0; columnIndex < COLUMN_COUNT - 1; columnIndex++)
                 {
-                    if (spinningSlotMachine[rowIndex, columnIndex] == spinningSlotMachine[rowIndex, columnIndex + 1])
+                    if (slotMachine[rowIndex, columnIndex] == slotMachine[rowIndex, columnIndex + 1])
                     {
                         correctMatches += 1;
                     }
@@ -74,7 +75,7 @@ namespace slot_machine
             return matchingRows;
         }
 
-        public static int CheckVerticalOption()
+        public static int CheckVerticalOption(int[,] slotMachine)
         {
             //vertical scenarios
             //keep track of number of correct column matches
@@ -86,7 +87,7 @@ namespace slot_machine
             {
                 for (int rowIndex = 0; rowIndex < ROW_COUNT - 1; rowIndex++)
                 {
-                    if (spinningSlotMachine[rowIndex, columnIndex] == spinningSlotMachine[rowIndex + 1, columnIndex])
+                    if (slotMachine[rowIndex, columnIndex] == slotMachine[rowIndex + 1, columnIndex])
                     {
                         correctMatches += 1;
                     }
@@ -114,7 +115,7 @@ namespace slot_machine
             return matchingColumns;
         }
 
-        public static int CheckDiagonalOption()
+        public static int CheckDiagonalOption(int[,] slotMachine)
         {
             //diagonal scenarios
             int correctMatches = 0;
@@ -124,7 +125,7 @@ namespace slot_machine
             //verify that three numbers from top left to bottom right diagonal match
             for (int rowIndex = 0; rowIndex < ROW_COUNT - 1; rowIndex++)
             {
-                if (spinningSlotMachine[rowIndex, rowIndex] == spinningSlotMachine[rowIndex + 1, rowIndex + 1])
+                if (slotMachine[rowIndex, rowIndex] == slotMachine[rowIndex + 1, rowIndex + 1])
                 {
                     correctMatches += 1;
                 }
@@ -141,11 +142,11 @@ namespace slot_machine
             //row starts at 0 and column starts at 2, decrease by 1 each time until column is 2 and row is 0
             //start at rowIndex = 0 and columnIndex = 2
             //length of 2D array is 3, get length of first row having 3 values
-            int colIndex = spinningSlotMachine.GetLength(0) - 1;
+            int colIndex = slotMachine.GetLength(0) - 1;
 
             for (int rowIndex = 0; rowIndex < ROW_COUNT - 1; rowIndex++)
             {
-                if (spinningSlotMachine[rowIndex, colIndex] == spinningSlotMachine[rowIndex + 1, colIndex - 1])
+                if (slotMachine[rowIndex, colIndex] == slotMachine[rowIndex + 1, colIndex - 1])
                 {
                     correctMatches += 1;
                     //decrement colIndex by 1 once match is found

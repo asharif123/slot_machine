@@ -1,6 +1,4 @@
-﻿//
-
-namespace slot_machine
+﻿namespace slot_machine
 {
     internal class Program
     {
@@ -10,13 +8,15 @@ namespace slot_machine
             const char VERTICAL_OPTION = 'v';
             const char DIAGONAL_OPTION = 'd';
             const int STARTING_BET_AMOUNT = 50;
+            const int ROW_COUNT = 3;
+            const int COLUMN_COUNT = 3;
+            //declared outside of logic class since it's NOT constant
+            //so needs to be declared in Program.cs file
+            int[,] spinningSlotMachine = new int[ROW_COUNT, COLUMN_COUNT];
 
             //declare random value in main function instead of function
             //make it accesible to all functions
             Random rd = new Random();
-
-            //user's winnings, user starts at $50
-            UIMethods.PrintWelcomeMessage();
 
             //give user option to replay
             bool replay = true;
@@ -24,7 +24,6 @@ namespace slot_machine
 
             //show welcome message
             UIMethods.PrintWelcomeMessage();
-
 
             //add while loop here so user can have access to most recent winnings and not have winnings reset to 50 
             while (replay)
@@ -37,10 +36,6 @@ namespace slot_machine
                     break;
                 }
 
-                //fill the array with values 0 and 1
-                //declare random in main to make it acccesible to every function that needs it
-                Logic.FillSlotArrayValues(rd);
-
                 //wager amount
                 int wager = UIMethods.InputWagerAmount();
                 //subtract wager from user credits
@@ -49,19 +44,23 @@ namespace slot_machine
                 //record whether use has selected horizontal, vertical or diagonal
                 char userOption = UIMethods.PrintMatchingOption();
 
+                //fill the array with values 0 and 1
+                //declare random in main to make it acccesible to every function that needs it
+                Logic.FillSlotArrayValues(rd, spinningSlotMachine);
+
                 if (userOption == HORIZONTAL_OPTION)
                 {
-                    Logic.CheckHorizontalOption();
+                    Logic.CheckHorizontalOption(spinningSlotMachine);
                 }
 
                 else if (userOption == VERTICAL_OPTION)
                 {
-                    Logic.CheckVerticalOption();
+                    Logic.CheckVerticalOption(spinningSlotMachine);
                 }
 
                 else if (userOption == DIAGONAL_OPTION)
                 {
-                    Logic.CheckDiagonalOption();
+                    Logic.CheckDiagonalOption(spinningSlotMachine);
                 }
 
                 //user decides to replay the game
