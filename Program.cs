@@ -1,5 +1,14 @@
 ﻿namespace slot_machine
 {
+    //user is greeted with a welcome message
+    //user is given $50 to start with and is asked how much to wager
+    //if user exceed amount to wager or puts 0, asked to reinput wager
+    //user then selects whether to match values horizontall/vertically/diagonally
+    //the slot machine spins generating random 0s and 1s on 2D array
+    //if user gets no matches, user loses money
+    //if user gets 1 matching line, user gets money back, if 2 lines user gets double, if 3 lines user get triple
+    //at end of game, user is asked to play again or quit
+    //if user runs out of money, the game is over
     internal class Program
     {
         static void Main()
@@ -20,6 +29,8 @@
 
             //give user option to replay
             bool replay = true;
+
+            //amount of money user starts off with
             int userCredits = STARTING_BET_AMOUNT;
 
             //show welcome message
@@ -28,14 +39,6 @@
             //add while loop here so user can have access to most recent winnings and not have winnings reset to 50 
             while (replay)
             {
-                //if user runs out of money to wager
-                //immediately check to determine if user has enough money to wager
-                if (userCredits <= 0)
-                {
-                    UIMethods.PrintShowMessageNoMoneyLeft();
-                    break;
-                }
-
                 //wager amount
                 int wager = UIMethods.InputWagerAmount(userCredits);
                 //subtract wager from user credits
@@ -97,6 +100,14 @@
                         userCredits += (wager * totalDiagonalLines);
                     }
                     userCredits += (wager * totalDiagonalLines);
+                }
+
+                //if user runs out of money to wager
+                //immediately check to determine if user has enough money to wager
+                if (userCredits <= 0)
+                {
+                    UIMethods.PrintShowMessageNoMoneyLeft();
+                    break;
                 }
 
                 //user decides to replay the game

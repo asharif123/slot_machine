@@ -27,7 +27,7 @@
         //UI method showing message to display if user has money left!
         public static void PrintShowMessageNoMoneyLeft()
         {
-            Console.WriteLine("\nSorry, you have no money left!");
+            Console.WriteLine("\nSorry, you have no money left! Exiting the game!");
         }
         public static void PrintEmptySpace()
         {
