@@ -62,7 +62,7 @@
         public static int InputWagerAmount(int wagerAmount)
         {
             Console.WriteLine($"\nEnter a value from {MINIMUM_BET} to {wagerAmount} that you would like to wager!\n");
-            //convert string to integer value
+            //convert string to integer value, read the wager value
             string wager = Console.ReadLine();
             int wagerVal = Convert.ToInt32(wager);
             bool notValidInput = true;

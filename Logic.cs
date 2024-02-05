@@ -126,6 +126,12 @@ namespace slot_machine
                     colIndex -= 1;
                 }
             }
+
+            //if we have matching diagonals from top left to bottom right
+            if (correctMatches == MATCH_TWO_ADJACENT_VALUES)
+            {
+                matchingDiagonals += 1;
+            }
             return matchingDiagonals;
         }
 

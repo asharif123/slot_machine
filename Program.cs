@@ -8,7 +8,8 @@
     //if user gets no matches, user loses money
     //if user gets 1 matching line, user gets money back, if 2 lines user gets double, if 3 lines user get triple
     //at end of game, user is asked to play again or quit
-    //if user runs out of money, the game is over
+    //if user runs out of money or selects quit, the game is over
+    //if user continues, user will use updated userCredits to continue playing
     internal class Program
     {
         static void Main()
