@@ -127,7 +127,7 @@ namespace slot_machine
                 }
             }
 
-            //if we have matching diagonals from top left to bottom right
+            //if we have matching diagonals from top right to bottom left
             if (correctMatches == MATCH_TWO_ADJACENT_VALUES)
             {
                 matchingDiagonals += 1;
