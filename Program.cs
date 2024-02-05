@@ -32,7 +32,7 @@
                 //immediately check to determine if user has enough money to wager
                 if (userCredits <= 0)
                 {
-                    UIMethods.ShowMessageNoMoneyLeft();
+                    UIMethods.PrintShowMessageNoMoneyLeft();
                     break;
                 }
 
@@ -57,12 +57,14 @@
 
                 else if (userOption == VERTICAL_OPTION)
                 {
-                    Logic.CheckVerticalOption(spinningSlotMachine);
+                    int totalVerticalLines = Logic.CheckVerticalOption(spinningSlotMachine);
+                    userCredits += (userCredits * totalVerticalLines);
                 }
 
                 else if (userOption == DIAGONAL_OPTION)
                 {
-                    Logic.CheckDiagonalOption(spinningSlotMachine);
+                    int totalDiagonalLines = Logic.CheckDiagonalOption(spinningSlotMachine);
+                    userCredits += (userCredits * totalDiagonalLines);
                 }
 
                 //user decides to replay the game
