@@ -27,8 +27,8 @@ namespace slot_machine
                 {
                     //assign each value to each index in row,column
                     slotMachine[rowIndex, columnIndex] = randomValue.Next(MIN_VALUE,MAX_VALUE);
+                    UIMethods.PrintSlotArray(slotMachine[rowIndex, columnIndex]);
                 }
-                UIMethods.PrintSlotArray(slotMachine);
                 UIMethods.PrintEmptySpace();
             }
             return slotMachine;
@@ -40,7 +40,6 @@ namespace slot_machine
             //keep track of number of correct row matches
             int matchingRows = 0;
             int correctMatches = 0;
-
             for (int rowIndex = 0; rowIndex < ROW_COUNT; rowIndex++)
             {
                 for (int columnIndex = 0; columnIndex < COLUMN_COUNT - 1; columnIndex++)
