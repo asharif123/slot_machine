@@ -37,20 +37,22 @@
                 }
 
                 //wager amount
-                int wager = UIMethods.InputWagerAmount();
+                int wager = UIMethods.InputWagerAmount(userCredits);
                 //subtract wager from user credits
                 userCredits -= wager;
 
                 //record whether use has selected horizontal, vertical or diagonal
                 char userOption = UIMethods.PrintMatchingOption();
 
+                UIMethods.PrintEmptySpace();
                 //fill the array with values 0 and 1
                 //declare random in main to make it acccesible to every function that needs it
                 Logic.FillSlotArrayValues(rd, spinningSlotMachine);
 
                 if (userOption == HORIZONTAL_OPTION)
                 {
-                    Logic.CheckHorizontalOption(spinningSlotMachine);
+                    int totalHorizontalLines = Logic.CheckHorizontalOption(spinningSlotMachine);
+                    userCredits += (userCredits * totalHorizontalLines);
                 }
 
                 else if (userOption == VERTICAL_OPTION)

@@ -29,14 +29,13 @@
         {
             Console.WriteLine("\nSorry, you have no money left!");
         }
-
         public static void PrintEmptySpace()
         {
             Console.WriteLine();
         }
-        public static void PrintNoMatchingLines(int matchingLines)
+        public static void PrintNoMatchingLines()
         {
-            Console.WriteLine($"You have no {matchingLines} lines!");
+            Console.WriteLine($"You have no matching lines!");
         }
         public static void PrintMatchingRowLines(int matchingLines)
         {
@@ -65,9 +64,9 @@
         }
 
         //UI method to see how much user wagers
-        public static int InputWagerAmount()
+        public static int InputWagerAmount(int wagerAmount)
         {
-            Console.WriteLine($"\nEnter a value from {MINIMUM_BET} to {STARTING_BET_AMOUNT} that you would like to wager!\n");
+            Console.WriteLine($"\nEnter a value from {MINIMUM_BET} to {wagerAmount} that you would like to wager!\n");
             //convert string to integer value
             string wager = Console.ReadLine();
             int wagerVal = Convert.ToInt32(wager);

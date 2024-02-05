@@ -27,8 +27,8 @@ namespace slot_machine
                 {
                     //assign each value to each index in row,column
                     slotMachine[rowIndex, columnIndex] = randomValue.Next(MIN_VALUE,MAX_VALUE);
-                    UIMethods.PrintSlotArray(slotMachine);
                 }
+                UIMethods.PrintSlotArray(slotMachine);
                 UIMethods.PrintEmptySpace();
             }
             return slotMachine;
@@ -65,7 +65,7 @@ namespace slot_machine
             //if no matching columns were found
             if (matchingRows == NO_MATCHING_LINES)
             {
-                UIMethods.PrintNoMatchingLines(NO_MATCHING_LINES);
+                UIMethods.PrintNoMatchingLines();
             }
             //if 1, 2 or 3 matching columns are found
             else
@@ -105,7 +105,7 @@ namespace slot_machine
             //if no matching columns were found
             if (matchingColumns == NO_MATCHING_LINES)
             {
-                UIMethods.PrintNoMatchingLines(NO_MATCHING_LINES);
+                UIMethods.PrintNoMatchingLines();
             }
             //if 1, 2 or 3 matching columns are found
             else
@@ -162,7 +162,7 @@ namespace slot_machine
 
             if (matchingDiagonals == NO_MATCHING_LINES)
             {
-                UIMethods.PrintNoMatchingLines(NO_MATCHING_LINES);
+                UIMethods.PrintNoMatchingLines();
             }
             else
             {
