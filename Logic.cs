@@ -26,11 +26,11 @@ namespace slot_machine
                 for (int columnIndex = 0; columnIndex < COLUMN_COUNT; columnIndex++)
                 {
                     //assign each value to each index in row,column
-                    slotMachine[rowIndex, columnIndex] = randomValue.Next(MIN_VALUE,MAX_VALUE);
-                    UIMethods.PrintSlotArray(slotMachine[rowIndex, columnIndex]);
-                }
-                UIMethods.PrintEmptySpace();
-            }
+                    slotMachine[rowIndex, columnIndex] = randomValue.Next(MIN_VALUE, MAX_VALUE);
+/*                    UIMethods.PrintSlotArray(slotMachine[rowIndex, columnIndex]);
+*/                }
+/*                UIMethods.PrintEmptySpace();
+*/            }
             return slotMachine;
         }
 
@@ -55,20 +55,8 @@ namespace slot_machine
                 {
                     matchingRows += 1;
                 }
-
                 //reset correctMatches to iterate next row
                 correctMatches = 0;
-            }
-
-            //if no matching columns were found
-            if (matchingRows == 0)
-            {
-                UIMethods.PrintNoMatchingLines();
-            }
-            //if 1, 2 or 3 matching columns are found
-            else
-            {
-                UIMethods.PrintMatchingRowLines(matchingRows);
             }
             return matchingRows;
         }
@@ -79,7 +67,6 @@ namespace slot_machine
             //keep track of number of correct column matches
             int matchingColumns = 0;
             int correctMatches = 0;
-            int NO_MATCHING_LINES = 0;
 
             for (int columnIndex = 0; columnIndex < COLUMN_COUNT; columnIndex++)
             {
@@ -99,17 +86,6 @@ namespace slot_machine
                 //reset correct matches to iterate next column
                 correctMatches = 0;
             }
-
-            //if no matching columns were found
-            if (matchingColumns == NO_MATCHING_LINES)
-            {
-                UIMethods.PrintNoMatchingLines();
-            }
-            //if 1, 2 or 3 matching columns are found
-            else
-            {
-                UIMethods.PrintMatchingColumnLines(matchingColumns);
-            }
             return matchingColumns;
         }
 
@@ -118,7 +94,6 @@ namespace slot_machine
             //diagonal scenarios
             int correctMatches = 0;
             int matchingDiagonals = 0;
-            int NO_MATCHING_LINES = 0;
 
             //verify that three numbers from top left to bottom right diagonal match
             for (int rowIndex = 0; rowIndex < ROW_COUNT - 1; rowIndex++)
@@ -150,21 +125,6 @@ namespace slot_machine
                     //decrement colIndex by 1 once match is found
                     colIndex -= 1;
                 }
-            }
-
-            //if we have matching diagonals from top right to bottom left
-            if (correctMatches == MATCH_TWO_ADJACENT_VALUES)
-            {
-                matchingDiagonals += 1;
-            }
-
-            if (matchingDiagonals == NO_MATCHING_LINES)
-            {
-                UIMethods.PrintNoMatchingLines();
-            }
-            else
-            {
-                UIMethods.PrintMatchingDiagonalLines(matchingDiagonals);
             }
             return matchingDiagonals;
         }

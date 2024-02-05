@@ -43,28 +43,59 @@
 
                 //record whether use has selected horizontal, vertical or diagonal
                 char userOption = UIMethods.PrintMatchingOption();
-
                 UIMethods.PrintEmptySpace();
                 //fill the array with values 0 and 1
                 //declare random in main to make it acccesible to every function that needs it
                 //pass results of spinningSlotMachine to horizontal/vertical/diagonal options
                 int[,] spinningSlotMachineResults = Logic.FillSlotArrayValues(rd, spinningSlotMachine);
+                UIMethods.PrintSlotArray(spinningSlotMachineResults);
+                UIMethods.PrintEmptySpace();
 
                 if (userOption == HORIZONTAL_OPTION)
                 {
                     int totalHorizontalLines = Logic.CheckHorizontalOption(spinningSlotMachineResults);
-                    userCredits += (wager * totalHorizontalLines);
+                    //if no matching columns were found
+                    if (totalHorizontalLines == 0)
+                    {
+                        UIMethods.PrintNoMatchingLines();
+                    }
+                    //if 1, 2 or 3 matching columns are found
+                    else
+                    {
+                        //pass UIMethods to program or UIMethods, NOT in logic.cs
+                        UIMethods.PrintMatchingRowLines(totalHorizontalLines);
+                        userCredits += (wager * totalHorizontalLines);
+                    }
                 }
 
                 else if (userOption == VERTICAL_OPTION)
                 {
                     int totalVerticalLines = Logic.CheckVerticalOption(spinningSlotMachineResults);
-                    userCredits += (wager * totalVerticalLines);
+                    if (totalVerticalLines == 0)
+                    {
+                        UIMethods.PrintNoMatchingLines();
+                    }
+                    else
+                    {
+                        //pass UIMethods to program or UIMethods, NOT in logic.cs
+                        UIMethods.PrintMatchingColumnLines(totalVerticalLines);
+                        userCredits += (wager * totalVerticalLines);
+                    }
                 }
 
                 else if (userOption == DIAGONAL_OPTION)
                 {
                     int totalDiagonalLines = Logic.CheckDiagonalOption(spinningSlotMachineResults);
+                    if (totalDiagonalLines == 0)
+                    {
+                        UIMethods.PrintNoMatchingLines();
+                    }
+                    else
+                    {
+                        //pass UIMethods to program or UIMethods, NOT in logic.cs
+                        UIMethods.PrintMatchingDiagonalLines(totalDiagonalLines);
+                        userCredits += (wager * totalDiagonalLines);
+                    }
                     userCredits += (wager * totalDiagonalLines);
                 }
 
