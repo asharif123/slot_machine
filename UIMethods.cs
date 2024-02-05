@@ -70,7 +70,7 @@
             //ensure user enters valid wager
             while (notValidInput)
             {
-                if (wagerVal > STARTING_BET_AMOUNT || wagerVal <= NO_WINNINGS_LEFT)
+                if (wagerVal > wagerAmount || wagerVal <= NO_WINNINGS_LEFT)
                 {
                     Console.WriteLine("\nPlease enter a positive wager value that is less than or equal your winnings!\n");
                     //ask user again for wager amount        

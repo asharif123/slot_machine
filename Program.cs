@@ -53,19 +53,19 @@
                 if (userOption == HORIZONTAL_OPTION)
                 {
                     int totalHorizontalLines = Logic.CheckHorizontalOption(spinningSlotMachineResults);
-                    userCredits += (userCredits * totalHorizontalLines);
+                    userCredits += (wager * totalHorizontalLines);
                 }
 
                 else if (userOption == VERTICAL_OPTION)
                 {
                     int totalVerticalLines = Logic.CheckVerticalOption(spinningSlotMachineResults);
-                    userCredits += (userCredits * totalVerticalLines);
+                    userCredits += (wager * totalVerticalLines);
                 }
 
                 else if (userOption == DIAGONAL_OPTION)
                 {
                     int totalDiagonalLines = Logic.CheckDiagonalOption(spinningSlotMachineResults);
-                    userCredits += (userCredits * totalDiagonalLines);
+                    userCredits += (wager * totalDiagonalLines);
                 }
 
                 //user decides to replay the game
