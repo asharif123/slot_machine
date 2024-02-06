@@ -27,10 +27,12 @@ namespace slot_machine
                 {
                     //assign each value to each index in row,column
                     slotMachine[rowIndex, columnIndex] = randomValue.Next(MIN_VALUE, MAX_VALUE);
-/*                    UIMethods.PrintSlotArray(slotMachine[rowIndex, columnIndex]);
-*/                }
-/*                UIMethods.PrintEmptySpace();
-*/            }
+                    /*                    UIMethods.PrintSlotArray(slotMachine[rowIndex, columnIndex]);
+                    */
+                }
+                /*                UIMethods.PrintEmptySpace();
+                */
+            }
             return slotMachine;
         }
 

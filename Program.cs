@@ -48,6 +48,7 @@
                 //record whether use has selected horizontal, vertical or diagonal
                 char userOption = UIMethods.PrintMatchingOption();
                 UIMethods.PrintEmptySpace();
+                UIMethods.PrintEmptySpace();
                 //fill the array with values 0 and 1
                 //declare random in main to make it acccesible to every function that needs it
                 //pass results of spinningSlotMachine to horizontal/vertical/diagonal options
@@ -115,7 +116,6 @@
                 if (UIMethods.AskUserToPlayAgain() == false)
                 {
                     replay = false;
-                    return;
                 }
             }
         }

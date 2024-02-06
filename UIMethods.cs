@@ -53,9 +53,16 @@
         //output the slot machine having filled values
         //separate it from logic method that is filling values
         //declare as int so can return each integer in 2D slot array and display to user what was spun
+        //use nested for loops to print slot machine line by line
         public static void PrintSlotArray(int[,] slotArray)
         {
-            Console.WriteLine(slotArray);
+            for (int rowIndex = 0; rowIndex <  ROW_COUNT; rowIndex++)
+            {
+                for (int columnIndex = 0; columnIndex < COLUMN_COUNT; columnIndex++)
+                {
+                    Console.WriteLine(slotArray[rowIndex,columnIndex]);
+                }
+            }
         }
 
         //UI method to see how much user wagers
