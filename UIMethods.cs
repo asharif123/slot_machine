@@ -56,11 +56,11 @@
         //use nested for loops to print slot machine line by line
         public static void PrintSlotArray(int[,] slotArray)
         {
-            for (int rowIndex = 0; rowIndex <  ROW_COUNT; rowIndex++)
+            for (int rowIndex = 0; rowIndex < ROW_COUNT; rowIndex++)
             {
                 for (int columnIndex = 0; columnIndex < COLUMN_COUNT; columnIndex++)
                 {
-                    Console.WriteLine(slotArray[rowIndex,columnIndex]);
+                    Console.WriteLine(slotArray[rowIndex, columnIndex]);
                 }
             }
         }
@@ -97,9 +97,21 @@
         //UIMethod containing options to match horizontally, vertically, or diagonally
         public static char PrintMatchingOption()
         {
+            bool notValidInput = true;
             Console.WriteLine($"\nEnter {HORIZONTAL_OPTION} to match numbers horizontally, {VERTICAL_OPTION} to match vertically, {DIAGONAL_OPTION} to match diagonally\n");
             char userInput = Char.ToLower(Console.ReadKey().KeyChar);
-            //make userInput accessible
+
+            while (notValidInput)
+            {
+                if (userInput != HORIZONTAL_OPTION || userInput != VERTICAL_OPTION || userInput != DIAGONAL_OPTION) {
+                    Console.WriteLine("\nPlease enter a valid option!\n");
+                    userInput = Char.ToLower(Console.ReadKey().KeyChar);
+                }
+                else
+                {
+                    notValidInput = false;
+                }
+            }
             return userInput;
         }
 
