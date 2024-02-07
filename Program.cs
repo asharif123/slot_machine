@@ -112,7 +112,7 @@
                     break;
                 }
 
-                //user decides to replay the game
+                //user decides to replay the game or exit the program
                 if (UIMethods.AskUserToPlayAgain() == false)
                 {
                     replay = false;
