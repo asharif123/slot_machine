@@ -14,6 +14,8 @@
         const char VERTICAL_OPTION = 'v';
         const char DIAGONAL_OPTION = 'd';
         const char CONTINUE_PLAYING = 'y';
+        //used to check if user has inputted either horizontal/vertical/diagonal
+        const string LINE_MATCHING_OPTIONS = "hvd";
 
         public static readonly Random rng = new Random();
 
@@ -103,7 +105,9 @@
 
             while (notValidInput)
             {
-                if (userInput != HORIZONTAL_OPTION || userInput != VERTICAL_OPTION || userInput != DIAGONAL_OPTION) {
+                //ask user to input correct option if user does not select horizontal/vertical/diagonal
+                if (!LINE_MATCHING_OPTIONS.Contains(userInput))
+                {
                     Console.WriteLine("\nPlease enter a valid option!\n");
                     userInput = Char.ToLower(Console.ReadKey().KeyChar);
                 }
