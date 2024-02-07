@@ -68,6 +68,7 @@
                     else
                     {
                         //pass UIMethods to program or UIMethods, NOT in logic.cs
+                        //print number of matching lines
                         UIMethods.PrintMatchingRowLines(totalHorizontalLines);
                         userCredits += (wager * totalHorizontalLines);
                     }
@@ -83,6 +84,7 @@
                     else
                     {
                         //pass UIMethods to program or UIMethods, NOT in logic.cs
+                        //print number of matching lines
                         UIMethods.PrintMatchingColumnLines(totalVerticalLines);
                         userCredits += (wager * totalVerticalLines);
                     }
@@ -98,6 +100,7 @@
                     else
                     {
                         //pass UIMethods to program or UIMethods, NOT in logic.cs
+                        //print number of matching lines
                         UIMethods.PrintMatchingDiagonalLines(totalDiagonalLines);
                         userCredits += (wager * totalDiagonalLines);
                     }
