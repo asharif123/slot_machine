@@ -15,7 +15,7 @@
         const char DIAGONAL_OPTION = 'd';
         const char CONTINUE_PLAYING = 'y';
         //used to check if user has inputted either horizontal/vertical/diagonal
-        const string LINE_MATCHING_OPTIONS = new List<string>('h', 'v', 'd');
+        const string LINE_MATCHING_OPTIONS = "hvd";
 
         public static readonly Random rng = new Random();
 
@@ -71,7 +71,7 @@
         public static int InputWagerAmount(int wagerAmount)
         {
             Console.WriteLine($"\nEnter a value from {MINIMUM_BET} to {wagerAmount} that you would like to wager!\n");
-            //convert string to integer value, read the wager value
+            //convert string to integer value, read the wager value 
             string wager = Console.ReadLine();
             int wagerVal = Convert.ToInt32(wager);
             bool notValidInput = true;
@@ -82,7 +82,6 @@
                 if (wagerVal > wagerAmount || wagerVal <= NO_WINNINGS_LEFT)
                 {
                     Console.WriteLine("\nPlease enter a positive wager value that is less than or equal your winnings!\n");
-                    //ask user again for wager amount        
                     wager = Console.ReadLine();
                     wagerVal = Convert.ToInt32(wager);
                 }
