@@ -14,8 +14,6 @@
         const char VERTICAL_OPTION = 'v';
         const char DIAGONAL_OPTION = 'd';
         const char CONTINUE_PLAYING = 'y';
-        //used to check if user has inputted either horizontal/vertical/diagonal
-        const string LINE_MATCHING_OPTIONS = "hvd";
 
         public static readonly Random rng = new Random();
 
@@ -90,6 +88,7 @@
                 {
                     notValidInput = false;
                 }
+                return wagerVal;
             }
             //immediately return what user has wagered
             return wagerVal;
@@ -103,6 +102,11 @@
             Console.WriteLine($"\nEnter {HORIZONTAL_OPTION} to match numbers horizontally, {VERTICAL_OPTION} to match vertically, {DIAGONAL_OPTION} to match diagonally\n");
             char userInput = Char.ToLower(Console.ReadKey().KeyChar);
 
+            //create a list of possible options
+            //NOT constant since you don't assign one letter at a time to list
+            List<char> LINE_MATCHING_OPTIONS = new List<char> { 'h', 'v', 'd'};
+
+            //used to check if user has inputted either horizontal/vertical/diagonal
             while (notValidInput)
             {
                 //ask user to input correct option if user does not select horizontal/vertical/diagonal
