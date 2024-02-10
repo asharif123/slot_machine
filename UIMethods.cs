@@ -15,7 +15,7 @@
         const char DIAGONAL_OPTION = 'd';
         const char CONTINUE_PLAYING = 'y';
         //used to check if user has inputted either horizontal/vertical/diagonal
-        const string LINE_MATCHING_OPTIONS = "hvd";
+        const string LINE_MATCHING_OPTIONS = new List<string>('h', 'v', 'd');
 
         public static readonly Random rng = new Random();
 
@@ -97,7 +97,8 @@
         }
 
         //UIMethod containing options to match horizontally, vertically, or diagonally
-        public static char PrintMatchingOption()
+        //check if user selected horizontal, vertical or diagonal
+        public static char InputMatchingOption()
         {
             bool notValidInput = true;
             Console.WriteLine($"\nEnter {HORIZONTAL_OPTION} to match numbers horizontally, {VERTICAL_OPTION} to match vertically, {DIAGONAL_OPTION} to match diagonally\n");

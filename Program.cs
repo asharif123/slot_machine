@@ -46,7 +46,7 @@
                 userCredits -= wager;
 
                 //record whether use has selected horizontal, vertical or diagonal
-                char userOption = UIMethods.PrintMatchingOption();
+                char userOption = UIMethods.InputMatchingOption();
                 UIMethods.PrintEmptySpace();
                 UIMethods.PrintEmptySpace();
                 //fill the array with values 0 and 1
