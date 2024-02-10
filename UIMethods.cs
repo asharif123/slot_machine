@@ -72,7 +72,7 @@ namespace slot_machine
         {
             Console.WriteLine($"\nEnter a value from {MINIMUM_BET} to {wagerAmount} that you would like to wager!\n");
             bool notValidInput = true;
-            int wagerVal;
+            int wagerVal = 0;
             //ensure user enters valid wager
             while (notValidInput)
             {
@@ -83,7 +83,7 @@ namespace slot_machine
                 bool success = int.TryParse(wager, out wagerVal);
                 
                 //if user enters an integer value
-                if (success)
+                if (!success)
                 {
                     Console.WriteLine("\nPlease enter an integer value!");
                     if (wagerVal > wagerAmount || wagerVal <= NO_WINNINGS_LEFT)
