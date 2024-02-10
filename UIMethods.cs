@@ -1,4 +1,6 @@
-﻿namespace slot_machine
+﻿using System.Reflection.Metadata.Ecma335;
+
+namespace slot_machine
 {
     //Methods to define user interaction (user input/output)
     //used to verify user input or output message
@@ -69,26 +71,33 @@
         public static int InputWagerAmount(int wagerAmount)
         {
             Console.WriteLine($"\nEnter a value from {MINIMUM_BET} to {wagerAmount} that you would like to wager!\n");
-            //convert string to integer value, read the wager value 
-            string wager = Console.ReadLine();
-            int wagerVal = Convert.ToInt32(wager);
             bool notValidInput = true;
-
+            int wagerVal;
             //ensure user enters valid wager
             while (notValidInput)
             {
-                if (wagerVal > wagerAmount || wagerVal <= NO_WINNINGS_LEFT)
+                //convert string to integer value, read the wager value 
+                string wager = Console.ReadLine();
+
+                //confirm that user has entered valid integer
+                bool success = int.TryParse(wager, out wagerVal);
+                
+                //if user enters an integer value
+                if (success)
                 {
-                    Console.WriteLine("\nPlease enter a positive wager value that is less than or equal your winnings!\n");
-                    wager = Console.ReadLine();
-                    wagerVal = Convert.ToInt32(wager);
+                    Console.WriteLine("\nPlease enter an integer value!");
+                    if (wagerVal > wagerAmount || wagerVal <= NO_WINNINGS_LEFT)
+                    {
+                        Console.WriteLine("\nPlease enter a positive wager value that is less than or equal your winnings!\n");
+                        //confirm that user has entered valid integer
+                        success = int.TryParse(wager, out wagerVal);
+                    }
+                    //if user enters valid wager value, exit out of while loop
+                    else
+                    {
+                        notValidInput = false;
+                    }
                 }
-                //if user enters valid wager value, exit out of while loop
-                else
-                {
-                    notValidInput = false;
-                }
-                return wagerVal;
             }
             //immediately return what user has wagered
             return wagerVal;
@@ -104,7 +113,7 @@
 
             //create a list of possible options
             //NOT constant since you don't assign one letter at a time to list
-            List<char> LINE_MATCHING_OPTIONS = new List<char> { 'h', 'v', 'd'};
+            List<char> LINE_MATCHING_OPTIONS = new List<char> { HORIZONTAL_OPTION, VERTICAL_OPTION, DIAGONAL_OPTION};
 
             //used to check if user has inputted either horizontal/vertical/diagonal
             while (notValidInput)
