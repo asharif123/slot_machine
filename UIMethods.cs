@@ -1,4 +1,5 @@
-﻿using System.Reflection.Metadata.Ecma335;
+﻿using System.ComponentModel.Design;
+using System.Reflection.Metadata.Ecma335;
 
 namespace slot_machine
 {
@@ -72,25 +73,30 @@ namespace slot_machine
         {
             Console.WriteLine($"\nEnter a value from {MINIMUM_BET} to {wagerAmount} that you would like to wager!\n");
             bool notValidInput = true;
+            //initialize wagerVal as an integer so it can be retained at end of method
             int wagerVal = 0;
             //ensure user enters valid wager
             while (notValidInput)
             {
                 //convert string to integer value, read the wager value 
+                //pass wager input statement in while loop so it is called again if invalid input
                 string wager = Console.ReadLine();
 
                 //confirm that user has entered valid integer
+                //converts string of input into int value
                 bool success = int.TryParse(wager, out wagerVal);
-                
-                //if user enters an integer value
+
+                //if user does NOT enter an integer value
+                //it will recall bool statement
                 if (!success)
                 {
-                    Console.WriteLine("\nPlease enter an integer value!");
+                    Console.WriteLine("\nPlease enter an integer value!\n");
+                }
+                else
+                {
                     if (wagerVal > wagerAmount || wagerVal <= NO_WINNINGS_LEFT)
                     {
                         Console.WriteLine("\nPlease enter a positive wager value that is less than or equal your winnings!\n");
-                        //confirm that user has entered valid integer
-                        success = int.TryParse(wager, out wagerVal);
                     }
                     //if user enters valid wager value, exit out of while loop
                     else
@@ -113,7 +119,7 @@ namespace slot_machine
 
             //create a list of possible options
             //NOT constant since you don't assign one letter at a time to list
-            List<char> LINE_MATCHING_OPTIONS = new List<char> { HORIZONTAL_OPTION, VERTICAL_OPTION, DIAGONAL_OPTION};
+            List<char> LINE_MATCHING_OPTIONS = new List<char> { HORIZONTAL_OPTION, VERTICAL_OPTION, DIAGONAL_OPTION };
 
             //used to check if user has inputted either horizontal/vertical/diagonal
             while (notValidInput)
