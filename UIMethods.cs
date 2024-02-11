@@ -63,6 +63,11 @@ namespace slot_machine
             {
                 for (int columnIndex = 0; columnIndex < COLUMN_COUNT; columnIndex++)
                 {
+        //separate each row of values by space
+                    if (columnIndex % 3 == 0)
+                    {
+                        Console.WriteLine();
+                    }
                     Console.WriteLine(slotArray[rowIndex, columnIndex]);
                 }
             }
