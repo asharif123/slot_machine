@@ -92,6 +92,7 @@ namespace slot_machine
                 {
                     Console.WriteLine("\nPlease enter an integer value!\n");
                 }
+                //if use does enter an integer value
                 else
                 {
                     if (wagerVal > wagerAmount || wagerVal <= NO_WINNINGS_LEFT)
