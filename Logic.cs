@@ -1,4 +1,6 @@
 ﻿
+using System.Numerics;
+
 namespace slot_machine
 {
     //contains methods for spinning slot machine, check if user has won horizontally/vertically/diagonally
@@ -29,6 +31,7 @@ namespace slot_machine
                     slotMachine[rowIndex, columnIndex] = randomValue.Next(MIN_VALUE, MAX_VALUE);
                 }
             }
+
             return slotMachine;
         }
 

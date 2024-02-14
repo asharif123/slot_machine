@@ -57,19 +57,15 @@ namespace slot_machine
         //separate it from logic method that is filling values
         //declare as int so can return each integer in 2D slot array and display to user what was spun
         //use nested for loops to print slot machine line by line
-        public static void PrintSlotArray(int[,] slotArray)
+        public static void PrintSlotArray(int[] slotArray)
         {
             for (int rowIndex = 0; rowIndex < ROW_COUNT; rowIndex++)
             {
                 for (int columnIndex = 0; columnIndex < COLUMN_COUNT; columnIndex++)
                 {
-        //separate each row of values by space
-                    if (columnIndex % 3 == 0)
-                    {
-                        Console.WriteLine();
-                    }
-                    Console.WriteLine(slotArray[rowIndex, columnIndex]);
+                    Console.WriteLine(slotArray[rowIndex].ToString());
                 }
+                Console.WriteLine();
             }
         }
 
