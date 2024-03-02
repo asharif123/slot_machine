@@ -63,7 +63,7 @@ namespace slot_machine
             {
                 for (int columnIndex = 0; columnIndex < COLUMN_COUNT; columnIndex++)
                 {
-                    Console.WriteLine(slotArray[rowIndex,columnIndex].ToString());
+                    Console.WriteLine(slotArray[rowIndex,columnIndex]);
                 }
                 Console.WriteLine();
             }
@@ -73,10 +73,10 @@ namespace slot_machine
         public static int InputWagerAmount(int wagerAmount)
         {
             Console.WriteLine($"\nEnter a value from {MINIMUM_BET} to {wagerAmount} that you would like to wager!\n");
-            bool notValidInput = true;
             //initialize wagerVal as an integer so it can be retained at end of method
             int wagerVal = 0;
             //ensure user enters valid wager
+            bool notValidInput = true;
             while (notValidInput)
             {
                 //convert string to integer value, read the wager value 

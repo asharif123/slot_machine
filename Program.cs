@@ -52,6 +52,7 @@
                 //fill the array with values 0 and 1
                 //declare random in main to make it acccesible to every function that needs it
                 //pass results of spinningSlotMachine to horizontal/vertical/diagonal options
+                //pass it once slot machine has been filled!
                 int[,] spinningSlotMachineResults = Logic.FillSlotArrayValues(rd, spinningSlotMachine);
                 UIMethods.PrintSlotArray(spinningSlotMachineResults);
                 UIMethods.PrintEmptySpace();
