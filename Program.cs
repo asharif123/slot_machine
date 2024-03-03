@@ -22,6 +22,7 @@
             const int COLUMN_COUNT = 3;
             //declared outside of logic class since it's NOT constant
             //so needs to be declared in Program.cs file
+            //create a 2D array to store values
             int[,] spinningSlotMachine = new int[ROW_COUNT, COLUMN_COUNT];
 
             //declare random value in main function instead of function
