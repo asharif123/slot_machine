@@ -61,12 +61,12 @@
                 if (userOption == HORIZONTAL_OPTION)
                 {
                     int totalHorizontalLines = Logic.CheckHorizontalOption(spinningSlotMachineResults);
-                    //if no matching columns were found
+                    //if no matching horizontals were found
                     if (totalHorizontalLines == 0)
                     {
                         UIMethods.PrintNoMatchingLines();
                     }
-                    //if 1, 2 or 3 matching columns are found
+                    //if 1, 2 or 3 matching horizontals are found
                     else
                     {
                         //pass UIMethods to program or UIMethods, NOT in logic.cs
@@ -106,7 +106,6 @@
                         UIMethods.PrintMatchingDiagonalLines(totalDiagonalLines);
                         userCredits += (wager * totalDiagonalLines);
                     }
-                    userCredits += (wager * totalDiagonalLines);
                 }
 
                 //if user runs out of money to wager
