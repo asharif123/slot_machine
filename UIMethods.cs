@@ -63,8 +63,10 @@ namespace slot_machine
             {
                 for (int columnIndex = 0; columnIndex < COLUMN_COUNT; columnIndex++)
                 {
-                    Console.WriteLine(slotArray[rowIndex,columnIndex]);
+                    //use Console.Write to ensure you print each value next to one another
+                    Console.Write(slotArray[rowIndex, columnIndex] + " ");
                 }
+                //used to separate each row
                 Console.WriteLine();
             }
         }

@@ -3,7 +3,7 @@
     //user is greeted with a welcome message
     //user is given $50 to start with and is asked how much to wager
     //if user exceed amount to wager or puts 0, asked to reinput wager
-    //user then selects whether to match values horizontall/vertically/diagonally
+    //user then selects whether to match values horizontally/vertically/diagonally
     //the slot machine spins generating random 0s and 1s on 2D array
     //if user gets no matches, user loses money
     //if user gets 1 matching line, user gets money back, if 2 lines user gets double, if 3 lines user get triple
