@@ -1,7 +1,4 @@
-﻿using System.ComponentModel.Design;
-using System.Reflection.Metadata.Ecma335;
-
-namespace slot_machine
+﻿namespace slot_machine
 {
     //Methods to define user interaction (user input/output)
     //used to verify user input or output message

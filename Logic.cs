@@ -1,7 +1,4 @@
-﻿
-using System.Numerics;
-
-namespace slot_machine
+﻿namespace slot_machine
 {
     //contains methods for spinning slot machine, check if user has won horizontally/vertically/diagonally
 

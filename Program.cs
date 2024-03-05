@@ -58,6 +58,7 @@
                 UIMethods.PrintSlotArray(spinningSlotMachineResults);
                 UIMethods.PrintEmptySpace();
 
+                //
                 if (userOption == HORIZONTAL_OPTION)
                 {
                     int totalHorizontalLines = Logic.CheckHorizontalOption(spinningSlotMachineResults);
