@@ -14,9 +14,6 @@
     {
         static void Main()
         {
-            const char HORIZONTAL_OPTION = 'h';
-            const char VERTICAL_OPTION = 'v';
-            const char DIAGONAL_OPTION = 'd';
             const int STARTING_BET_AMOUNT = 50;
             const int ROW_COUNT = 3;
             const int COLUMN_COUNT = 3;
@@ -32,7 +29,7 @@
             //give user option to replay
             bool replay = true;
 
-            //amount of money user starts off with
+            //initial amount user starts with
             int userCredits = STARTING_BET_AMOUNT;
 
             //show welcome message
@@ -43,13 +40,12 @@
             {
                 //wager amount
                 int wager = UIMethods.InputWagerAmount(userCredits);
-                //subtract wager from user credits
-                userCredits -= wager;
 
                 //record whether use has selected horizontal, vertical or diagonal
                 char userOption = UIMethods.InputMatchingOption();
                 UIMethods.PrintEmptySpace();
                 UIMethods.PrintEmptySpace();
+
                 //fill the array with values 0 and 1
                 //declare random in main to make it acccesible to every function that needs it
                 //pass results of spinningSlotMachine to horizontal/vertical/diagonal options
@@ -58,56 +54,9 @@
                 UIMethods.PrintSlotArray(spinningSlotMachineResults);
                 UIMethods.PrintEmptySpace();
 
-                //
-                if (userOption == HORIZONTAL_OPTION)
-                {
-                    int totalHorizontalLines = Logic.CheckHorizontalOption(spinningSlotMachineResults);
-                    //if no matching horizontals were found
-                    if (totalHorizontalLines == 0)
-                    {
-                        UIMethods.PrintNoMatchingLines();
-                    }
-                    //if 1, 2 or 3 matching horizontals are found
-                    else
-                    {
-                        //pass UIMethods to program or UIMethods, NOT in logic.cs
-                        //print number of matching lines
-                        UIMethods.PrintMatchingRowLines(totalHorizontalLines);
-                        userCredits += (wager * totalHorizontalLines);
-                    }
-                }
-
-                else if (userOption == VERTICAL_OPTION)
-                {
-                    int totalVerticalLines = Logic.CheckVerticalOption(spinningSlotMachineResults);
-                    if (totalVerticalLines == 0)
-                    {
-                        UIMethods.PrintNoMatchingLines();
-                    }
-                    else
-                    {
-                        //pass UIMethods to program or UIMethods, NOT in logic.cs
-                        //print number of matching lines
-                        UIMethods.PrintMatchingColumnLines(totalVerticalLines);
-                        userCredits += (wager * totalVerticalLines);
-                    }
-                }
-
-                else if (userOption == DIAGONAL_OPTION)
-                {
-                    int totalDiagonalLines = Logic.CheckDiagonalOption(spinningSlotMachineResults);
-                    if (totalDiagonalLines == 0)
-                    {
-                        UIMethods.PrintNoMatchingLines();
-                    }
-                    else
-                    {
-                        //pass UIMethods to program or UIMethods, NOT in logic.cs
-                        //print number of matching lines
-                        UIMethods.PrintMatchingDiagonalLines(totalDiagonalLines);
-                        userCredits += (wager * totalDiagonalLines);
-                    }
-                }
+                //method that calculates user credits based off either horizontal/vertical/diagonal options
+                //takes arguments for amount of money user has left, slot machine, what user has wagered and selected option
+                userCredits = UIMethods.AmountMoneyLeft(userCredits, wager, userOption, spinningSlotMachine);
 
                 //if user runs out of money to wager
                 //immediately check to determine if user has enough money to wager

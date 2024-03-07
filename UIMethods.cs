@@ -139,6 +139,66 @@
             return userInput;
         }
 
+        //method to determine what option user has selected and return money left based off selected option
+        //pass arguments for how much user can bet, amount to be wagered, selected option and spinning slot machine
+        public static int AmountMoneyLeft(int moneyLeft, int wagerAmount, char selectedOption, int[,] slotMachine)
+        {
+            int amountLeft = moneyLeft;
+            //subtract wager from user credits
+            amountLeft -= wagerAmount;
+
+            if (selectedOption == HORIZONTAL_OPTION)
+            {
+                int totalHorizontalLines = Logic.CheckHorizontalOption(slotMachine);
+                //if no matching horizontals were found
+                if (totalHorizontalLines == 0)
+                {
+                    UIMethods.PrintNoMatchingLines();
+                }
+                //if 1, 2 or 3 matching horizontals are foundx
+                else
+                {
+                    //pass UIMethods to program or UIMethods, NOT in logic.cs
+                    //print number of matching lines
+                    UIMethods.PrintMatchingRowLines(totalHorizontalLines);
+                    amountLeft += (wagerAmount * totalHorizontalLines);
+                }
+            }
+
+            else if (selectedOption == VERTICAL_OPTION)
+            {
+                int totalVerticalLines = Logic.CheckVerticalOption(slotMachine);
+                if (totalVerticalLines == 0)
+                {
+                    UIMethods.PrintNoMatchingLines();
+                }
+                else
+                {
+                    //pass UIMethods to program or UIMethods, NOT in logic.cs
+                    //print number of matching lines
+                    UIMethods.PrintMatchingColumnLines(totalVerticalLines);
+                    amountLeft += (wagerAmount * totalVerticalLines);
+                }
+            }
+
+            else if (selectedOption == DIAGONAL_OPTION)
+            {
+                int totalDiagonalLines = Logic.CheckDiagonalOption(slotMachine);
+                if (totalDiagonalLines == 0)
+                {
+                    UIMethods.PrintNoMatchingLines();
+                }
+                else
+                {
+                    //pass UIMethods to program or UIMethods, NOT in logic.cs
+                    //print number of matching lines
+                    UIMethods.PrintMatchingDiagonalLines(totalDiagonalLines);
+                    amountLeft += (wagerAmount * totalDiagonalLines);
+                }
+            }
+            return amountLeft;
+        }
+
         //give user the option to replay the game or quit
         public static bool AskUserToPlayAgain()
         {
