@@ -56,6 +56,7 @@
 
                 //method that calculates user credits based off either horizontal/vertical/diagonal options
                 //takes arguments for amount of money user has left, slot machine, what user has wagered and selected option
+                //take updated userCredits and update in while loop to have recent winnings
                 userCredits = UIMethods.AmountMoneyLeft(userCredits, wager, userOption, spinningSlotMachine);
 
                 //if user runs out of money to wager
