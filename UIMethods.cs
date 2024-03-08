@@ -163,7 +163,7 @@
                 totalMatchingLines = Logic.CheckDiagonalOption(slotMachine);
             }
 
-            //if no matching horizontals were found
+            //if no matching lines were found
             if (totalMatchingLines == 0)
             {
                 UIMethods.PrintNoMatchingLines();
