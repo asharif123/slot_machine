@@ -140,7 +140,7 @@
             //subtract wager from user credits
             amountLeft -= wagerAmount;
 
-            //initilize totalMatchingLines so it can be updated depending on what user has selected
+            //initialize totalMatchingLines as an integer so it can be retained at end of method
             int totalMatchingLines = 0;
 
             if (selectedOption == HORIZONTAL_OPTION)
