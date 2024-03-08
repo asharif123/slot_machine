@@ -42,6 +42,11 @@
             Console.WriteLine($"You have {matchingLines} matching line(s)!");
         }
 
+        public static void PrintTotalWinnings(int moneyWon)
+        {
+            Console.WriteLine($"\nYour total earnings are ${moneyWon}!\n");
+        }
+
         //output the slot machine having filled values
         //separate it from logic method that is filling values
         //declare as int so can return each integer in 2D slot array and display to user what was spun
@@ -171,6 +176,9 @@
                 UIMethods.PrintMatchingLines(totalMatchingLines);
                 amountLeft += (wagerAmount * totalMatchingLines);
             }
+            //print how much money user has won
+            UIMethods.PrintTotalWinnings(amountLeft);
+
             return amountLeft;
         }
 
