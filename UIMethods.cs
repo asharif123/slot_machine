@@ -37,17 +37,9 @@
         {
             Console.WriteLine($"You have no matching lines!");
         }
-        public static void PrintMatchingRowLines(int matchingLines)
+        public static void PrintMatchingLines(int matchingLines)
         {
-            Console.WriteLine($"You have {matchingLines} horizontal lines!");
-        }
-        public static void PrintMatchingColumnLines(int matchingLines)
-        {
-            Console.WriteLine($"You have {matchingLines} vertical lines!");
-        }
-        public static void PrintMatchingDiagonalLines(int matchingLines)
-        {
-            Console.WriteLine($"You have {matchingLines} diagonal lines!");
+            Console.WriteLine($"You have {matchingLines} matching line(s)!");
         }
 
         //output the slot machine having filled values
@@ -144,57 +136,40 @@
         public static int AmountMoneyLeft(int moneyLeft, int wagerAmount, char selectedOption, int[,] slotMachine)
         {
             int amountLeft = moneyLeft;
+
             //subtract wager from user credits
             amountLeft -= wagerAmount;
 
+            //initilize totalMatchingLines so it can be updated depending on what user has selected
+            int totalMatchingLines = 0;
+
             if (selectedOption == HORIZONTAL_OPTION)
             {
-                int totalHorizontalLines = Logic.CheckHorizontalOption(slotMachine);
-                //if no matching horizontals were found
-                if (totalHorizontalLines == 0)
-                {
-                    UIMethods.PrintNoMatchingLines();
-                }
-                //if 1, 2 or 3 matching horizontals are foundx
-                else
-                {
-                    //pass UIMethods to program or UIMethods, NOT in logic.cs
-                    //print number of matching lines
-                    UIMethods.PrintMatchingRowLines(totalHorizontalLines);
-                    amountLeft += (wagerAmount * totalHorizontalLines);
-                }
+                totalMatchingLines = Logic.CheckHorizontalOption(slotMachine);
             }
 
             else if (selectedOption == VERTICAL_OPTION)
             {
-                int totalVerticalLines = Logic.CheckVerticalOption(slotMachine);
-                if (totalVerticalLines == 0)
-                {
-                    UIMethods.PrintNoMatchingLines();
-                }
-                else
-                {
-                    //pass UIMethods to program or UIMethods, NOT in logic.cs
-                    //print number of matching lines
-                    UIMethods.PrintMatchingColumnLines(totalVerticalLines);
-                    amountLeft += (wagerAmount * totalVerticalLines);
-                }
+                totalMatchingLines = Logic.CheckVerticalOption(slotMachine);
             }
 
             else if (selectedOption == DIAGONAL_OPTION)
             {
-                int totalDiagonalLines = Logic.CheckDiagonalOption(slotMachine);
-                if (totalDiagonalLines == 0)
-                {
-                    UIMethods.PrintNoMatchingLines();
-                }
-                else
-                {
-                    //pass UIMethods to program or UIMethods, NOT in logic.cs
-                    //print number of matching lines
-                    UIMethods.PrintMatchingDiagonalLines(totalDiagonalLines);
-                    amountLeft += (wagerAmount * totalDiagonalLines);
-                }
+                totalMatchingLines = Logic.CheckDiagonalOption(slotMachine);
+            }
+
+            //if no matching horizontals were found
+            if (totalMatchingLines == 0)
+            {
+                UIMethods.PrintNoMatchingLines();
+            }
+            //if 1, 2 or 3 matching lines are found for horizontal/vertical/diagonal options
+            else
+            {
+                //pass UIMethods to program or UIMethods, NOT in logic.cs
+                //print number of matching lines
+                UIMethods.PrintMatchingLines(totalMatchingLines);
+                amountLeft += (wagerAmount * totalMatchingLines);
             }
             return amountLeft;
         }
