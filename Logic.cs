@@ -113,6 +113,7 @@
             //row starts at 0 and column starts at 2, decrease by 1 each time until column is 2 and row is 0
             //start at rowIndex = 0 and columnIndex = 2
             //length of 2D array is 3, get length of first row having 3 values
+            //subtract by 1 to obtain length of 2
             int colIndex = slotMachine.GetLength(0) - 1;
 
             for (int rowIndex = 0; rowIndex < ROW_COUNT - 1; rowIndex++)
